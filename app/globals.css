@@ -5,7 +5,7 @@
   --foreground: #171717;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -23,4 +23,303 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fix input text visibility across the entire project */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="url"],
+input[type="search"],
+input[type="number"],
+textarea,
+select {
+  color: #374151 !important; /* Dark gray text */
+  background-color: #ffffff !important; /* White background */
+  -webkit-text-fill-color: #374151 !important; /* Fix for webkit browsers */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  color: #111827 !important; /* Darker text on focus */
+  -webkit-text-fill-color: #111827 !important; /* Fix for webkit browsers */
+}
+
+/* Placeholder text */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important; /* Light gray placeholder */
+  opacity: 1 !important;
+  -webkit-text-fill-color: #9ca3af !important;
+}
+
+/* Autofill styling fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #374151 !important;
+}
+
+/* Dark mode overrides - force light inputs */
+@media (prefers-color-scheme: dark) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="url"],
+  input[type="search"],
+  input[type="number"],
+  textarea,
+  select {
+    color: #111827 !important; /* Keep dark text even in dark mode */
+    background-color: #ffffff !important; /* Keep white background */
+    -webkit-text-fill-color: #111827 !important;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #111827 !important;
+  }
+}
+
+/* Additional fix for any inputs with specific Tailwind classes */
+.text-gray-900,
+.text-gray-800,
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+/* Ensure form controls are always visible */
+input,
+textarea,
+select {
+  color: #374151 !important;
+  background-color: #ffffff !important;
+}
+
+/* Mobile-first responsive utilities */
+.mobile-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.mobile-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.mobile-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+.mobile-card {
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-card {
+    padding: 2rem;
+  }
+}
+
+.mobile-spacing > * + * {
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-spacing > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-spacing > * + * {
+    margin-top: 2rem;
+  }
+}
+
+/* Touch-friendly interactive elements */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Responsive typography scale */
+.responsive-text-xs {
+  font-size: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text-xs {
+    font-size: 0.875rem;
+  }
+}
+
+.responsive-text-sm {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text-sm {
+    font-size: 1rem;
+  }
+}
+
+.responsive-text-base {
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text-base {
+    font-size: 1.125rem;
+  }
+}
+
+.responsive-text-lg {
+  font-size: 1.125rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text-lg {
+    font-size: 1.25rem;
+  }
+}
+
+.responsive-text-xl {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text-xl {
+    font-size: 1.5rem;
+  }
+}
+
+.responsive-text-2xl {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text-2xl {
+    font-size: 1.875rem;
+  }
+}
+
+.responsive-text-3xl {
+  font-size: 1.875rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text-3xl {
+    font-size: 2.25rem;
+  }
+}
+
+.responsive-text-4xl {
+  font-size: 2.25rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text-4xl {
+    font-size: 3rem;
+  }
+}
+
+/* Mobile-optimized forms */
+.mobile-form-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+}
+
+.mobile-form-input:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #3b82f6;
+}
+
+@media (min-width: 640px) {
+  .mobile-form-input {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+.mobile-form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+/* Safe area handling for mobile devices */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Prevent horizontal scroll on mobile */
+.prevent-scroll {
+  overflow-x: hidden;
 }
