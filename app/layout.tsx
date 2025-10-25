@@ -4,6 +4,7 @@ import "./globals.css";
 import AuthSessionProvider from "@/components/providers/session-provider";
 import { SubscriptionProvider } from "@/components/providers/subscription-provider";
 import ConditionalNavbar from "@/components/layout/conditional-navbar";
+import StartupProvider from "@/components/providers/startup-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
