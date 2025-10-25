@@ -47,7 +47,7 @@ export default function Navbar() {
                 </svg>
               </div>
               <span className="text-lg sm:text-xl font-bold text-gray-900">
-                ProCard
+                eProfile
               </span>
             </Link>
           </div>

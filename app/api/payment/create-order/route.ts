@@ -5,7 +5,7 @@ import { createRazorpayOrder, subscriptionPlans } from '@/lib/razorpay'
 import { z } from 'zod'
 
 const createOrderSchema = z.object({
-    plan: z.enum(['PRO']),
+    plan: z.enum(['STANDARD', 'PRO']),
 })
 
 // POST /api/payment/create-order - Create Razorpay order for subscription

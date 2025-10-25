@@ -66,18 +66,47 @@ export default function PricingPage() {
         "Basic Analytics",
         "Lead Generation Form",
         "Social Media Links",
-        "ProCard Branding",
+        "eProfile Branding",
       ],
       limitations: [
         "Limited customization",
         "Basic support",
-        "ProCard watermark",
+        "eProfile watermark",
       ],
       buttonText: session ? "Go to Dashboard" : "Get Started Free",
       buttonAction: handleGetStarted,
       buttonStyle:
         "border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
       popular: false,
+    },
+    {
+      name: "Standard",
+      price: "₹149",
+      period: "per month",
+      description: "Great for professionals who need more features",
+      features: [
+        "3 Digital Cards",
+        "All Premium Templates",
+        "Services Showcase (3 services)",
+        "Portfolio Gallery (5 items)",
+        "Advanced Customization",
+        "Lead Management",
+        "Advanced Analytics",
+        "Email Support",
+        "No eProfile Branding",
+      ],
+      limitations: [
+        "No testimonials",
+        "No payment integration",
+        "No custom domain",
+      ],
+      buttonText: session ? "Upgrade to Standard" : "Start Standard Trial",
+      buttonAction: handleStartTrial,
+      useRazorpay: session ? true : false,
+      plan: "STANDARD",
+      amount: 14900,
+      buttonStyle: "bg-green-600 text-white hover:bg-green-700",
+      popular: true,
     },
     {
       name: "Pro",
@@ -88,22 +117,24 @@ export default function PricingPage() {
         "Unlimited Digital Cards",
         "All Premium Templates",
         "Advanced Customization",
-        "Services Showcase (5 services)",
-        "Portfolio Gallery (10 items)",
+        "Services Showcase (Unlimited)",
+        "Portfolio Gallery (Unlimited)",
         "Customer Testimonials",
         "Payment Integration",
         "Advanced Analytics",
         "Lead Management",
         "Custom Domain Support",
         "Priority Support",
-        "No ProCard Branding",
+        "No eProfile Branding",
       ],
       limitations: [],
       buttonText: session ? "Upgrade to Pro" : "Start Pro Trial",
       buttonAction: handleStartTrial,
       useRazorpay: session ? true : false,
+      plan: "PRO",
+      amount: 29900,
       buttonStyle: "bg-blue-600 text-white hover:bg-blue-700",
-      popular: true,
+      popular: false,
     },
     {
       name: "Enterprise",
@@ -183,7 +214,7 @@ export default function PricingPage() {
 
       {/* Pricing Cards */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
             <div
               key={index}
@@ -272,8 +303,8 @@ export default function PricingPage() {
 
               {(plan as any).useRazorpay ? (
                 <RazorpayCheckout
-                  plan="PRO"
-                  amount={29900}
+                  plan={(plan as any).plan}
+                  amount={(plan as any).amount}
                   onSuccess={handlePaymentSuccess}
                   onError={handlePaymentError}
                 >
@@ -319,6 +350,9 @@ export default function PricingPage() {
                     Free
                   </th>
                   <th className="text-center py-4 px-6 font-semibold text-gray-900">
+                    Standard
+                  </th>
+                  <th className="text-center py-4 px-6 font-semibold text-gray-900">
                     Pro
                   </th>
                   <th className="text-center py-4 px-6 font-semibold text-gray-900">
@@ -331,60 +365,77 @@ export default function PricingPage() {
                   {
                     feature: "Digital Cards",
                     free: "1",
+                    standard: "3",
                     pro: "Unlimited",
                     enterprise: "Unlimited",
                   },
                   {
                     feature: "Templates",
                     free: "Basic",
+                    standard: "All Premium",
                     pro: "All Premium",
                     enterprise: "All + Custom",
                   },
                   {
                     feature: "Services Showcase",
                     free: "❌",
-                    pro: "✅",
-                    enterprise: "✅",
+                    standard: "✅ (3)",
+                    pro: "✅ (Unlimited)",
+                    enterprise: "✅ (Unlimited)",
                   },
                   {
                     feature: "Portfolio Gallery",
                     free: "❌",
+                    standard: "✅ (5)",
+                    pro: "✅ (Unlimited)",
+                    enterprise: "✅ (Unlimited)",
+                  },
+                  {
+                    feature: "Testimonials",
+                    free: "❌",
+                    standard: "❌",
                     pro: "✅",
                     enterprise: "✅",
                   },
                   {
                     feature: "Payment Integration",
                     free: "❌",
+                    standard: "❌",
                     pro: "✅",
                     enterprise: "✅",
                   },
                   {
                     feature: "Advanced Analytics",
                     free: "Basic",
+                    standard: "✅",
                     pro: "✅",
                     enterprise: "✅",
                   },
                   {
                     feature: "Custom Domain",
                     free: "❌",
+                    standard: "❌",
                     pro: "✅",
                     enterprise: "✅",
                   },
                   {
                     feature: "Team Management",
                     free: "❌",
+                    standard: "❌",
                     pro: "❌",
                     enterprise: "✅",
                   },
                   {
                     feature: "API Access",
                     free: "❌",
+                    standard: "❌",
                     pro: "❌",
                     enterprise: "✅",
                   },
                   {
                     feature: "Support",
                     free: "Community",
+                    standard: "Email",
                     pro: "Priority",
                     enterprise: "Dedicated",
                   },
@@ -393,6 +444,9 @@ export default function PricingPage() {
                     <td className="py-4 px-6 text-gray-900">{row.feature}</td>
                     <td className="py-4 px-6 text-center text-gray-600">
                       {row.free}
+                    </td>
+                    <td className="py-4 px-6 text-center text-gray-600">
+                      {row.standard}
                     </td>
                     <td className="py-4 px-6 text-center text-gray-600">
                       {row.pro}

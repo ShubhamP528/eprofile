@@ -4,7 +4,7 @@ import { useState } from "react";
 import { apiClient } from "@/lib/api-client";
 
 interface RazorpayCheckoutProps {
-  plan: "PRO";
+  plan: "STANDARD" | "PRO";
   amount: number;
   onSuccess: (paymentData: any) => void;
   onError: (error: string) => void;
@@ -79,7 +79,7 @@ export default function RazorpayCheckout({
         key: key,
         amount: orderAmount,
         currency: currency,
-        name: "ProCard",
+        name: "eProfile",
         description: planConfig.description,
         order_id: orderId,
         handler: async (response: any) => {
@@ -106,8 +106,8 @@ export default function RazorpayCheckout({
           }
         },
         prefill: {
-          name: "ProCard User",
-          email: "user@procard.com",
+          name: "eProfile User",
+          email: "user@eprofile.cv",
         },
         theme: {
           color: "#2563eb", // Blue color matching our theme

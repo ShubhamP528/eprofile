@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Favicon Generator</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas32"
+      width="32"
+      height="32"
+      style="border: 1px solid #ccc; margin: 10px"
+    ></canvas>
+    <canvas
+      id="canvas16"
+      width="16"
+      height="16"
+      style="border: 1px solid #ccc; margin: 10px"
+    ></canvas>
+    <canvas
+      id="canvas180"
+      width="180"
+      height="180"
+      style="border: 1px solid #ccc; margin: 10px"
+    ></canvas>
+
+    <script>
+      // Function to draw the ProCard icon
+      function drawIcon(ctx, size) {
+        // Clear canvas
+        ctx.clearRect(0, 0, size, size);
+
+        // Draw background
+        ctx.fillStyle = "#2563eb";
+        ctx.fillRect(0, 0, size, size);
+
+        // Draw rounded corners
+        ctx.globalCompositeOperation = "destination-in";
+        ctx.beginPath();
+        ctx.roundRect(0, 0, size, size, size * 0.1875); // 6px radius for 32px
+        ctx.fill();
+        ctx.globalCompositeOperation = "source-over";
+
+        // Draw card icon
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = size * 0.046875; // 1.5px for 32px
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+        const scale = size / 32;
+
+        // Card outline (simplified version)
+        ctx.beginPath();
+        ctx.rect(size * 0.25, size * 0.25, size * 0.5, size * 0.5);
+        ctx.stroke();
+
+        // Small card detail
+        ctx.beginPath();
+        ctx.rect(size * 0.3, size * 0.35, size * 0.15, size * 0.05);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.rect(size * 0.3, size * 0.45, size * 0.25, size * 0.05);
+        ctx.stroke();
+      }
+
+      // Generate 32x32 favicon
+      const canvas32 = document.getElementById("canvas32");
+      const ctx32 = canvas32.getContext("2d");
+      drawIcon(ctx32, 32);
+
+      // Generate 16x16 favicon
+      const canvas16 = document.getElementById("canvas16");
+      const ctx16 = canvas16.getContext("2d");
+      drawIcon(ctx16, 16);
+
+      // Generate 180x180 apple touch icon
+      const canvas180 = document.getElementById("canvas180");
+      const ctx180 = canvas180.getContext("2d");
+      drawIcon(ctx180, 180);
+
+      // Add download links
+      setTimeout(() => {
+        const link32 = document.createElement("a");
+        link32.download = "favicon-32x32.png";
+        link32.href = canvas32.toDataURL();
+        link32.textContent = "Download 32x32 PNG";
+        document.body.appendChild(link32);
+        document.body.appendChild(document.createElement("br"));
+
+        const link16 = document.createElement("a");
+        link16.download = "favicon-16x16.png";
+        link16.href = canvas16.toDataURL();
+        link16.textContent = "Download 16x16 PNG";
+        document.body.appendChild(link16);
+        document.body.appendChild(document.createElement("br"));
+
+        const link180 = document.createElement("a");
+        link180.download = "apple-touch-icon.png";
+        link180.href = canvas180.toDataURL();
+        link180.textContent = "Download 180x180 PNG";
+        document.body.appendChild(link180);
+      }, 100);
+    </script>
+  </body>
+</html>

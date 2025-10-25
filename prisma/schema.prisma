@@ -193,6 +193,7 @@ model ButtonClick {
 
 enum SubscriptionType {
   FREE
+  STANDARD
   PRO
 }
 

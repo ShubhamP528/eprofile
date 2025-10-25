@@ -1,6 +1,6 @@
 import { prisma } from './prisma'
 
-export type SubscriptionPlan = 'FREE' | 'PRO'
+export type SubscriptionPlan = 'FREE' | 'STANDARD' | 'PRO'
 
 export interface SubscriptionStatus {
     plan: SubscriptionPlan
@@ -37,7 +37,7 @@ export async function getUserSubscription(userId: string): Promise<SubscriptionS
 
     return {
         plan: currentPlan,
-        isActive: currentPlan === 'PRO' && !isExpired,
+        isActive: (currentPlan === 'STANDARD' || currentPlan === 'PRO') && !isExpired,
         expiry: user.subscriptionExpiry || undefined,
         features: getFeaturesByPlan(currentPlan)
     }
@@ -53,6 +53,17 @@ export function getFeaturesByPlan(plan: SubscriptionPlan) {
                 hasTestimonials: false,
                 hasPayments: false,
                 hasAnalytics: true, // Basic analytics
+                hasCustomDomain: false,
+                hasPrioritySupport: false,
+            }
+        case 'STANDARD':
+            return {
+                maxCards: 3,
+                hasServices: true,
+                hasGallery: true,
+                hasTestimonials: false,
+                hasPayments: false,
+                hasAnalytics: true,
                 hasCustomDomain: false,
                 hasPrioritySupport: false,
             }

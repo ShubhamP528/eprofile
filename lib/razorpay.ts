@@ -13,11 +13,18 @@ export const razorpayConfig = {
 
 // Plan configurations
 export const subscriptionPlans = {
+    STANDARD: {
+        amount: 14900, // ₹149 in paise (Razorpay uses paise)
+        currency: 'INR',
+        name: 'eProfile Standard Plan',
+        description: 'Monthly subscription to eProfile Standard features',
+        duration: 30, // days
+    },
     PRO: {
         amount: 29900, // ₹299 in paise (Razorpay uses paise)
         currency: 'INR',
-        name: 'ProCard Pro Plan',
-        description: 'Monthly subscription to ProCard Pro features',
+        name: 'eProfile Pro Plan',
+        description: 'Monthly subscription to eProfile Pro features',
         duration: 30, // days
     }
 }

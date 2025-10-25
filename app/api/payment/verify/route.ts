@@ -9,7 +9,7 @@ const verifyPaymentSchema = z.object({
     razorpay_order_id: z.string(),
     razorpay_payment_id: z.string(),
     razorpay_signature: z.string(),
-    plan: z.enum(['PRO']),
+    plan: z.enum(['STANDARD', 'PRO']),
 })
 
 // POST /api/payment/verify - Verify Razorpay payment and update subscription

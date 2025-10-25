@@ -17,8 +17,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Digital Visiting Card Platform",
-  description: "Create and share professional digital visiting cards",
+  title: "eProfile - Digital Visiting Card Platform",
+  description:
+    "Create and share professional digital visiting cards with eProfile",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+      },
+      {
+        url: "/favicon.ico",
+        sizes: "32x32",
+      },
+    ],
+    apple: {
+      url: "/favicon.svg",
+      sizes: "180x180",
+      type: "image/svg+xml",
+    },
+  },
+  manifest: "/site.webmanifest",
+  themeColor: "#2563eb",
 };
 
 export default function RootLayout({
