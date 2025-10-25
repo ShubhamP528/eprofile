@@ -245,7 +245,7 @@ class ApiClient {
         return this.request('/subscription')
     }
 
-    async updateSubscription(plan: 'FREE' | 'PRO', paymentId?: string) {
+    async updateSubscription(plan: 'FREE' | 'STANDARD' | 'PRO', paymentId?: string) {
         return this.request('/subscription', {
             method: 'POST',
             body: JSON.stringify({ plan, paymentId }),
@@ -253,7 +253,7 @@ class ApiClient {
     }
 
     // Payment API
-    async createPaymentOrder(plan: 'PRO') {
+    async createPaymentOrder(plan: 'STANDARD' | 'PRO') {
         return this.request('/payment/create-order', {
             method: 'POST',
             body: JSON.stringify({ plan }),
@@ -264,7 +264,7 @@ class ApiClient {
         razorpay_order_id: string
         razorpay_payment_id: string
         razorpay_signature: string
-        plan: 'PRO'
+        plan: 'STANDARD' | 'PRO'
     }) {
         return this.request('/payment/verify', {
             method: 'POST',

@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
 
 const subscriptionSchema = z.object({
-    plan: z.enum(['FREE', 'PRO']),
+    plan: z.enum(['FREE', 'STANDARD', 'PRO']),
     paymentId: z.string().optional(),
 })
 
@@ -64,8 +64,8 @@ export async function POST(request: NextRequest) {
 
         const { plan, paymentId } = validationResult.data
 
-        // Calculate expiry date for Pro plan (30 days from now)
-        const subscriptionExpiry = plan === 'PRO'
+        // Calculate expiry date for paid plans (30 days from now)
+        const subscriptionExpiry = (plan === 'STANDARD' || plan === 'PRO')
             ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 days
             : null
 
@@ -92,7 +92,9 @@ export async function POST(request: NextRequest) {
             plan: updatedUser.subscription,
             expiry: updatedUser.subscriptionExpiry,
             paymentId,
-            message: plan === 'PRO' ? 'Successfully upgraded to Pro plan!' : 'Subscription updated'
+            message: plan === 'PRO' ? 'Successfully upgraded to Pro plan!' :
+                plan === 'STANDARD' ? 'Successfully upgraded to Standard plan!' :
+                    'Subscription updated'
         })
     } catch (error) {
         return handleApiError(error)
