@@ -39,14 +39,14 @@ If you want to create a traditional `.ico` file for older browser support:
 
 1. **Restart your development server**
 2. **Open** your app in the browser
-3. **Check the browser tab** - you should see your new ProCard icon
+3. **Check the browser tab** - you should see your new eProfile icon
 4. **Test on mobile** - add to home screen to see the icon
 
 ## 🎨 **Favicon Design Details**
 
 The favicon uses the same design language as your navbar:
 
-- **Card/document icon** representing digital visiting cards
+- **Card/document icon** representing eProfiles
 - **Blue background** (`#2563eb`) matching your brand
 - **White stroke** for the icon details
 - **Rounded corners** for modern appearance

@@ -1,4 +1,4 @@
-# ProCard Deployment Guide with Supabase
+# eProfile Deployment Guide with Supabase
 
 ## 🗄️ Database Setup (Supabase)
 
@@ -216,7 +216,7 @@ if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 ## 🎉 You're Ready!
 
-Your ProCard application is configured to work with Supabase PostgreSQL. The main things you need to update for production are:
+Your eProfile application is configured to work with Supabase PostgreSQL. The main things you need to update for production are:
 
 1. ✅ Database: Already configured with Supabase
 2. 🔄 NextAuth Secret: Generate new secure secret

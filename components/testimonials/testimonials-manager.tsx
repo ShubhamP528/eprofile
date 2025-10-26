@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 
 interface Testimonial {
   id: string;
@@ -189,8 +190,36 @@ export default function TestimonialsManager({
 
   if (loading) {
     return (
-      <div className="p-6">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+      <div className="bg-white p-6 rounded-lg shadow-sm border">
+        <div className="space-y-4">
+          <div className="flex justify-between items-center">
+            <SkeletonBase width="7rem" height="1.5rem" />
+            <SkeletonBase width="8rem" height="2rem" />
+          </div>
+          <div className="space-y-4">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="border border-gray-200 rounded-lg p-4">
+                <div className="flex items-start space-x-3">
+                  <SkeletonBase
+                    width="2.5rem"
+                    height="2.5rem"
+                    rounded="full"
+                    className="shrink-0"
+                  />
+                  <div className="flex-1 space-y-2">
+                    <SkeletonBase width="6rem" height="1rem" />
+                    <SkeletonBase width="100%" height="0.75rem" />
+                    <SkeletonBase width="75%" height="0.75rem" />
+                  </div>
+                  <div className="flex space-x-2">
+                    <SkeletonBase width="2rem" height="2rem" />
+                    <SkeletonBase width="2rem" height="2rem" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
@@ -356,7 +385,7 @@ export default function TestimonialsManager({
 
       {/* Testimonial Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0   bg-opacity-20 backdrop-blur-md flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <h4 className="text-lg font-semibold text-gray-900 mb-4">
               {editingTestimonial ? "Edit Testimonial" : "Add Testimonial"}

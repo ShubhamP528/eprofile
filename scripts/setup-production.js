@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 
-console.log("🚀 ProCard Production Setup\n");
+console.log("🚀 eProfile Production Setup\n");
 
 // Generate secure NextAuth secret
 const nextAuthSecret = crypto.randomBytes(32).toString("base64");

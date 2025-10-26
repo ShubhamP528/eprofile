@@ -17,9 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "eProfile - Digital Visiting Card Platform",
-  description:
-    "Create and share professional digital visiting cards with eProfile",
+  title: "eProfile - Professional Digital Profiles",
+  description: "Create and share professional eProfiles with eProfile",
   icons: {
     icon: [
       {

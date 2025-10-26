@@ -2,9 +2,9 @@
 
 ## Overview
 
-The Digital Visiting Card Platform is a modern web application built with Next.js that enables professionals to create, customize, and share digital business cards. The platform follows a freemium model with basic features available for free and advanced features requiring a premium subscription.
+The eProfile Platform is a modern web application built with Next.js that enables professionals to create, customize, and share digital business cards. The platform follows a freemium model with basic features available for free and advanced features requiring a premium subscription.
 
-The system architecture emphasizes performance, SEO optimization, and scalability to support thousands of users while maintaining fast load times for digital cards - crucial for professional first impressions.
+The system architecture emphasizes performance, SEO optimization, and scalability to support thousands of users while maintaining fast load times for eProfiles - crucial for professional first impressions.
 
 ## Architecture
 
@@ -15,12 +15,12 @@ graph TB
     A[Client Browser] --> B[Next.js Frontend]
     B --> C[API Routes]
     C --> D[Authentication Service]
-    C --> E[Card Management Service]
+    C --> E[Profile Management Service]
     C --> F[Analytics Service]
     C --> G[Payment Service]
 
     D --> H[(User Database)]
-    E --> I[(Card Database)]
+    E --> I[(Profile Database)]
     F --> J[(Analytics Database)]
     G --> K[Payment Gateways]
 
@@ -48,7 +48,7 @@ graph TB
 
 **Database:**
 
-- PostgreSQL for relational data (users, cards, analytics)
+- PostgreSQL for relational data (users, profiles, analytics)
 - Redis for caching and session management
 
 **External Services:**
@@ -74,15 +74,15 @@ graph TB
 - **Session Management**: Secure JWT-based sessions with refresh tokens
 - **Role-Based Access**: Free vs Premium user permissions
 
-#### 2. Card Builder Interface
+#### 2. Profile Builder Interface
 
-- **Drag-and-Drop Editor**: Intuitive card customization
+- **Drag-and-Drop Editor**: Intuitive profile customization
 - **Live Preview**: Real-time updates as users edit
 - **Template Selector**: Grid of professional templates
 - **Media Upload**: Image optimization and cropping tools
 - **Form Validation**: Real-time validation with helpful error messages
 
-#### 3. Digital Card Renderer
+#### 3. eProfile Renderer
 
 - **Server-Side Rendering**: Fast initial load times
 - **Mobile-First Design**: Responsive across all devices
@@ -107,21 +107,21 @@ POST / api / auth / logout;
 GET / api / auth / session;
 ```
 
-#### Card Management Endpoints
+#### Profile Management Endpoints
 
 ```typescript
-GET /api/cards/[username] - Public card data
-POST /api/cards - Create new card
-PUT /api/cards/[id] - Update card
-DELETE /api/cards/[id] - Delete card
-GET /api/cards/[id]/analytics - Card analytics
+GET /api/cards/[username] - Public profile data
+POST /api/cards - Create new profile
+PUT /api/cards/[id] - Update profile
+DELETE /api/cards/[id] - Delete profile
+GET /api/cards/[id]/analytics - Profile analytics
 ```
 
 #### Lead Management Endpoints
 
 ```typescript
 POST /api/leads - Submit lead form
-GET /api/leads/[cardId] - Get card leads
+GET /api/leads/[cardId] - Get profile leads
 PUT /api/leads/[id]/status - Update lead status
 ```
 
@@ -142,7 +142,7 @@ interface User {
 }
 ```
 
-### Card Model
+### Profile Model
 
 ```typescript
 interface Card {
@@ -195,7 +195,7 @@ interface Lead {
   phone?: string;
   message: string;
   status: "NEW" | "CONTACTED" | "CONVERTED";
-  source: string; // How they found the card
+  source: string; // How they found the profile
   createdAt: Date;
 }
 ```
@@ -262,7 +262,7 @@ interface ApiError {
 ### Integration Testing
 
 - **Authentication Flow**: End-to-end login/registration testing
-- **Card Creation**: Complete card building workflow
+- **Profile Creation**: Complete profile building workflow
 - **Payment Processing**: Mock payment gateway integration
 - **Email Notifications**: Email service integration testing
 
@@ -291,7 +291,7 @@ interface ApiError {
 
 ### Backend Optimization
 
-- **Database Indexing**: Optimized queries for card lookups
+- **Database Indexing**: Optimized queries for profile lookups
 - **Caching Layer**: Redis for frequently accessed data
 - **CDN Integration**: Global asset distribution
 - **API Response Optimization**: Minimal data transfer

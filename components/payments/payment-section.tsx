@@ -149,7 +149,7 @@ export default function PaymentSection({ card }: PaymentSectionProps) {
 
       {/* QR Code Modal */}
       {showQrCode && card.upiQrCode && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-opacity-20 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg p-6 max-w-sm w-full">
             <div className="text-center">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">

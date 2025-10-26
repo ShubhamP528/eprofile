@@ -122,7 +122,7 @@ In Vercel dashboard → Project Settings → Build & Development:
 
 ## 🎉 **Ready to Deploy!**
 
-Your ProCard application should now deploy successfully to Vercel with:
+Your eProfile application should now deploy successfully to Vercel with:
 
 - ✅ Compatible dependency versions
 - ✅ Working authentication

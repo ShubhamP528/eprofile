@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonList } from "@/components/ui/skeleton/skeleton-list";
 
 interface Lead {
   id: string;
@@ -157,7 +158,7 @@ export default function LeadsPage() {
           Lead Management
         </h1>
         <p className="mt-2 responsive-text-sm text-gray-600">
-          Manage and track leads from your digital cards
+          Manage and track leads from your eProfiles
         </p>
       </div>
 
@@ -216,10 +217,12 @@ export default function LeadsPage() {
       {/* Leads List */}
       <div className="bg-white rounded-lg shadow-sm border">
         {loading ? (
-          <div className="p-6 sm:p-8 text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="responsive-text-sm text-gray-600">Loading leads...</p>
-          </div>
+          <SkeletonList
+            items={5}
+            variant="table"
+            showAvatar={false}
+            showActions={true}
+          />
         ) : leads?.length === 0 ? (
           <div className="p-6 sm:p-8 text-center">
             <div className="text-gray-400 text-4xl sm:text-6xl mb-4">📋</div>
@@ -227,7 +230,7 @@ export default function LeadsPage() {
               No leads yet
             </h3>
             <p className="responsive-text-sm text-gray-600">
-              Leads from your digital cards will appear here.
+              Leads from your eProfiles will appear here.
             </p>
           </div>
         ) : (
@@ -254,7 +257,7 @@ export default function LeadsPage() {
                         )}
                       </div>
                       <span
-                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full flex-shrink-0 ml-2 ${getStatusColor(
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full shrink-0 ml-2 ${getStatusColor(
                           lead.status
                         )}`}
                       >

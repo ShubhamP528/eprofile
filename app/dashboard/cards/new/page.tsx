@@ -7,6 +7,7 @@ import CardForm from "@/components/cards/card-form";
 import { useCards } from "@/hooks/use-cards";
 import { useSubscription } from "@/components/providers/subscription-provider";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 
 export default function NewCardPage() {
   const router = useRouter();
@@ -51,10 +52,64 @@ export default function NewCardPage() {
   if (loading) {
     return (
       <div className="mobile-container mobile-spacing">
-        <div className="bg-white rounded-lg shadow-sm border p-6">
-          <div className="animate-pulse">
-            <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
-            <div className="h-8 bg-gray-200 rounded w-1/2"></div>
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <SkeletonBase width="8rem" height="1.5rem" />
+          <SkeletonBase width="10rem" height="2rem" />
+        </div>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+            {/* Form Skeleton */}
+            <div className="space-y-6">
+              <SkeletonBase width="14rem" height="2rem" className="mb-6" />
+
+              {/* Basic Information Card */}
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <SkeletonBase width="10rem" height="1.5rem" className="mb-4" />
+                <div className="space-y-4">
+                  <div>
+                    <SkeletonBase width="5rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="8rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="7rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="5rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="6rem" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Information Card */}
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <SkeletonBase width="11rem" height="1.5rem" className="mb-4" />
+                <div className="space-y-4">
+                  <div>
+                    <SkeletonBase width="7rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="6rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Preview Skeleton */}
+            <div className="lg:sticky lg:top-6">
+              <div className="bg-gray-50 rounded-lg p-6">
+                <SkeletonBase width="7rem" height="1.5rem" className="mb-4" />
+                <div className="bg-white rounded-lg shadow-sm border p-4">
+                  <SkeletonBase className="w-full aspect-3/4" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

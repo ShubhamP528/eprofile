@@ -21,7 +21,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200 safe-area-top">
+    <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm border-b border-gray-200 safe-area-top z-50">
       <div className="max-w-7xl mx-auto mobile-container">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
@@ -179,7 +179,7 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 bg-white">
+          <div className="md:hidden border-t border-gray-200 bg-white absolute top-full left-0 right-0 shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* Navigation Links */}
               <Link

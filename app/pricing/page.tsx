@@ -57,9 +57,9 @@ export default function PricingPage() {
       name: "Free",
       price: "₹0",
       period: "forever",
-      description: "Perfect for getting started with digital cards",
+      description: "Perfect for getting started with eProfiles",
       features: [
-        "1 Digital Card",
+        "1 eProfile",
         "Basic Templates",
         "Contact Buttons",
         "QR Code Generation",
@@ -85,7 +85,7 @@ export default function PricingPage() {
       period: "per month",
       description: "Great for professionals who need more features",
       features: [
-        "3 Digital Cards",
+        "3 eProfiles",
         "All Premium Templates",
         "Services Showcase (3 services)",
         "Portfolio Gallery (5 items)",
@@ -114,7 +114,7 @@ export default function PricingPage() {
       period: "per month",
       description: "Everything you need for professional networking",
       features: [
-        "Unlimited Digital Cards",
+        "Unlimited eProfiles",
         "All Premium Templates",
         "Advanced Customization",
         "Services Showcase (Unlimited)",
@@ -180,7 +180,7 @@ export default function PricingPage() {
     {
       question: "Can I use my own domain name?",
       answer:
-        "Yes, Pro and Enterprise plans include custom domain support. You can use your own domain for your digital cards.",
+        "Yes, Pro and Enterprise plans include custom domain support. You can use your own domain for your eProfiles.",
     },
     {
       question: "Is there a setup fee?",
@@ -363,7 +363,7 @@ export default function PricingPage() {
               <tbody className="divide-y divide-gray-200">
                 {[
                   {
-                    feature: "Digital Cards",
+                    feature: "eProfiles",
                     free: "1",
                     standard: "3",
                     pro: "Unlimited",
@@ -495,7 +495,7 @@ export default function PricingPage() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Join thousands of professionals who trust ProCard for their digital
+            Join thousands of professionals who trust eProfile for their digital
             networking needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

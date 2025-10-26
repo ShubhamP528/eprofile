@@ -11,7 +11,7 @@ export default function SocialShare({
   title,
   description,
 }: SocialShareProps) {
-  const shareText = description || `Check out ${title}'s digital visiting card`;
+  const shareText = description || `Check out ${title}'s eProfile`;
 
   const shareLinks = [
     {
@@ -82,7 +82,7 @@ export default function SocialShare({
         </svg>
       ),
       url: `mailto:?subject=${encodeURIComponent(
-        `Check out ${title}'s digital card`
+        `Check out ${title}'s eProfile`
       )}&body=${encodeURIComponent(`${shareText}\n\n${url}`)}`,
       gradient: "from-gray-600 to-gray-700",
       hoverGradient: "hover:from-gray-700 hover:to-gray-800",
@@ -131,7 +131,7 @@ export default function SocialShare({
       </div>
 
       <p className="text-sm text-gray-500 mt-6 text-center leading-relaxed">
-        Share this digital card with your network and grow your connections
+        Share this eProfile with your network and grow your connections
       </p>
     </div>
   );

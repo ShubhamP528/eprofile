@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 
 interface Service {
   id: string;
@@ -150,11 +151,28 @@ export default function ServicesManager({ cardId }: ServicesManagerProps) {
   if (loading) {
     return (
       <div className="mobile-card bg-white rounded-lg shadow-sm border">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
-          <p className="responsive-text-sm text-gray-600">
-            Loading services...
-          </p>
+        <div className="space-y-4">
+          <div className="flex justify-between items-center">
+            <SkeletonBase width="6rem" height="1.5rem" />
+            <SkeletonBase width="5rem" height="2rem" />
+          </div>
+          <div className="space-y-3">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
+              >
+                <div className="flex-1 space-y-2">
+                  <SkeletonBase width="8rem" height="1rem" />
+                  <SkeletonBase width="12rem" height="0.75rem" />
+                </div>
+                <div className="flex space-x-2">
+                  <SkeletonBase width="2rem" height="2rem" />
+                  <SkeletonBase width="2rem" height="2rem" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -217,7 +235,7 @@ export default function ServicesManager({ cardId }: ServicesManagerProps) {
                   </p>
                 )}
               </div>
-              <div className="flex items-center justify-end space-x-1 sm:space-x-2 flex-shrink-0">
+              <div className="flex items-center justify-end space-x-1 sm:space-x-2 shrink-0">
                 <button
                   onClick={() => moveService(service.id, "up")}
                   disabled={index === 0}
@@ -326,7 +344,7 @@ export default function ServicesManager({ cardId }: ServicesManagerProps) {
 
       {/* Service Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 safe-area-top safe-area-bottom">
+        <div className="fixed inset-0   bg-opacity-20 backdrop-blur-md flex items-center justify-center z-50 p-4 safe-area-top safe-area-bottom">
           <div className="bg-white rounded-lg mobile-card w-full max-w-md max-h-full overflow-y-auto">
             <h4 className="responsive-text-lg font-semibold text-gray-900 mb-4">
               {editingService ? "Edit Service" : "Add Service"}
@@ -381,7 +399,7 @@ export default function ServicesManager({ cardId }: ServicesManagerProps) {
                   onChange={(e) =>
                     setFormData({ ...formData, isFeatured: e.target.checked })
                   }
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-0.5 flex-shrink-0"
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-0.5 shrink-0"
                 />
                 <label
                   htmlFor="isFeatured"

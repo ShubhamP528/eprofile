@@ -9,8 +9,8 @@ export default function NotFound() {
           Card Not Found
         </h1>
         <p className="text-gray-600 mb-8 max-w-md">
-          The digital visiting card you're looking for doesn't exist or has been
-          made private.
+          The eProfile you're looking for doesn't exist or has been made
+          private.
         </p>
         <div className="space-y-4">
           <Link
@@ -24,7 +24,7 @@ export default function NotFound() {
               href="/auth/signup"
               className="text-blue-600 hover:text-blue-700 font-medium"
             >
-              Create your own digital card
+              Create your own eProfile
             </Link>
           </div>
         </div>

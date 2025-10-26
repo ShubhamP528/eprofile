@@ -22,12 +22,11 @@ export default function Home() {
       <main className="mobile-container py-8 sm:py-12 lg:py-16 safe-area-bottom">
         <div className="text-center mobile-spacing">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
-            Digital Visiting Card Platform
+            eProfile
           </h1>
           <p className="responsive-text-lg text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-            Create professional digital business cards in minutes. Share your
-            contact information, services, and portfolio with a simple link or
-            QR code.
+            Create professional eProfiles in minutes. Share your contact
+            information, services, and portfolio with a simple link or QR code.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4">
@@ -56,8 +55,8 @@ export default function Home() {
                 Quick Setup
               </h3>
               <p className="responsive-text-sm text-gray-700 leading-relaxed">
-                Create your professional digital card in under 5 minutes with
-                our intuitive builder.
+                Create your professional eProfile in under 5 minutes with our
+                intuitive builder.
               </p>
             </div>
 

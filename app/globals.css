@@ -323,3 +323,119 @@ select {
 .prevent-scroll {
   overflow-x: hidden;
 }
+
+/* Cursor pointer for all interactive button elements */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+/* Custom button classes and components */
+.btn,
+.button,
+[role="button"],
+.clickable {
+  cursor: pointer;
+}
+
+/* Specific component selectors */
+.payment-button,
+.subscription-button,
+.template-selector,
+.card-action,
+.nav-button,
+.mobile-button {
+  cursor: pointer;
+}
+
+/* Interactive elements that should show pointer cursor */
+.interactive,
+.action-item,
+.menu-item,
+.tab-button,
+.toggle-button,
+.dropdown-item {
+  cursor: pointer;
+}
+
+/* Form-related interactive elements */
+.form-submit,
+.form-button,
+.form-action {
+  cursor: pointer;
+}
+
+/* Card and template related buttons */
+.template-card,
+.card-selector,
+.card-preview,
+.template-option {
+  cursor: pointer;
+}
+
+/* Social and sharing buttons */
+.social-button,
+.share-button,
+.qr-button,
+.download-button {
+  cursor: pointer;
+}
+
+/* Navigation and menu elements */
+.nav-link,
+.menu-button,
+.sidebar-item,
+.breadcrumb-link {
+  cursor: pointer;
+}
+
+/* Payment and subscription related */
+.checkout-button,
+.plan-selector,
+.upgrade-button,
+.billing-action {
+  cursor: pointer;
+}
+
+/* Dashboard and admin buttons */
+.dashboard-action,
+.admin-button,
+.settings-button,
+.profile-action {
+  cursor: pointer;
+}
+
+/* Generic interactive classes */
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+/* Ensure disabled buttons still show pointer for consistency */
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled {
+  cursor: pointer;
+}
+/* Add padding for fixed navbar - only when navbar is present */
+.has-navbar {
+  padding-top: 64px !important; /* Height of navbar (h-16 = 64px) */
+}
+
+/* Adjust for safe area on mobile devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .has-navbar {
+    padding-top: calc(64px + env(safe-area-inset-top)) !important;
+  }
+}
+/* Shimmer animation for loading states */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

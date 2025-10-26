@@ -5,6 +5,7 @@ import { useSession, signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import SubscriptionBadge from "@/components/subscription/subscription-badge";
+import Loading from "@/components/ui/loading";
 
 export default function DashboardLayout({
   children,
@@ -36,14 +37,7 @@ export default function DashboardLayout({
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 safe-area-top safe-area-bottom">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="responsive-text-sm text-gray-600">
-            Loading dashboard...
-          </p>
-        </div>
-      </div>
+      <Loading variant="fullscreen" message="Loading dashboard..." size="lg" />
     );
   }
 
@@ -59,7 +53,7 @@ export default function DashboardLayout({
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 safe-area-top">
+    <div className="h-screen bg-gray-50 safe-area-top lg:overflow-hidden">
       {/* Mobile Header */}
       <header className="bg-white shadow-sm border-b border-gray-200 lg:hidden">
         <div className="mobile-container">
@@ -119,7 +113,7 @@ export default function DashboardLayout({
                 </svg>
               </div>
               <span className="text-lg sm:text-xl font-bold text-gray-900">
-                ProCard
+                eProfile
               </span>
             </Link>
 
@@ -150,7 +144,7 @@ export default function DashboardLayout({
       </header>
 
       {/* Desktop Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200 hidden lg:block">
+      <header className="bg-white shadow-sm border-b border-gray-200 hidden lg:block lg:fixed lg:top-0 lg:left-0 lg:right-0 lg:z-40">
         <div className="max-w-7xl mx-auto mobile-container">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -170,7 +164,7 @@ export default function DashboardLayout({
                   />
                 </svg>
               </div>
-              <span className="text-xl font-bold text-gray-900">ProCard</span>
+              <span className="text-xl font-bold text-gray-900">eProfile</span>
             </Link>
 
             {/* User Info */}
@@ -213,12 +207,12 @@ export default function DashboardLayout({
         </div>
       </header>
 
-      <div className="flex">
+      <div className="flex lg:pt-16 h-full">
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="fixed inset-0 z-50 lg:hidden">
             <div
-              className="fixed inset-0 bg-black bg-opacity-50"
+              className="fixed inset-0  bg-opacity-20 backdrop-blur-md"
               onClick={toggleMobileMenu}
             ></div>
             <nav className="fixed top-0 left-0 bottom-0 w-64 bg-white shadow-xl">
@@ -332,7 +326,7 @@ export default function DashboardLayout({
         )}
 
         {/* Desktop Sidebar */}
-        <nav className="w-64 bg-white shadow-sm min-h-screen hidden lg:block">
+        <nav className="w-64 bg-white shadow-sm min-h-screen hidden lg:block lg:fixed lg:left-0 lg:top-16 lg:bottom-0 lg:overflow-y-auto lg:z-30">
           <div className="p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
               Dashboard
@@ -360,8 +354,10 @@ export default function DashboardLayout({
         </nav>
 
         {/* Main Content */}
-        <main className="flex-1 mobile-container py-4 sm:py-6 lg:py-8 lg:pl-0 safe-area-bottom">
-          <div className="max-w-7xl mx-auto">{children}</div>
+        <main className="flex-1 mobile-container py-4 sm:py-6 lg:py-6 lg:ml-64 lg:overflow-y-auto lg:h-full safe-area-bottom">
+          <div className="lg:max-w-none lg:mx-0 lg:px-6 max-w-7xl mx-auto">
+            {children}
+          </div>
         </main>
       </div>
     </div>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import CardForm from "@/components/cards/card-form";
 import { useCards } from "@/hooks/use-cards";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 
 interface EditCardPageProps {
   params: Promise<{ id: string }>;
@@ -52,10 +53,80 @@ export default function EditCardPage({ params }: EditCardPageProps) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-8 sm:py-12 mobile-container">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="responsive-text-sm text-gray-600">Loading card...</p>
+      <div className="mobile-container mobile-spacing">
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <SkeletonBase width="8rem" height="1.5rem" />
+          <SkeletonBase width="12rem" height="2rem" />
+        </div>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+            {/* Form Skeleton */}
+            <div className="space-y-6">
+              <SkeletonBase width="16rem" height="2rem" className="mb-6" />
+
+              {/* Basic Information Card */}
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <SkeletonBase width="10rem" height="1.5rem" className="mb-4" />
+                <div className="space-y-4">
+                  <div>
+                    <SkeletonBase width="5rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="8rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="7rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="5rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="6rem" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Information Card */}
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <SkeletonBase width="11rem" height="1.5rem" className="mb-4" />
+                <div className="space-y-4">
+                  <div>
+                    <SkeletonBase width="7rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="6rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                  <div>
+                    <SkeletonBase width="4rem" height="1rem" className="mb-2" />
+                    <SkeletonBase width="100%" height="2.5rem" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Template Selection Card */}
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <SkeletonBase width="9rem" height="1.5rem" className="mb-4" />
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <SkeletonBase key={i} className="aspect-3/4" rounded="md" />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Preview Skeleton */}
+            <div className="lg:sticky lg:top-6">
+              <div className="bg-gray-50 rounded-lg p-6">
+                <SkeletonBase width="7rem" height="1.5rem" className="mb-4" />
+                <div className="bg-white rounded-lg shadow-sm border p-4">
+                  <SkeletonBase className="w-full aspect-3/4" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

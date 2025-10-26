@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useCards } from "@/hooks/use-cards";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 
 interface AnalyticsData {
   summary: {
@@ -27,7 +28,7 @@ export default function AnalyticsPage() {
   const { cards } = useCards();
   const [selectedCardId, setSelectedCardId] = useState<string>("");
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [dateRange, setDateRange] = useState(30);
 
@@ -71,7 +72,7 @@ export default function AnalyticsPage() {
 
   const selectedCard = cards.find((card) => card.id === selectedCardId);
 
-  if (cards.length === 0) {
+  if (cards.length === 0 && !loading) {
     return (
       <div className="text-center py-8 sm:py-12 mobile-container">
         <div className="mx-auto w-16 h-16 sm:w-24 sm:h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
@@ -93,7 +94,7 @@ export default function AnalyticsPage() {
           No cards to analyze
         </h3>
         <p className="responsive-text-sm text-gray-600 mb-6 px-4">
-          Create your first digital visiting card to start tracking analytics.
+          Create your first eProfile to start tracking analytics.
         </p>
       </div>
     );
@@ -141,14 +142,85 @@ export default function AnalyticsPage() {
       </div>
 
       {loading && (
-        <div className="flex items-center justify-center py-8 sm:py-12">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-2 responsive-text-sm text-gray-600">
-              Loading analytics...
-            </p>
+        <>
+          {/* Summary Cards Skeleton */}
+          <div className="mobile-grid mb-8">
+            {[...Array(4)].map((_, i) => (
+              <div
+                key={i}
+                className="mobile-card bg-white rounded-lg shadow-sm border"
+              >
+                <div className="flex items-center">
+                  <SkeletonBase className="w-10 h-10 shrink-0" rounded="lg" />
+                  <div className="ml-3 sm:ml-4 min-w-0 flex-1 space-y-2">
+                    <SkeletonBase className="h-3 w-20" />
+                    <SkeletonBase className="h-6 w-12" />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
+
+          {/* Charts Section Skeleton */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-8">
+            {/* Views Over Time Chart */}
+            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+              <SkeletonBase className="h-6 w-32 mb-4" />
+              <SkeletonBase className="h-64 w-full" rounded="md" />
+            </div>
+
+            {/* Button Clicks Chart */}
+            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+              <SkeletonBase className="h-6 w-28 mb-4" />
+              <div className="space-y-4">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="space-y-2">
+                    <div className="flex justify-between">
+                      <SkeletonBase className="h-4 w-16" />
+                      <SkeletonBase className="h-4 w-8" />
+                    </div>
+                    <SkeletonBase className="h-2 w-full" rounded="full" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Section Skeleton */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            {/* Top Referrers */}
+            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+              <SkeletonBase className="h-6 w-28 mb-4" />
+              <div className="space-y-3">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="flex justify-between items-center">
+                    <SkeletonBase className="h-4 w-24" />
+                    <SkeletonBase className="h-4 w-16" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Recent Leads */}
+            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+              <SkeletonBase className="h-6 w-24 mb-4" />
+              <div className="space-y-4">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="border-b border-gray-100 pb-2">
+                    <div className="flex justify-between items-start">
+                      <div className="min-w-0 flex-1 space-y-1">
+                        <SkeletonBase className="h-4 w-32" />
+                        <SkeletonBase className="h-3 w-40" />
+                        <SkeletonBase className="h-3 w-28" />
+                      </div>
+                      <SkeletonBase className="h-3 w-16 ml-2" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
       )}
 
       {error && (
@@ -163,7 +235,7 @@ export default function AnalyticsPage() {
           <div className="mobile-grid">
             <div className="mobile-card bg-white rounded-lg shadow-sm border">
               <div className="flex items-center">
-                <div className="p-2 bg-blue-100 rounded-lg flex-shrink-0">
+                <div className="p-2 bg-blue-100 rounded-lg shrink-0">
                   <svg
                     className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600"
                     fill="none"
@@ -197,7 +269,7 @@ export default function AnalyticsPage() {
 
             <div className="mobile-card bg-white rounded-lg shadow-sm border">
               <div className="flex items-center">
-                <div className="p-2 bg-green-100 rounded-lg flex-shrink-0">
+                <div className="p-2 bg-green-100 rounded-lg shrink-0">
                   <svg
                     className="w-5 h-5 sm:w-6 sm:h-6 text-green-600"
                     fill="none"
@@ -225,7 +297,7 @@ export default function AnalyticsPage() {
 
             <div className="mobile-card bg-white rounded-lg shadow-sm border">
               <div className="flex items-center">
-                <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
+                <div className="p-2 bg-purple-100 rounded-lg shrink-0">
                   <svg
                     className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600"
                     fill="none"
@@ -253,7 +325,7 @@ export default function AnalyticsPage() {
 
             <div className="mobile-card bg-white rounded-lg shadow-sm border">
               <div className="flex items-center">
-                <div className="p-2 bg-orange-100 rounded-lg flex-shrink-0">
+                <div className="p-2 bg-orange-100 rounded-lg shrink-0">
                   <svg
                     className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600"
                     fill="none"
@@ -370,7 +442,7 @@ export default function AnalyticsPage() {
                       <span className="responsive-text-sm text-gray-700 truncate">
                         {item.referrer || "Direct"}
                       </span>
-                      <span className="responsive-text-sm font-medium text-gray-900 flex-shrink-0 ml-2">
+                      <span className="responsive-text-sm font-medium text-gray-900 shrink-0 ml-2">
                         {item.views} views
                       </span>
                     </div>
@@ -411,7 +483,7 @@ export default function AnalyticsPage() {
                             </p>
                           )}
                         </div>
-                        <span className="responsive-text-xs text-gray-500 flex-shrink-0 ml-2">
+                        <span className="responsive-text-xs text-gray-500 shrink-0 ml-2">
                           {new Date(lead.createdAt).toLocaleDateString()}
                         </span>
                       </div>

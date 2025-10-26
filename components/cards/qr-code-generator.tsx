@@ -130,7 +130,7 @@ export default function QRCodeGenerator({ url, title }: QRCodeGeneratorProps) {
 
       <p className="text-sm text-gray-500 mt-6 leading-relaxed">
         Scan this QR code with any smartphone camera to instantly view this
-        digital card
+        eProfile
       </p>
     </div>
   );

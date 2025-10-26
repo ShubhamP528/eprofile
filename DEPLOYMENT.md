@@ -1,6 +1,6 @@
-# ProCard Deployment Guide
+# eProfile Deployment Guide
 
-This guide will help you deploy your ProCard application to production.
+This guide will help you deploy your eProfile application to production.
 
 ## 🚀 Pre-Deployment Checklist
 
@@ -176,12 +176,12 @@ module.exports = nextConfig;
 2. **Configure Build:**
    ```yaml
    # .do/app.yaml
-   name: procard
+   name: eprofile
    services:
      - name: web
        source_dir: /
        github:
-         repo: your-username/procard
+         repo: your-username/eprofile
          branch: main
        run_command: npm start
        build_command: npm run build
@@ -320,4 +320,4 @@ const nextConfig = {
 
 ---
 
-🎉 **Congratulations!** Your ProCard application is now ready for production use.
+🎉 **Congratulations!** Your eProfile application is now ready for production use.

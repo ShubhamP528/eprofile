@@ -2,7 +2,7 @@
 
 ## 🖼️ Profile Image Upload Setup
 
-Your ProCard application now supports profile image uploads! Here's how to configure Cloudinary:
+Your eProfile application now supports profile image uploads! Here's how to configure Cloudinary:
 
 ### 1. **Cloudinary Account Setup**
 
@@ -32,9 +32,9 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="your-cloud-name"
 2. Scroll down to "Upload presets"
 3. Click "Add upload preset"
 4. Configure:
-   - **Preset name**: `procard_uploads`
+   - **Preset name**: `eprofile_uploads`
    - **Signing Mode**: `Unsigned` (for client-side uploads)
-   - **Folder**: `procard/profiles` (optional, for organization)
+   - **Folder**: `eprofile/profiles` (optional, for organization)
    - **Transformation**:
      - Width: 400px
      - Height: 400px
@@ -48,7 +48,7 @@ If you created a custom upload preset, update the component:
 
 ```typescript
 // In components/ui/image-upload.tsx
-formData.append("upload_preset", "procard_uploads"); // Your preset name
+formData.append("upload_preset", "eprofile_uploads"); // Your preset name
 ```
 
 ### 5. **Security Settings (Optional)**
@@ -58,7 +58,7 @@ For production, you may want to:
 1. **Enable folder restrictions**:
 
    - Go to Settings → Security
-   - Add allowed folders: `procard/profiles`
+   - Add allowed folders: `eprofile/profiles`
 
 2. **Set file size limits**:
 

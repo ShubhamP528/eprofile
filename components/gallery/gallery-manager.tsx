@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 
 interface GalleryItem {
   id: string;
@@ -222,9 +223,16 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
   if (loading) {
     return (
       <div className="mobile-card bg-white rounded-lg shadow-sm border">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
-          <p className="responsive-text-sm text-gray-600">Loading gallery...</p>
+        <div className="space-y-4">
+          <div className="flex justify-between items-center">
+            <SkeletonBase width="5rem" height="1.5rem" />
+            <SkeletonBase width="6rem" height="2rem" />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <SkeletonBase key={i} className="aspect-square" rounded="lg" />
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -269,7 +277,7 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
 
             {/* Item Info */}
             <div className="flex items-center space-x-2 mb-2">
-              <div className="text-gray-500 flex-shrink-0">
+              <div className="text-gray-500 shrink-0">
                 {getTypeIcon(item.type)}
               </div>
               <span className="responsive-text-xs font-medium text-gray-700">
@@ -400,7 +408,7 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
 
       {/* Gallery Item Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 safe-area-top safe-area-bottom">
+        <div className="fixed inset-0 bg-opacity-20 backdrop-blur-md flex items-center justify-center z-50 p-4 safe-area-top safe-area-bottom">
           <div className="bg-white rounded-lg mobile-card w-full max-w-md max-h-full overflow-y-auto">
             <h4 className="responsive-text-lg font-semibold text-gray-900 mb-4">
               {editingItem ? "Edit Gallery Item" : "Add Gallery Item"}

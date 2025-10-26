@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 import { apiClient } from "@/lib/api-client";
 
 interface SubscriptionData {
-  plan: "FREE" | "PRO";
+  plan: "FREE" | "STANDARD" | "PRO";
   expiry?: string;
   isExpired?: boolean;
 }

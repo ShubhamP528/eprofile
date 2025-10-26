@@ -63,7 +63,7 @@ export default function PaymentManager({
       // Create FormData for file upload
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", "visiting-cards"); // You'll need to set this up in Cloudinary
+      formData.append("upload_preset", "eprofiles"); // You'll need to set this up in Cloudinary
 
       // Upload to Cloudinary (you can replace this with your preferred service)
       const response = await fetch(

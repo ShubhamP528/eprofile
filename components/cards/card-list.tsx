@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useCards } from "@/hooks/use-cards";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 
 export default function CardList() {
   const { cards, loading, error, deleteCard } = useCards();
@@ -37,13 +38,49 @@ export default function CardList() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-8 sm:py-12">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-2 responsive-text-sm text-gray-600">
-            Loading your cards...
-          </p>
-        </div>
+      <div className="mobile-grid">
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={i}
+            className="mobile-card bg-white rounded-lg shadow-sm border"
+          >
+            {/* Card Preview Skeleton */}
+            <div className="text-center mb-4">
+              <SkeletonBase
+                className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3"
+                rounded="full"
+              />
+              <SkeletonBase className="h-4 w-24 mx-auto mb-1" />
+              <SkeletonBase className="h-3 w-20 mx-auto" />
+            </div>
+
+            {/* Card Info Skeleton */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <SkeletonBase className="h-3 w-16" />
+                <SkeletonBase className="h-3 w-20" />
+              </div>
+              <div className="flex items-center justify-between">
+                <SkeletonBase className="h-3 w-12" />
+                <SkeletonBase className="h-5 w-14" rounded="full" />
+              </div>
+              <div className="flex items-center justify-between">
+                <SkeletonBase className="h-3 w-16" />
+                <SkeletonBase className="h-3 w-20" />
+              </div>
+            </div>
+
+            {/* Actions Skeleton */}
+            <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
+              <SkeletonBase className="h-10 flex-1" rounded="md" />
+              <SkeletonBase className="h-10 flex-1" rounded="md" />
+              <div className="flex space-x-2 sm:space-x-0">
+                <SkeletonBase className="h-10 flex-1 sm:w-10" rounded="md" />
+                <SkeletonBase className="h-10 flex-1 sm:w-10" rounded="md" />
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     );
   }
@@ -78,7 +115,7 @@ export default function CardList() {
           No cards yet
         </h3>
         <p className="responsive-text-sm text-gray-600 mb-6 px-4">
-          Create your first digital visiting card to get started.
+          Create your first eProfile to get started.
         </p>
         <Link
           href="/dashboard/cards/new"
@@ -155,7 +192,7 @@ export default function CardList() {
               <div className="flex items-center justify-between">
                 <span className="text-gray-500">Status:</span>
                 <span
-                  className={`px-2 py-1 rounded-full text-xs flex-shrink-0 ${
+                  className={`px-2 py-1 rounded-full text-xs shrink-0 ${
                     card.isPublic
                       ? "bg-green-100 text-green-800"
                       : "bg-gray-100 text-gray-800"

@@ -3,6 +3,7 @@
 import { useEffect, useState, use } from "react";
 import { notFound } from "next/navigation";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 import Template1 from "@/components/templates/template1";
 import Template2 from "@/components/templates/template2";
 import Template3 from "@/components/templates/template3";
@@ -129,7 +130,7 @@ export default function PublicCardPage({ params }: PublicCardPageProps) {
     if (card?.phone) {
       handleButtonClick("WHATSAPP");
       const message = encodeURIComponent(
-        `Hi ${card.title}, I found your digital card and would like to connect!`
+        `Hi ${card.title}, I found your eProfile and would like to connect!`
       );
       window.open(
         `https://wa.me/${card.phone.replace(/[^0-9]/g, "")}?text=${message}`,
@@ -150,10 +151,69 @@ export default function PublicCardPage({ params }: PublicCardPageProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading card...</p>
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="max-w-4xl mx-auto px-4">
+          {/* Profile Header Skeleton */}
+          <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
+              <SkeletonBase
+                width="6rem"
+                height="6rem"
+                rounded="full"
+                className="shrink-0"
+              />
+              <div className="flex-1 text-center sm:text-left space-y-3">
+                <SkeletonBase
+                  width="12rem"
+                  height="2rem"
+                  className="mx-auto sm:mx-0"
+                />
+                <SkeletonBase
+                  width="8rem"
+                  height="1.25rem"
+                  className="mx-auto sm:mx-0"
+                />
+                <div className="space-y-2">
+                  <SkeletonBase width="100%" height="1rem" />
+                  <SkeletonBase
+                    width="75%"
+                    height="1rem"
+                    className="mx-auto sm:mx-0"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Info Skeleton */}
+          <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
+            <SkeletonBase width="8rem" height="1.5rem" className="mb-4" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="flex items-center space-x-3">
+                  <SkeletonBase width="1.25rem" height="1.25rem" />
+                  <SkeletonBase width="8rem" height="1rem" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Services Skeleton */}
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <SkeletonBase width="5rem" height="1.5rem" className="mb-4" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="p-4 border border-gray-200 rounded-lg">
+                  <SkeletonBase
+                    width="6rem"
+                    height="1.25rem"
+                    className="mb-2"
+                  />
+                  <SkeletonBase width="100%" height="1rem" />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -181,8 +241,8 @@ export default function PublicCardPage({ params }: PublicCardPageProps) {
     templates[card.template as keyof typeof templates] || Template1;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 py-12 px-4">
-      {/* Card Display - Centered with proper visiting card proportions */}
+    <div className="min-h-screen bg-linear-to-br from-slate-100 via-blue-50 to-indigo-100 py-12 px-4">
+      {/* eProfile Display - Centered with proper card proportions */}
       <div className="max-w-2xl mx-auto mb-12">
         <SelectedTemplate data={card} isPreview={false} />
       </div>
@@ -478,11 +538,11 @@ export default function PublicCardPage({ params }: PublicCardPageProps) {
                 />
               </svg>
             </div>
-            <span className="text-sm font-semibold text-gray-700">ProCard</span>
+            <span className="text-sm font-semibold text-gray-700">
+              eProfile
+            </span>
           </div>
-          <p className="text-xs text-gray-500">
-            Create your own digital visiting card
-          </p>
+          <p className="text-xs text-gray-500">Create your own eProfile</p>
           <a
             href="/"
             className="inline-block mt-3 px-4 py-2 bg-blue-600 text-white text-xs font-medium rounded-full hover:bg-blue-700 transition-colors"

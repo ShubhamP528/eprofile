@@ -28,18 +28,24 @@ export default function FeatureGate({
   }
 
   const isPro = subscription?.plan === "PRO" && !subscription?.isExpired;
+  const isStandard =
+    subscription?.plan === "STANDARD" && !subscription?.isExpired;
+  const hasPaidPlan = isPro || isStandard;
 
-  // Define which features require Pro
-  const proFeatures = [
-    "services",
-    "gallery",
-    "testimonials",
-    "payments",
-    "customDomain",
-  ];
-  const requiresPro = proFeatures.includes(feature);
+  // Define which features require different plan levels
+  const standardFeatures = ["services", "gallery"];
+  const proOnlyFeatures = ["testimonials", "payments", "customDomain"];
 
-  if (requiresPro && !isPro) {
+  const requiresStandard = standardFeatures.includes(feature);
+  const requiresPro = proOnlyFeatures.includes(feature);
+
+  // Check if user has access to the feature
+  const hasAccess =
+    (requiresStandard && hasPaidPlan) ||
+    (requiresPro && isPro) ||
+    (!requiresStandard && !requiresPro);
+
+  if (!hasAccess) {
     return (
       fallback || (
         <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
@@ -60,17 +66,18 @@ export default function FeatureGate({
               </svg>
             </div>
             <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
-              Pro Feature
+              {requiresPro ? "Pro Feature" : "Premium Feature"}
             </h3>
             <p className="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
-              {getFeatureDescription(feature)} is available with Pro plan.
+              {getFeatureDescription(feature)} is available with{" "}
+              {requiresPro ? "Pro" : "Standard or Pro"} plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/dashboard/subscription"
                 className="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm sm:text-base"
               >
-                Upgrade to Pro
+                {requiresPro ? "Upgrade to Pro" : "Upgrade Plan"}
               </Link>
               <Link
                 href="/pricing"

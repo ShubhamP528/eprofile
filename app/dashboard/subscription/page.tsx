@@ -8,7 +8,7 @@ export default function SubscriptionPage() {
           Subscription
         </h1>
         <p className="text-sm sm:text-base text-gray-600 mt-1">
-          Manage your ProCard subscription and billing
+          Manage your eProfile subscription and billing
         </p>
       </div>
 

@@ -98,7 +98,7 @@ export default function SubscriptionManager() {
             Subscription Plan
           </h3>
           <p className="text-sm text-gray-600 mt-1">
-            Manage your ProCard subscription
+            Manage your eProfile subscription
           </p>
         </div>
         <div className="flex items-center space-x-2 shrink-0">
@@ -170,7 +170,7 @@ export default function SubscriptionManager() {
                 Pro Features Unlocked:
               </h4>
               <ul className="text-xs sm:text-sm text-blue-800 space-y-1 grid grid-cols-1 sm:grid-cols-2 gap-1">
-                <li>• Unlimited digital cards</li>
+                <li>• Unlimited eProfiles</li>
                 <li>• All premium templates</li>
                 <li>• Services showcase</li>
                 <li>• Portfolio gallery</li>
@@ -211,13 +211,13 @@ export default function SubscriptionManager() {
                 Upgrade to Pro to unlock:
               </h4>
               <ul className="text-xs sm:text-sm text-yellow-800 space-y-1 grid grid-cols-1 sm:grid-cols-2 gap-1">
-                <li>• Unlimited digital cards</li>
+                <li>• Unlimited eProfiles</li>
                 <li>• Premium templates</li>
                 <li>• Services & portfolio showcase</li>
                 <li>• Payment integration</li>
                 <li>• Advanced analytics</li>
                 <li>• Custom domain support</li>
-                <li>• Remove ProCard branding</li>
+                <li>• Remove eProfile branding</li>
               </ul>
             </div>
 

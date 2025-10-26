@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import CardList from "@/components/cards/card-list";
 import { useSubscription } from "@/components/providers/subscription-provider";
 import { apiClient } from "@/lib/api-client";
+import { SkeletonBase } from "@/components/ui/skeleton/skeleton-base";
 
 export default function DashboardPage() {
   const { subscription } = useSubscription();
@@ -13,6 +14,7 @@ export default function DashboardPage() {
     currentCount: number;
     maxCards: number;
   } | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkCardLimit = async () => {
@@ -23,6 +25,8 @@ export default function DashboardPage() {
         }
       } catch (error) {
         console.error("Failed to check card limit:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -31,6 +35,36 @@ export default function DashboardPage() {
 
   const isPro = subscription?.plan === "PRO" && !subscription?.isExpired;
 
+  if (loading) {
+    return (
+      <div className="mobile-spacing">
+        <div className="text-center sm:text-left mb-6 sm:mb-8">
+          <SkeletonBase className="h-8 w-32 mb-2 mx-auto sm:mx-0" />
+          <SkeletonBase className="h-4 w-64 mx-auto sm:mx-0" />
+        </div>
+
+        {/* Subscription Status Skeleton */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-3 sm:space-y-0">
+            <div className="flex-1">
+              <SkeletonBase className="h-5 w-48 mb-2" />
+              <SkeletonBase className="h-4 w-72" />
+            </div>
+            <SkeletonBase className="h-10 w-32 shrink-0" />
+          </div>
+        </div>
+
+        {/* Quick Action Button Skeleton */}
+        <div className="mb-6 sm:mb-8">
+          <SkeletonBase className="h-12 w-full sm:w-40" />
+        </div>
+
+        {/* Card List Skeleton - will be handled by CardList component */}
+        <CardList />
+      </div>
+    );
+  }
+
   return (
     <div className="mobile-spacing">
       <div className="text-center sm:text-left mb-6 sm:mb-8">
@@ -38,13 +72,13 @@ export default function DashboardPage() {
           My Cards
         </h1>
         <p className="mt-2 responsive-text-sm text-gray-600">
-          Manage your digital visiting cards
+          Manage your eProfiles
         </p>
       </div>
 
       {/* Subscription Status */}
       {!isPro && cardLimitInfo && (
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 mb-6">
+        <div className="bg-linear-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-3 sm:space-y-0">
             <div>
               <h3 className="font-semibold text-blue-900 text-sm sm:text-base">

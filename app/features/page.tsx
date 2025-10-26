@@ -20,7 +20,7 @@ export default function FeaturesPage() {
       icon: "🎨",
       title: "Professional Templates",
       description:
-        "Choose from 4 beautifully designed templates that make your digital card stand out.",
+        "Choose from 4 beautifully designed templates that make your eProfile stand out.",
       details: [
         "Modern, responsive designs",
         "Mobile-optimized layouts",
@@ -80,7 +80,7 @@ export default function FeaturesPage() {
       icon: "💳",
       title: "Payment Integration",
       description:
-        "Accept payments directly through your digital card with multiple options.",
+        "Accept payments directly through your eProfile with multiple options.",
       details: [
         "UPI QR code support",
         "Razorpay integration",
@@ -137,8 +137,8 @@ export default function FeaturesPage() {
               <span className="text-blue-600"> Digital Success</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to create a professional digital visiting card
-              that converts visitors into customers.
+              Everything you need to create a professional eProfile that
+              converts visitors into customers.
             </p>
           </div>
         </div>
@@ -189,11 +189,11 @@ export default function FeaturesPage() {
       <div className="bg-blue-600 text-white py-16">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Create Your Digital Card?
+            Ready to Create Your eProfile?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
             Join thousands of professionals who have transformed their
-            networking with ProCard.
+            networking with eProfile.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -216,7 +216,7 @@ export default function FeaturesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Why Choose ProCard?
+            Why Choose eProfile?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Built for professionals who want to make a lasting impression
@@ -244,8 +244,8 @@ export default function FeaturesPage() {
               Lightning Fast
             </h3>
             <p className="text-gray-600">
-              Create your professional digital card in under 5 minutes. No
-              technical skills required.
+              Create your professional eProfile in under 5 minutes. No technical
+              skills required.
             </p>
           </div>
 

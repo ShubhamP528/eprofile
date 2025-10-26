@@ -155,7 +155,7 @@ export default function TemplateSelector({
                       <TemplateComponent data={sampleData} isPreview={true} />
                     </div>
                     {isLocked && (
-                      <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-lg">
+                      <div className="absolute inset-0   bg-opacity-20 backdrop-blur-sm flex items-center justify-center rounded-lg">
                         <svg
                           className="w-6 h-6 text-white"
                           fill="none"

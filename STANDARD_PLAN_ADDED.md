@@ -39,7 +39,7 @@
 | Feature           | Free      | Standard        | Pro            | Enterprise     |
 | ----------------- | --------- | --------------- | -------------- | -------------- |
 | **Price**         | ₹0        | **₹149/month**  | ₹299/month     | Custom         |
-| **Digital Cards** | 1         | **3**           | Unlimited      | Unlimited      |
+| **eProfiles**     | 1         | **3**           | Unlimited      | Unlimited      |
 | **Templates**     | Basic     | **All Premium** | All Premium    | All + Custom   |
 | **Services**      | ❌        | **✅ (3)**      | ✅ (Unlimited) | ✅ (Unlimited) |
 | **Gallery**       | ❌        | **✅ (5)**      | ✅ (Unlimited) | ✅ (Unlimited) |
@@ -53,7 +53,7 @@
 
 ### **Perfect for Growing Professionals:**
 
-- **3 Digital Cards** - Multiple profiles for different purposes
+- **3 eProfiles** - Multiple profiles for different purposes
 - **All Premium Templates** - Professional designs
 - **Services Showcase** - Display up to 3 services
 - **Portfolio Gallery** - Showcase up to 5 items

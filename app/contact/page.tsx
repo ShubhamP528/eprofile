@@ -91,7 +91,7 @@ export default function ContactPage() {
               <span className="text-blue-600"> Touch</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ready to transform your business with ProCard? Let's discuss your
+              Ready to transform your business with eProfile? Let's discuss your
               needs and find the perfect solution.
             </p>
           </div>
@@ -125,7 +125,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">Email Us</h3>
-                  <p className="text-gray-600">sales@procard.com</p>
+                  <p className="text-gray-600">sales@eprofile.cv</p>
                   <p className="text-sm text-gray-500">
                     We'll respond within 24 hours
                   </p>
@@ -191,7 +191,7 @@ export default function ContactPage() {
 
             <div className="mt-12">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Why Choose ProCard Enterprise?
+                Why Choose eProfile Enterprise?
               </h3>
               <ul className="space-y-3">
                 {[

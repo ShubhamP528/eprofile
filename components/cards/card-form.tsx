@@ -118,7 +118,7 @@ export default function CardForm({
         <div className="mobile-spacing">
           <div>
             <h2 className="responsive-text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
-              {isEditing ? "Edit Your Card" : "Create Your Digital Card"}
+              {isEditing ? "Edit Your eProfile" : "Create Your eProfile"}
             </h2>
 
             {submitError && (
@@ -152,7 +152,7 @@ export default function CardForm({
                       />
                       <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                         <span className="responsive-text-xs text-gray-500">
-                          .procard.link
+                          .eprofile.cv
                         </span>
                       </div>
                     </div>

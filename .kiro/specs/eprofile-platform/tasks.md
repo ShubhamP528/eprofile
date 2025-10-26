@@ -11,41 +11,41 @@
 
 - [x] 2. Create core database models and API infrastructure
 
-  - Define Prisma schema for User, Card, Lead, and Analytics models
+  - Define Prisma schema for User, Profile, Lead, and Analytics models
   - Set up database migrations and seeding scripts
   - Create API routes for authentication endpoints
   - Implement middleware for API authentication and validation
   - Set up Zod schemas for request/response validation
   - _Requirements: 1.1, 4.3, 8.2_
 
-- [ ] 3. Build card creation and management system
-- [x] 3.1 Create card builder interface
+- [ ] 3. Build profile creation and management system
+- [x] 3.1 Create profile builder interface
 
-  - Build card creation form with profile information fields
+  - Build profile creation form with profile information fields
   - Implement image upload functionality with Cloudinary integration
   - Create live preview component that updates in real-time
-  - Add form validation and error handling for card creation
+  - Add form validation and error handling for profile creation
   - _Requirements: 1.3, 1.4, 3.3_
 
-- [x] 3.2 Implement card templates and customization
+- [x] 3.2 Implement profile templates and customization
 
-  - Design and code 4 professional card templates
+  - Design and code 4 professional profile templates
   - Create template selector component with preview thumbnails
   - Implement template switching with data preservation
   - Add social media links management interface
   - _Requirements: 3.1, 3.2, 3.4_
 
-- [x] 3.3 Build card rendering and public display
+- [x] 3.3 Build profile rendering and public display
 
-  - Create dynamic card display page with server-side rendering
+  - Create dynamic profile display page with server-side rendering
   - Implement responsive design for mobile and desktop viewing
-  - Generate unique URLs for each card (platform.com/username)
+  - Generate unique URLs for each profile (platform.com/username)
   - Add SEO optimization with dynamic meta tags
   - _Requirements: 1.5, 3.5_
 
-- [ ]\* 3.4 Write unit tests for card management
+- [ ]\* 3.4 Write unit tests for profile management
 
-  - Create unit tests for card creation and update functions
+  - Create unit tests for profile creation and update functions
   - Test template switching and data validation
   - Write tests for image upload and processing
   - _Requirements: 1.3, 3.1_
@@ -64,7 +64,7 @@
 
   - Create lead generation form component with validation
   - Implement lead submission API with email notifications
-  - Build lead management dashboard for card creators
+  - Build lead management dashboard for profile creators
   - Add lead storage and retrieval functionality
   - Set up email service integration (Resend) for lead notifications
   - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
@@ -80,8 +80,8 @@
 
 - [x] 5.1 Implement services management
 
-  - Create services CRUD interface for card creators
-  - Build services display component for public cards
+  - Create services CRUD interface for profile creators
+  - Build services display component for public profiles
   - Add service pricing and description fields
   - Implement service reordering and featured service marking
   - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
@@ -149,7 +149,7 @@
   - Integrate QR code generation library
   - Create downloadable QR code functionality
   - Implement QR code customization options
-  - Add QR code display on card management dashboard
+  - Add QR code display on profile management dashboard
   - _Requirements: 10.1, 10.2_
 
 - [ ] 8.2 Create sharing functionality
@@ -194,7 +194,7 @@
 - [ ] 10. Optimize performance and SEO
 - [ ] 10.1 Implement caching and optimization
 
-  - Set up Redis caching for frequently accessed cards
+  - Set up Redis caching for frequently accessed profiles
   - Implement image optimization with Next.js Image component
   - Add database query optimization and indexing
   - Create CDN integration for static assets
@@ -202,9 +202,9 @@
 
 - [ ] 10.2 Add SEO and social sharing optimization
 
-  - Implement dynamic meta tags for each card
+  - Implement dynamic meta tags for each profile
   - Add Open Graph and Twitter Card meta tags
-  - Create XML sitemap generation for all public cards
+  - Create XML sitemap generation for all public profiles
   - Implement structured data markup (Schema.org)
   - _Requirements: 10.4_
 
@@ -258,6 +258,6 @@
 
 - [ ]\* 12.3 Write end-to-end tests
   - Create comprehensive user journey tests
-  - Test complete card creation and sharing workflow
+  - Test complete profile creation and sharing workflow
   - Write tests for subscription and payment flows
   - _Requirements: 1.2, 1.5_
