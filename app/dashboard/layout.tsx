@@ -27,6 +27,18 @@ export default function DashboardLayout({
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  // Force light background for dashboard
+  useEffect(() => {
+    document.body.style.backgroundColor = "#f9fafb";
+    document.body.style.color = "#111827";
+
+    return () => {
+      // Reset to default when leaving dashboard
+      document.body.style.backgroundColor = "";
+      document.body.style.color = "";
+    };
+  }, []);
+
   const handleSignOut = async () => {
     await signOut({ callbackUrl: "/" });
   };

@@ -439,3 +439,27 @@ input[type="reset"]:disabled {
     transform: translateX(100%);
   }
 }
+/* Force light mode for dashboard to prevent dark background issues */
+.dashboard-layout {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+  min-height: 100vh;
+}
+
+.dashboard-layout * {
+  color: inherit;
+}
+
+/* Override dark mode for dashboard specifically */
+@media (prefers-color-scheme: dark) {
+  .dashboard-layout {
+    background-color: #f9fafb !important;
+    color: #111827 !important;
+  }
+
+  /* Force body background to be light when dashboard is active */
+  body:has(.dashboard-layout) {
+    background-color: #f9fafb !important;
+    color: #111827 !important;
+  }
+}
