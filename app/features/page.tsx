@@ -20,7 +20,7 @@ export default function FeaturesPage() {
       icon: "🎨",
       title: "Professional Templates",
       description:
-        "Choose from 4 beautifully designed templates that make your eProfile stand out.",
+        "Choose from 10 beautifully designed templates that make your eProfile stand out.",
       details: [
         "Modern, responsive designs",
         "Mobile-optimized layouts",

@@ -188,10 +188,10 @@ export default function NewCardPage() {
 
   return (
     <div className="mobile-container mobile-spacing">
-      <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+      <div className="mb-4 sm:mb-6">
         <Link
           href="/dashboard"
-          className="text-gray-600 hover:text-gray-900 flex items-center touch-target self-start"
+          className="text-gray-600 hover:text-gray-900 flex items-center touch-target mb-3 sm:mb-4"
         >
           <svg
             className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
@@ -208,8 +208,8 @@ export default function NewCardPage() {
           </svg>
           Back to Dashboard
         </Link>
-        <h1 className="responsive-text-2xl font-bold text-gray-900">
-          Create New Card
+        <h1 className="responsive-text-2xl font-bold text-gray-900 mobile-page-header">
+          Create New eProfile
         </h1>
       </div>
 

@@ -156,7 +156,7 @@ export default function EditCardPage({ params }: EditCardPageProps) {
             Back to Dashboard
           </Link>
           <h1 className="responsive-text-2xl font-bold text-gray-900">
-            Edit Card
+            Edit eProfile
           </h1>
         </div>
         <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md responsive-text-sm">
@@ -172,10 +172,10 @@ export default function EditCardPage({ params }: EditCardPageProps) {
 
   return (
     <div className="mobile-container mobile-spacing">
-      <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+      <div className="mb-4 sm:mb-6">
         <Link
           href="/dashboard"
-          className="text-gray-600 hover:text-gray-900 flex items-center touch-target self-start"
+          className="text-gray-600 hover:text-gray-900 flex items-center touch-target mb-3 sm:mb-4"
         >
           <svg
             className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
@@ -192,8 +192,11 @@ export default function EditCardPage({ params }: EditCardPageProps) {
           </svg>
           Back to Dashboard
         </Link>
-        <h1 className="responsive-text-2xl font-bold text-gray-900 truncate">
-          Edit Card: {card.title}
+        <h1 className="responsive-text-2xl font-bold text-gray-900 mobile-page-header">
+          <span className="block sm:inline">Edit eProfile:</span>
+          <span className="block sm:inline sm:ml-2 text-blue-600 mobile-title-text">
+            {card.title}
+          </span>
         </h1>
       </div>
       <CardForm

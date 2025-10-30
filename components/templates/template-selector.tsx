@@ -7,6 +7,11 @@ import Template2 from "./template2";
 import Template3 from "./template3";
 import Template4 from "./template4";
 import Template5 from "./template5";
+import Template6 from "./template6";
+import Template7 from "./template7";
+import Template8 from "./template8";
+import Template9 from "./template9";
+import Template10 from "./template10";
 import { useSubscription } from "@/components/providers/subscription-provider";
 
 interface CardData {
@@ -74,6 +79,41 @@ const templates = [
     component: Template5,
     isPro: true,
   },
+  {
+    id: "template6",
+    name: "Corporate Elite",
+    description: "Professional corporate design with elegant styling",
+    component: Template6,
+    isPro: true,
+  },
+  {
+    id: "template7",
+    name: "Creative Studio",
+    description: "Artistic and vibrant design for creative professionals",
+    component: Template7,
+    isPro: true,
+  },
+  {
+    id: "template8",
+    name: "Tech Innovator",
+    description: "Modern tech-focused design with clean lines",
+    component: Template8,
+    isPro: true,
+  },
+  {
+    id: "template9",
+    name: "Luxury Premium",
+    description: "Sophisticated luxury design with premium aesthetics",
+    component: Template9,
+    isPro: true,
+  },
+  {
+    id: "template10",
+    name: "Digital Nomad",
+    description: "Travel-inspired design for remote professionals",
+    component: Template10,
+    isPro: true,
+  },
 ];
 
 export default function TemplateSelector({
@@ -119,11 +159,11 @@ export default function TemplateSelector({
   return (
     <div className="mobile-spacing">
       {/* Template Options */}
-      <div>
+      <div className="template-selector-mobile">
         <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
           Choose Template
         </h3>
-        <div className="grid grid-cols-1 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 gap-3 sm:gap-4 max-w-full">
           {templates.map((template) => {
             const TemplateComponent = template.component;
             const isSelected = selectedTemplate === template.id;
@@ -135,7 +175,7 @@ export default function TemplateSelector({
             return (
               <div
                 key={template.id}
-                className={`relative border-2 rounded-lg p-4 transition-all duration-200 touch-target ${
+                className={`relative border-2 rounded-lg p-3 sm:p-4 transition-all duration-200 touch-target template-card-mobile ${
                   isLocked
                     ? "border-gray-200 bg-gray-50 opacity-75"
                     : isSelected
@@ -148,16 +188,16 @@ export default function TemplateSelector({
                 }
                 onMouseLeave={() => setPreviewTemplate(null)}
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                   {/* Template Preview */}
-                  <div className="w-24 h-32 sm:w-32 sm:h-40 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden shrink-0 relative">
-                    <div className="transform scale-20 sm:scale-25 origin-center">
+                  <div className="w-16 h-24 sm:w-20 sm:h-28 md:w-24 md:h-32 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden shrink-0 relative mx-auto sm:mx-0 template-preview-mobile">
+                    <div className="transform scale-12 sm:scale-15 md:scale-20 origin-center">
                       <TemplateComponent data={sampleData} isPreview={true} />
                     </div>
                     {isLocked && (
-                      <div className="absolute inset-0   bg-opacity-20 backdrop-blur-sm flex items-center justify-center rounded-lg">
+                      <div className="absolute inset-0 bg-black bg-opacity-20 backdrop-blur-sm flex items-center justify-center rounded-lg">
                         <svg
-                          className="w-6 h-6 text-white"
+                          className="w-4 h-4 sm:w-6 sm:h-6 text-white"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -174,23 +214,23 @@ export default function TemplateSelector({
                   </div>
 
                   {/* Template Info */}
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-2 mb-2">
+                  <div className="flex-1 min-w-0 text-center sm:text-left template-info-mobile">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2">
                       <h4
-                        className={`text-lg font-semibold ${
+                        className={`responsive-text-sm font-semibold truncate ${
                           isSelected ? "text-blue-700" : "text-gray-900"
                         }`}
                       >
                         {template.name}
                       </h4>
                       {template.isPro && (
-                        <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full mx-auto sm:mx-0 w-fit">
                           PRO
                         </span>
                       )}
                     </div>
                     <p
-                      className={`text-sm leading-relaxed ${
+                      className={`responsive-text-xs leading-relaxed mb-2 ${
                         isSelected ? "text-blue-600" : "text-gray-600"
                       }`}
                     >
@@ -200,7 +240,7 @@ export default function TemplateSelector({
                       <div className="mt-2">
                         <Link
                           href="/dashboard/subscription"
-                          className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                          className="responsive-text-xs text-blue-600 hover:text-blue-800 font-medium inline-block"
                         >
                           Upgrade to Pro to unlock →
                         </Link>
@@ -209,11 +249,11 @@ export default function TemplateSelector({
                   </div>
 
                   {/* Selection Indicator */}
-                  <div className="shrink-0">
+                  <div className="shrink-0 mx-auto sm:mx-0">
                     {isSelected && !isLocked && (
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center">
                         <svg
-                          className="w-5 h-5 text-white"
+                          className="w-3 h-3 sm:w-5 sm:h-5 text-white"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"

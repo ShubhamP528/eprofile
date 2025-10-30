@@ -419,6 +419,11 @@ function CardPreview({
   const Template3 = require("../templates/template3").default;
   const Template4 = require("../templates/template4").default;
   const Template5 = require("../templates/template5").default;
+  const Template6 = require("../templates/template6").default;
+  const Template7 = require("../templates/template7").default;
+  const Template8 = require("../templates/template8").default;
+  const Template9 = require("../templates/template9").default;
+  const Template10 = require("../templates/template10").default;
 
   const templates = {
     template1: Template1,
@@ -426,6 +431,11 @@ function CardPreview({
     template3: Template3,
     template4: Template4,
     template5: Template5,
+    template6: Template6,
+    template7: Template7,
+    template8: Template8,
+    template9: Template9,
+    template10: Template10,
   };
 
   const SelectedTemplate =

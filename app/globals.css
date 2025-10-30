@@ -430,6 +430,102 @@ input[type="reset"]:disabled {
     padding-top: calc(64px + env(safe-area-inset-top)) !important;
   }
 }
+
+/* Mobile-optimized page headers */
+.mobile-page-header {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+@media (max-width: 640px) {
+  .mobile-page-header {
+    font-size: 1.25rem !important;
+    line-height: 1.4;
+  }
+}
+
+/* Prevent text overflow in mobile titles */
+.mobile-title-container {
+  min-width: 0;
+  flex: 1;
+}
+
+.mobile-title-text {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Better mobile navbar spacing */
+@media (max-width: 768px) {
+  .mobile-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Template selector mobile optimizations */
+.template-selector-mobile {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 640px) {
+  .template-selector-mobile {
+    max-height: 60vh;
+  }
+
+  /* Ensure template cards don't overflow */
+  .template-card-mobile {
+    min-height: auto;
+    padding: 0.75rem;
+  }
+
+  .template-preview-mobile {
+    width: 4rem;
+    height: 5.5rem;
+    flex-shrink: 0;
+  }
+
+  .template-info-mobile {
+    min-width: 0;
+    flex: 1;
+  }
+
+  /* Ensure text doesn't overflow */
+  .template-info-mobile h4 {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+
+  .template-info-mobile p {
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .template-info-mobile a {
+    font-size: 0.75rem !important;
+    display: block;
+    word-break: break-word;
+  }
+}
+
+/* Fix for modal/dialog content overflow */
+.modal-content-mobile {
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 4rem);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .modal-content-mobile {
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100vh - 2rem);
+    margin: 0.5rem;
+  }
+}
 /* Shimmer animation for loading states */
 @keyframes shimmer {
   0% {

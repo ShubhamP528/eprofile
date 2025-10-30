@@ -8,11 +8,16 @@ import Template1 from "@/components/templates/template1";
 import Template2 from "@/components/templates/template2";
 import Template3 from "@/components/templates/template3";
 import Template4 from "@/components/templates/template4";
+import Template5 from "@/components/templates/template5";
+import Template6 from "@/components/templates/template6";
+import Template7 from "@/components/templates/template7";
+import Template8 from "@/components/templates/template8";
+import Template9 from "@/components/templates/template9";
+import Template10 from "@/components/templates/template10";
 import LeadForm from "@/components/forms/lead-form";
 import QRCodeGenerator from "@/components/cards/qr-code-generator";
 import SocialShare from "@/components/cards/social-share";
 import PaymentSection from "@/components/payments/payment-section";
-import Template5 from "@/components/templates/template5";
 
 interface PublicCardPageProps {
   params: Promise<{ username: string }>;
@@ -64,6 +69,11 @@ const templates = {
   template3: Template3,
   template4: Template4,
   template5: Template5,
+  template6: Template6,
+  template7: Template7,
+  template8: Template8,
+  template9: Template9,
+  template10: Template10,
 };
 
 export default function PublicCardPage({ params }: PublicCardPageProps) {
