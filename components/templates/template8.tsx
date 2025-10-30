@@ -132,7 +132,7 @@ export default function Template8({ data, isPreview = false }: Template8Props) {
           {data.bio && !isPreview && (
             <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 mb-4">
               <p className="text-gray-300 text-sm leading-relaxed font-mono">
-                // {data.bio}
+                {`// ${data.bio}`}
               </p>
             </div>
           )}
@@ -255,7 +255,7 @@ export default function Template8({ data, isPreview = false }: Template8Props) {
         {!isPreview && data.services && data.services.length > 0 && (
           <div className="px-8 pb-8 border-t border-gray-700/50 pt-6">
             <h3 className="text-cyan-400 font-bold text-lg mb-4 flex items-center font-mono">
-              <span className="text-gray-500 mr-2">//</span>
+              <span className="text-gray-500 mr-2">{"//"}</span>
               SERVICES.ARRAY
             </h3>
             <div className="space-y-3">
@@ -271,7 +271,7 @@ export default function Template8({ data, isPreview = false }: Template8Props) {
                       </h4>
                       {service.description && (
                         <p className="text-gray-400 text-sm font-mono">
-                          // {service.description}
+                          {`// ${service.description}`}
                         </p>
                       )}
                     </div>
