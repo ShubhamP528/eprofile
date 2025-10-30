@@ -153,6 +153,161 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-gray-200 py-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                Product
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/features"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Features
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/pricing"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/dashboard"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                Company
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/business-info"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Business Info
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                Legal
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/refund"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Refund Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                Support
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="mailto:support@eprofile.com"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Help Center
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:support@eprofile.com"
+                    className="text-sm text-gray-600 hover:text-gray-900"
+                  >
+                    Contact Support
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-200 pt-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center">
+              <p className="text-sm text-gray-600">
+                © {new Date().getFullYear()} eProfile. All rights reserved.
+              </p>
+              <div className="flex space-x-6 mt-4 sm:mt-0">
+                <Link
+                  href="/privacy"
+                  className="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  Privacy
+                </Link>
+                <Link
+                  href="/terms"
+                  className="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  Terms
+                </Link>
+                <Link
+                  href="/refund"
+                  className="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  Refunds
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
