@@ -23,6 +23,7 @@ model User {
   leads              Lead[]
   sessions           Session[]
   paymentHistory     PaymentHistory[]
+  subscriptionEvents SubscriptionEvent[]
 
   @@map("users")
 }
@@ -218,16 +219,48 @@ enum ButtonType {
 }
 
 model PaymentHistory {
-  id        String   @id @default(cuid())
-  userId    String
-  paymentId String   @unique
-  orderId   String
-  amount    Int      // Amount in paise
-  currency  String   @default("INR")
-  status    String
-  plan      String
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id            String    @id @default(cuid())
+  userId        String
+  paymentId     String    @unique
+  orderId       String
+  amount        Int       // Amount in paise
+  currency      String    @default("INR")
+  status        String
+  plan          String
+  createdAt     DateTime  @default(now())
+  
+  // Enhanced fields for billing history tracking
+  paymentMethod String?   // "card", "upi", "netbanking", "wallet", etc.
+  cardLast4     String?   // Last 4 digits of card for display
+  description   String?   // Human-readable payment description
+  invoiceUrl    String?   // Generated invoice download URL
+  refundAmount  Int?      // Refund amount in paise if applicable
+  refundedAt    DateTime? // Timestamp when refund was processed
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("payment_history")
+}
+
+model SubscriptionEvent {
+  id          String           @id @default(cuid())
+  userId      String
+  eventType   SubscriptionEventType
+  fromPlan    SubscriptionType?
+  toPlan      SubscriptionType
+  description String?
+  createdAt   DateTime         @default(now())
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("subscription_events")
+}
+
+enum SubscriptionEventType {
+  SIGNUP
+  UPGRADE
+  DOWNGRADE
+  RENEWAL
+  EXPIRY
+  CANCELLATION
 }

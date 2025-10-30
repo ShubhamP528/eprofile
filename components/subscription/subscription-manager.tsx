@@ -79,10 +79,24 @@ export default function SubscriptionManager() {
     );
   }
 
-  if (!subscription) {
+  if (!subscription && contextError) {
     return (
       <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md">
-        Failed to load subscription information
+        {contextError}
+      </div>
+    );
+  }
+
+  if (!subscription) {
+    // Still loading or no data yet, show loading state instead of error
+    return (
+      <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
+        <div className="animate-pulse">
+          <div className="h-4 bg-gray-200 rounded w-1/2 sm:w-1/4 mb-4"></div>
+          <div className="h-6 sm:h-8 bg-gray-200 rounded w-3/4 sm:w-1/2 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-full sm:w-3/4 mb-3"></div>
+          <div className="h-4 bg-gray-200 rounded w-5/6 sm:w-2/3"></div>
+        </div>
       </div>
     );
   }

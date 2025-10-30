@@ -224,14 +224,14 @@ export default function DashboardLayout({
         {isMobileMenuOpen && (
           <div className="fixed inset-0 z-50 lg:hidden">
             <div
-              className="fixed inset-0  bg-opacity-20 backdrop-blur-md"
+              className="fixed inset-0 bg-black bg-opacity-20 backdrop-blur-md"
               onClick={toggleMobileMenu}
             ></div>
-            <nav className="fixed top-0 left-0 bottom-0 w-64 bg-white shadow-xl">
+            <nav className="fixed top-0 left-0 bottom-0 w-64 max-w-[80vw] bg-white shadow-xl overflow-y-auto">
               <div className="p-4 border-b border-gray-200">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center space-x-2 flex-1 min-w-0 pr-2">
+                    <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
                       {session.user?.image ? (
                         <img
                           src={session.user.image}
@@ -252,18 +252,18 @@ export default function DashboardLayout({
                         </svg>
                       )}
                     </div>
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">
+                    <div className="min-w-0 flex-1">
+                      <div className="text-sm font-medium text-gray-900 truncate">
                         {session.user?.name || "User"}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-gray-500 truncate">
                         {session.user?.email}
                       </div>
                     </div>
                   </div>
                   <button
                     onClick={toggleMobileMenu}
-                    className="touch-target flex items-center justify-center text-gray-400 hover:text-gray-600"
+                    className="touch-target flex items-center justify-center text-gray-400 hover:text-gray-600 flex-shrink-0 ml-2"
                   >
                     <svg
                       className="w-6 h-6"

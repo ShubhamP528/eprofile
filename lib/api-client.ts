@@ -271,6 +271,46 @@ class ApiClient {
             body: JSON.stringify(paymentData),
         })
     }
+
+    // Billing API
+    async getBillingHistory(params?: {
+        page?: number
+        limit?: number
+        startDate?: string
+        endDate?: string
+        status?: 'all' | 'captured' | 'failed' | 'refunded'
+        plan?: 'all' | 'STANDARD' | 'PRO'
+        searchQuery?: string
+    }) {
+        const searchParams = new URLSearchParams()
+        if (params?.page) searchParams.set('page', params.page.toString())
+        if (params?.limit) searchParams.set('limit', params.limit.toString())
+        if (params?.startDate) searchParams.set('startDate', params.startDate)
+        if (params?.endDate) searchParams.set('endDate', params.endDate)
+        if (params?.status) searchParams.set('status', params.status)
+        if (params?.plan) searchParams.set('plan', params.plan)
+        if (params?.searchQuery) searchParams.set('searchQuery', params.searchQuery)
+
+        const query = searchParams.toString()
+        return this.request(`/billing/history${query ? `?${query}` : ''}`)
+    }
+
+    async getBillingStatistics() {
+        return this.request('/billing/statistics')
+    }
+
+    async downloadInvoice(paymentId: string): Promise<Blob | null> {
+        try {
+            const response = await fetch(`${this.baseUrl}/billing/invoice/${paymentId}`)
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+            }
+            return await response.blob()
+        } catch (error) {
+            console.error('Invoice download error:', error)
+            return null
+        }
+    }
 }
 
 export const apiClient = new ApiClient()

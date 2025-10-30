@@ -42,42 +42,56 @@ export default function CardList() {
         {[...Array(3)].map((_, i) => (
           <div
             key={i}
-            className="mobile-card bg-white rounded-lg shadow-sm border"
+            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6"
           >
-            {/* Card Preview Skeleton */}
-            <div className="text-center mb-4">
-              <SkeletonBase
-                className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3"
-                rounded="full"
-              />
-              <SkeletonBase className="h-4 w-24 mx-auto mb-1" />
-              <SkeletonBase className="h-3 w-20 mx-auto" />
+            {/* Header Skeleton */}
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex-1">
+                <div className="flex items-center space-x-2 mb-1">
+                  <SkeletonBase className="h-5 w-32" />
+                  <SkeletonBase className="h-6 w-16" rounded="full" />
+                </div>
+                <SkeletonBase className="h-4 w-24" />
+              </div>
             </div>
 
-            {/* Card Info Skeleton */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <SkeletonBase className="h-3 w-16" />
-                <SkeletonBase className="h-3 w-20" />
+            {/* Profile Section Skeleton */}
+            <div className="flex items-center space-x-4 mb-6">
+              <SkeletonBase className="w-16 h-16" rounded="lg" />
+              <div className="flex-1 space-y-2">
+                <div className="flex items-center justify-between">
+                  <SkeletonBase className="h-3 w-16" />
+                  <SkeletonBase className="h-6 w-20" rounded="md" />
+                </div>
+                <div className="flex items-center justify-between">
+                  <SkeletonBase className="h-3 w-16" />
+                  <SkeletonBase className="h-6 w-24" rounded="md" />
+                </div>
               </div>
-              <div className="flex items-center justify-between">
-                <SkeletonBase className="h-3 w-12" />
-                <SkeletonBase className="h-5 w-14" rounded="full" />
+            </div>
+
+            {/* Stats Skeleton */}
+            <div className="grid grid-cols-3 gap-4 mb-6 p-3 bg-gray-50 rounded-lg">
+              <div className="text-center">
+                <SkeletonBase className="h-6 w-8 mx-auto mb-1" />
+                <SkeletonBase className="h-3 w-10 mx-auto" />
               </div>
-              <div className="flex items-center justify-between">
-                <SkeletonBase className="h-3 w-16" />
-                <SkeletonBase className="h-3 w-20" />
+              <div className="text-center">
+                <SkeletonBase className="h-6 w-8 mx-auto mb-1" />
+                <SkeletonBase className="h-3 w-10 mx-auto" />
+              </div>
+              <div className="text-center">
+                <SkeletonBase className="h-6 w-8 mx-auto mb-1" />
+                <SkeletonBase className="h-3 w-10 mx-auto" />
               </div>
             </div>
 
             {/* Actions Skeleton */}
-            <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
-              <SkeletonBase className="h-10 flex-1" rounded="md" />
-              <SkeletonBase className="h-10 flex-1" rounded="md" />
-              <div className="flex space-x-2 sm:space-x-0">
-                <SkeletonBase className="h-10 flex-1 sm:w-10" rounded="md" />
-                <SkeletonBase className="h-10 flex-1 sm:w-10" rounded="md" />
-              </div>
+            <div className="flex space-x-2">
+              <SkeletonBase className="h-10 flex-1" rounded="lg" />
+              <SkeletonBase className="h-10 flex-1" rounded="lg" />
+              <SkeletonBase className="h-10 w-10" rounded="lg" />
+              <SkeletonBase className="h-10 w-10" rounded="lg" />
             </div>
           </div>
         ))}
@@ -146,92 +160,128 @@ export default function CardList() {
         {cards.map((card) => (
           <div
             key={card.id}
-            className="mobile-card bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow"
+            className="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all duration-200 p-6 group"
           >
-            {/* Card Preview */}
-            <div className="text-center mb-4">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-200 rounded-full mx-auto mb-3 flex items-center justify-center">
-                {card.profileImage ? (
-                  <img
-                    src={card.profileImage}
-                    alt={card.title}
-                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover"
-                  />
-                ) : (
-                  <svg
-                    className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+            {/* Card Header with Status Badge */}
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex-1">
+                <div className="flex items-center space-x-2 mb-1">
+                  <h3 className="font-semibold text-gray-900 text-base truncate">
+                    {card.title}
+                  </h3>
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-medium shrink-0 ${
+                      card.isPublic
+                        ? "bg-green-100 text-green-700 border border-green-200"
+                        : "bg-gray-100 text-gray-600 border border-gray-200"
+                    }`}
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                    {card.isPublic ? "Public" : "Private"}
+                  </span>
+                </div>
+                {card.subtitle && (
+                  <p className="text-sm text-gray-600 truncate">
+                    {card.subtitle}
+                  </p>
                 )}
               </div>
-              <h3 className="responsive-text-sm font-semibold text-gray-900 truncate">
-                {card.title}
-              </h3>
-              {card.subtitle && (
-                <p className="responsive-text-xs text-gray-600 truncate">
-                  {card.subtitle}
-                </p>
-              )}
             </div>
 
-            {/* Card Info */}
-            <div className="space-y-2 responsive-text-xs">
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500">Username:</span>
-                <span className="font-mono text-blue-600 truncate ml-2">
-                  {card.username}
-                </span>
+            {/* Profile Section */}
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl flex items-center justify-center border-2 border-white shadow-sm">
+                  {card.profileImage ? (
+                    <img
+                      src={card.profileImage}
+                      alt={card.title}
+                      className="w-14 h-14 rounded-lg object-cover"
+                    />
+                  ) : (
+                    <svg
+                      className="w-8 h-8 text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                </div>
+                {/* Online indicator */}
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 border-2 border-white rounded-full"></div>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500">Status:</span>
-                <span
-                  className={`px-2 py-1 rounded-full text-xs shrink-0 ${
-                    card.isPublic
-                      ? "bg-green-100 text-green-800"
-                      : "bg-gray-100 text-gray-800"
-                  }`}
-                >
-                  {card.isPublic ? "Public" : "Private"}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500">Template:</span>
-                <span className="capitalize text-gray-950 truncate ml-2">
-                  {card.template.replace("template", "Template ")}
-                </span>
+
+              <div className="flex-1 min-w-0">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                      Username
+                    </span>
+                    <span className="font-mono text-sm text-blue-600 bg-blue-50 px-2 py-1 rounded-md">
+                      {card.username}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                      Template
+                    </span>
+                    <span className="text-sm text-gray-700 bg-gray-50 px-2 py-1 rounded-md">
+                      {card.template.replace("template", "Template ")}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-0 sm:flex sm:space-x-2">
+            <div className="flex space-x-2">
               <Link
                 href={`/${card.username}`}
                 target="_blank"
-                className="mobile-button bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 touch-target flex-1 text-center"
+                className="flex-1 bg-blue-600 text-white text-sm font-medium py-2.5 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors text-center group-hover:shadow-md"
               >
                 View
               </Link>
               <Link
                 href={`/dashboard/cards/${card.id}/edit`}
-                className="mobile-button bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 touch-target flex-1 text-center"
+                className="flex-1 bg-gray-100 text-gray-700 text-sm font-medium py-2.5 px-4 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors text-center"
               >
                 Edit
               </Link>
-              <div className="flex space-x-2 sm:space-x-0">
-                <button
-                  onClick={() => copyCardUrl(card.username)}
-                  className="mobile-button bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 touch-target flex-1 sm:flex-none sm:px-3"
-                  title="Copy URL"
+              <button
+                onClick={() => copyCardUrl(card.username)}
+                className="bg-gray-100 text-gray-700 p-2.5 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors group"
+                title="Copy URL"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={() => handleDelete(card.id, card.title)}
+                disabled={deletingId === card.id}
+                className="bg-red-50 text-red-600 p-2.5 rounded-lg hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 transition-colors"
+                title="Delete"
+              >
+                {deletingId === card.id ? (
+                  <div className="w-4 h-4 animate-spin rounded-full border-2 border-red-600 border-t-transparent"></div>
+                ) : (
                   <svg
-                    className="w-4 h-4 mx-auto"
+                    className="w-4 h-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -240,35 +290,11 @@ export default function CardList() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                     />
                   </svg>
-                </button>
-                <button
-                  onClick={() => handleDelete(card.id, card.title)}
-                  disabled={deletingId === card.id}
-                  className="mobile-button bg-red-100 text-red-700 rounded-md hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50 touch-target flex-1 sm:flex-none sm:px-3"
-                  title="Delete"
-                >
-                  {deletingId === card.id ? (
-                    <div className="w-4 h-4 animate-spin rounded-full border-2 border-red-600 border-t-transparent mx-auto"></div>
-                  ) : (
-                    <svg
-                      className="w-4 h-4 mx-auto"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                      />
-                    </svg>
-                  )}
-                </button>
-              </div>
+                )}
+              </button>
             </div>
           </div>
         ))}

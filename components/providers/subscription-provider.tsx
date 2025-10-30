@@ -38,6 +38,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
 
   const loadSubscription = async () => {
     if (!session) {
+      setSubscription(null);
       setLoading(false);
       return;
     }
@@ -45,14 +46,23 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
     try {
       setError(null);
       const response = await apiClient.getSubscription();
+      console.log("Subscription response:", response);
       if (response.success) {
         setSubscription(response.data as SubscriptionData);
       } else {
-        setError("Failed to load subscription");
+        setError(
+          typeof response.error === "string"
+            ? response.error
+            : response.error?.message || "Failed to load subscription"
+        );
+        // Set a default subscription if API fails
+        setSubscription({ plan: "FREE", isExpired: false });
       }
     } catch (err) {
       setError("Failed to load subscription");
       console.error("Failed to load subscription:", err);
+      // Set a default subscription if API fails
+      setSubscription({ plan: "FREE", isExpired: false });
     } finally {
       setLoading(false);
     }

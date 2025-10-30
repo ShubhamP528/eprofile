@@ -75,6 +75,12 @@ export async function POST(request: NextRequest) {
         const subscriptionExpiry = new Date()
         subscriptionExpiry.setDate(subscriptionExpiry.getDate() + 30)
 
+        // Get current user subscription to determine event type
+        const currentUser = await prisma.user.findUnique({
+            where: { id: authResult.userId },
+            select: { subscription: true }
+        })
+
         // Update user subscription in database
         const updatedUser = await prisma.user.update({
             where: { id: authResult.userId },
@@ -88,9 +94,36 @@ export async function POST(request: NextRequest) {
             }
         })
 
-        // Create payment record (optional - for billing history)
+        // Create subscription event
         try {
-            await prisma.paymentHistory.create({
+            const eventType = currentUser?.subscription === 'FREE' ? 'UPGRADE' : 'RENEWAL'
+            const description = eventType === 'UPGRADE'
+                ? `Upgraded from ${currentUser?.subscription} to ${plan}`
+                : `Renewed ${plan} subscription`
+
+            await (prisma as any).subscriptionEvent.create({
+                data: {
+                    userId: authResult.userId,
+                    eventType: eventType,
+                    fromPlan: currentUser?.subscription,
+                    toPlan: plan,
+                    description,
+                }
+            })
+        } catch (eventError) {
+            console.error('Failed to create subscription event (model may not exist yet):', eventError)
+        }
+
+        // Create enhanced payment record for billing history
+        try {
+            // Extract payment method details from Razorpay payment object
+            const paymentMethod = payment.method || 'card'
+            const cardLast4 = payment.card?.last4 || null
+            const planName = plan === 'PRO' ? 'Pro' : 'Standard'
+            const amountInRupees = (typeof payment.amount === 'string' ? parseInt(payment.amount, 10) : payment.amount) / 100
+            const description = `${planName} Plan Subscription - ₹${amountInRupees.toFixed(2)}`
+
+            await (prisma.paymentHistory as any).create({
                 data: {
                     userId: authResult.userId,
                     paymentId: razorpay_payment_id,
@@ -99,6 +132,13 @@ export async function POST(request: NextRequest) {
                     currency: payment.currency,
                     status: payment.status,
                     plan: plan,
+                    // Enhanced fields for billing history
+                    paymentMethod: paymentMethod,
+                    cardLast4: cardLast4,
+                    description: description,
+                    invoiceUrl: null, // Will be generated on-demand
+                    refundAmount: null,
+                    refundedAt: null,
                 }
             })
         } catch (paymentHistoryError) {
