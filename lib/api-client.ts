@@ -33,6 +33,18 @@ class ApiClient {
 
         try {
             const response = await fetch(url, config)
+
+            // Handle 413 Payload Too Large error specifically
+            if (response.status === 413) {
+                return {
+                    success: false,
+                    error: {
+                        code: 'PAYLOAD_TOO_LARGE',
+                        message: 'Request payload too large. Please reduce the number or size of images. Try removing some gallery images or testimonials, or use smaller image files.',
+                    },
+                }
+            }
+
             const data = await response.json()
 
             if (!response.ok) {

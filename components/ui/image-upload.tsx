@@ -9,6 +9,65 @@ interface ImageUploadProps {
   className?: string;
 }
 
+interface CompressionOptions {
+  maxWidth: number;
+  maxHeight: number;
+  quality: number;
+}
+
+// Compress image using HTML5 Canvas API to reduce payload size
+async function compressImage(
+  file: File,
+  options: CompressionOptions
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const img = new Image();
+
+      img.onload = () => {
+        // Calculate new dimensions while maintaining aspect ratio
+        let { width, height } = img;
+        if (width > options.maxWidth || height > options.maxHeight) {
+          const ratio = Math.min(
+            options.maxWidth / width,
+            options.maxHeight / height
+          );
+          width *= ratio;
+          height *= ratio;
+        }
+
+        // Create canvas and draw resized image
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+
+        if (!ctx) {
+          reject(new Error("Failed to get canvas context"));
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Convert to base64 with compression (JPEG format, 0.85 quality)
+        const compressedDataUrl = canvas.toDataURL(
+          "image/jpeg",
+          options.quality
+        );
+        resolve(compressedDataUrl);
+      };
+
+      img.onerror = () => reject(new Error("Failed to load image"));
+      img.src = e.target?.result as string;
+    };
+
+    reader.onerror = () => reject(new Error("Failed to read file"));
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function ImageUpload({
   value,
   onChange,
@@ -17,9 +76,12 @@ export default function ImageUpload({
 }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [compressedSize, setCompressedSize] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -37,32 +99,38 @@ export default function ImageUpload({
 
     setUploading(true);
     setError(null);
+    setCompressedSize(null);
 
     try {
-      // Convert to base64 for immediate preview and storage
-      const reader = new FileReader();
+      // Compress image before converting to base64
+      const compressedDataUrl = await compressImage(file, {
+        maxWidth: 1200,
+        maxHeight: 1200,
+        quality: 0.85,
+      });
 
-      reader.onload = (e) => {
-        const result = e.target?.result as string;
-        onChange(result); // Use base64 data URL
-        setUploading(false);
-      };
+      // Calculate compressed size
+      const sizeInBytes = Math.round((compressedDataUrl.length * 3) / 4);
+      const sizeInKB = (sizeInBytes / 1024).toFixed(1);
+      const sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
 
-      reader.onerror = () => {
-        setError("Failed to read the image file");
-        setUploading(false);
-      };
+      setCompressedSize(
+        sizeInBytes > 1024 * 1024 ? `${sizeInMB} MB` : `${sizeInKB} KB`
+      );
 
-      reader.readAsDataURL(file);
+      onChange(compressedDataUrl);
+      setUploading(false);
     } catch (error) {
-      console.error("Upload error:", error);
+      console.error("Compression error:", error);
       setError("Failed to process image. Please try again.");
       setUploading(false);
+      setCompressedSize(null);
     }
   };
 
   const handleRemove = () => {
     onChange("");
+    setCompressedSize(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -108,7 +176,7 @@ export default function ImageUpload({
           {uploading ? (
             <>
               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
-              <span>Uploading...</span>
+              <span>Compressing...</span>
             </>
           ) : (
             <>
@@ -134,10 +202,17 @@ export default function ImageUpload({
       {/* Error Message */}
       {error && <p className="text-sm text-red-600">{error}</p>}
 
+      {/* Compressed Size Display */}
+      {compressedSize && (
+        <p className="text-xs text-green-600">
+          ✓ Image compressed to {compressedSize}
+        </p>
+      )}
+
       {/* Help Text */}
       <p className="text-xs text-gray-500">
-        Recommended: Square image, max 5MB. Image will be stored locally with
-        your card data.
+        Images are automatically compressed to reduce size. Recommended: Square
+        image, max 5MB original size.
       </p>
     </div>
   );
