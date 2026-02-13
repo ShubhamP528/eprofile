@@ -1,4 +1,10 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Business Information",
+  description: "View eProfile's business details, contact information, and corporate identity.",
+};
 
 export default function BusinessInfoPage() {
   return (

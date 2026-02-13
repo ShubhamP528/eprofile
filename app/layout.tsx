@@ -17,8 +17,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "eProfile - Professional Digital Profiles",
-  description: "Create and share professional eProfiles with eProfile",
+  title: {
+    default: "eProfile - Professional Digital Profiles",
+    template: "%s | eProfile",
+  },
+  description: "Create and share stunning professional digital visiting cards and portfolios with eProfile. The modern way to network.",
+  keywords: ["digital visiting card", "portfolio", "networking", "business card", "eProfile"],
+  authors: [{ name: "eProfile Team" }],
+  creator: "eProfile",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://eprofile.cv",
+    title: "eProfile - Professional Digital Profiles",
+    description: "Create and share stunning professional digital visiting cards and portfolios with eProfile.",
+    siteName: "eProfile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "eProfile - Professional Digital Profiles",
+    description: "Create and share stunning professional digital visiting cards and portfolios with eProfile.",
+    creator: "@eprofile",
+  },
   icons: {
     icon: [
       {

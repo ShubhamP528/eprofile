@@ -1,4 +1,10 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "Read eProfile's Terms of Service to understand the rules and regulations for using our digital business card platform.",
+};
 
 export default function TermsOfServicePage() {
   return (

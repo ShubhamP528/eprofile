@@ -1,4 +1,10 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn about eProfile's mission to revolutionize professional networking with eco-friendly digital business cards.",
+};
 
 export default function AboutPage() {
   return (

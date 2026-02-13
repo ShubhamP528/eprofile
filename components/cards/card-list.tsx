@@ -58,7 +58,7 @@ export default function CardList() {
             {/* Header Skeleton */}
             <div className="flex items-start justify-between mb-6">
               <div className="flex items-center space-x-4">
-                <SkeletonBase className="w-14 h-14" rounded="xl" />
+                <SkeletonBase className="w-14 h-14" rounded="lg" />
                 <div>
                   <SkeletonBase className="h-5 w-32 mb-2" />
                   <SkeletonBase className="h-4 w-24" />
@@ -124,8 +124,8 @@ export default function CardList() {
           <div className="absolute top-6 right-6 z-10">
             <span
               className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ring-1 ring-inset ${card.isPublic
-                  ? "bg-green-50 text-green-700 ring-green-600/20"
-                  : "bg-gray-50 text-gray-600 ring-gray-500/10"
+                ? "bg-green-50 text-green-700 ring-green-600/20"
+                : "bg-gray-50 text-gray-600 ring-gray-500/10"
                 }`}
             >
               <span className={`w-1.5 h-1.5 rounded-full mr-1.5 ${card.isPublic ? "bg-green-600" : "bg-gray-500"}`}></span>

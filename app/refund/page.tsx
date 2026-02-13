@@ -1,4 +1,10 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Refund Policy",
+  description: "Read eProfile's Refund & Cancellation Policy to understand our guidelines on subscriptions, cancellations, and refunds.",
+};
 
 export default function RefundPolicyPage() {
   return (
