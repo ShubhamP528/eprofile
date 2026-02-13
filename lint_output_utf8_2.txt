@@ -1,0 +1,367 @@
+﻿
+> eprofile@0.1.0 lint
+> eslint
+
+
+D:\projects\visiting-card\app\[username]\not-found.tsx
+  12:27  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  12:48  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\app\[username]\page.tsx
+  102:16  warning  'err' is defined but never used                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  402:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  491:21  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  491:43  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  556:11  warning  Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages                                                                                                                                    @next/next/no-html-link-for-pages
+  556:11  warning  Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages                                                                                                                                    @next/next/no-html-link-for-pages
+
+D:\projects\visiting-card\app\about\page.tsx
+   67:56  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  131:23  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  139:70  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  177:67  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  204:47  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\app\api\analytics\[cardId]\route.ts
+   46:13  warning  'uniqueVisitors' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   69:30  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+   98:29  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  100:58  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  100:69  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  110:82  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  166:46  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  166:61  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  170:52  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  174:48  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  178:49  warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\app\api\billing\history\route.ts
+   68:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  121:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  123:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  124:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  125:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  126:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  127:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  161:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\app\api\billing\statistics\route.ts
+   33:27  warning  'request' is defined but never used       @typescript-eslint/no-unused-vars
+   47:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   49:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   83:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   83:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   83:85  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  135:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\app\api\leads\route.ts
+  27:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\app\api\payment\verify\route.ts
+  104:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  126:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\app\auth\signin\page.tsx
+   4:18  warning  'getSession' is defined but never used  @typescript-eslint/no-unused-vars
+  48:14  warning  'error' is defined but never used       @typescript-eslint/no-unused-vars
+  59:14  warning  'error' is defined but never used       @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\app\auth\signup\page.tsx
+  71:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+  82:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\app\contact\page.tsx
+   60:15  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   94:66  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  106:18  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  130:23  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\app\dashboard\analytics\page.tsx
+  47:6   warning  React Hook useEffect has a missing dependency: 'loadAnalytics'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  66:14  warning  'err' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+  73:9   warning  'selectedCard' is assigned a value but never used                                                                 @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\app\dashboard\cards\[id]\edit\page.tsx
+  19:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  34:16  warning  'err' is defined but never used           @typescript-eslint/no-unused-vars
+  44:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\app\dashboard\cards\new\page.tsx
+   14:23  warning  'cards' is assigned a value but never used                       @typescript-eslint/no-unused-vars
+   28:45  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   40:37  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  234:18  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\app\dashboard\layout.tsx
+  135:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  187:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  236:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\app\dashboard\leads\page.tsx
+   34:17  warning  'session' is assigned a value but never used                                                                   @typescript-eslint/no-unused-vars
+   42:46  warning  Unexpected any. Specify a different type                                                                       @typescript-eslint/no-explicit-any
+   49:6   warning  React Hook useEffect has a missing dependency: 'fetchLeads'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+   67:21  warning  Unexpected any. Specify a different type                                                                       @typescript-eslint/no-explicit-any
+  113:14  warning  'err' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\app\dashboard\page.tsx
+  24:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\app\dashboard\subscription\page.tsx
+  32:73  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  42:38  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\app\layout.tsx
+  7:8  warning  'StartupProvider' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\app\pricing\page.tsx
+    8:11  warning  'PricingPlan' is defined but never used                          @typescript-eslint/no-unused-vars
+   42:33  warning  'paymentData' is defined but never used                          @typescript-eslint/no-unused-vars
+   42:46  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  250:23  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  304:25  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  306:34  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  307:36  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  338:23  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  472:30  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\app\privacy\page.tsx
+   23:38  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   23:42  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   23:44  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   23:49  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   23:54  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   23:57  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  208:29  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  224:44  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  224:57  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\app\refund\page.tsx
+  63:30  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  63:48  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  63:53  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  63:73  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\app\terms\page.tsx
+  23:50  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  23:58  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+D:\projects\visiting-card\components\billing\billing-filters.tsx
+  43:6   warning  React Hook useEffect has missing dependencies: 'filters.searchQuery', 'localFilters', and 'onFiltersChange'. Either include them or remove the dependency array. If 'onFiltersChange' changes too often, find the parent component that defines it and wrap that definition in useCallback  react-hooks/exhaustive-deps
+  45:65  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                    @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\components\billing\billing-history-manager.tsx
+  125:39  warning  Unexpected any. Specify a different type                                                                               @typescript-eslint/no-explicit-any
+  141:14  warning  'err' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+  171:6   warning  React Hook useEffect has a missing dependency: 'loadBillingHistory'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  176:6   warning  React Hook useEffect has a missing dependency: 'loadBillingHistory'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  205:14  warning  'err' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\components\cards\card-form.tsx
+  107:14  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  131:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  329:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  333:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  417:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  418:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  419:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  420:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  421:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  422:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  423:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  424:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  425:21  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+  426:22  warning  A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+
+D:\projects\visiting-card\components\cards\card-list.tsx
+  195:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\cards\qr-code-generator.tsx
+  32:14  warning  'error' is defined but never used                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+  69:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\forms\lead-form.tsx
+  68:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\components\gallery\gallery-manager.tsx
+   35:6   warning  React Hook useEffect has a missing dependency: 'fetchGalleryItems'. Either include it or remove the dependency array                                                                                                                                                                     react-hooks/exhaustive-deps
+   46:14  warning  'err' is defined but never used                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+   70:14  warning  'err' is defined but never used                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+   95:14  warning  'err' is defined but never used                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  142:14  warning  'err' is defined but never used                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  205:9   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\home\Hero.tsx
+  3:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\components\layout\navbar.tsx
+   92:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  217:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\payments\payment-manager.tsx
+   18:20  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  180:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\payments\payment-section.tsx
+  159:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\payments\razorpay-checkout.tsx
+    9:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   17:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   23:3   warning  'amount' is defined but never used        @typescript-eslint/no-unused-vars
+   75:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   85:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  104:20  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\components\providers\subscription-provider.tsx
+  82:6  warning  React Hook useEffect has a missing dependency: 'loadSubscription'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+  94:6  warning  React Hook useEffect has a missing dependency: 'refreshSubscription'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\projects\visiting-card\components\services\services-manager.tsx
+   37:6   warning  React Hook useEffect has a missing dependency: 'fetchServices'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+   48:14  warning  'err' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+   72:14  warning  'err' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+   98:14  warning  'err' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+  146:14  warning  'err' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\components\subscription\subscription-manager.tsx
+  22:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  27:14  warning  'err' is defined but never used           @typescript-eslint/no-unused-vars
+  52:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  62:14  warning  'err' is defined but never used           @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\components\templates\template1.tsx
+  74:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\templates\template10.tsx
+  89:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\templates\template2.tsx
+  60:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  80:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\templates\template3.tsx
+   66:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  116:17  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  116:28  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+
+D:\projects\visiting-card\components\templates\template4.tsx
+  66:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\templates\template5.tsx
+  86:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\templates\template6.tsx
+  65:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\templates\template7.tsx
+   77:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  297:26  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+
+D:\projects\visiting-card\components\templates\template8.tsx
+  86:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\templates\template9.tsx
+   77:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  132:17  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  132:28  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+
+D:\projects\visiting-card\components\testimonials\testimonials-manager.tsx
+   38:6   warning  React Hook useEffect has a missing dependency: 'fetchTestimonials'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+   49:14  warning  'err' is defined but never used                                                                                       @typescript-eslint/no-unused-vars
+   76:14  warning  'err' is defined but never used                                                                                       @typescript-eslint/no-unused-vars
+  101:14  warning  'err' is defined but never used                                                                                       @typescript-eslint/no-unused-vars
+  153:14  warning  'err' is defined but never used                                                                                       @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\components\ui\image-upload.tsx
+  144:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\projects\visiting-card\components\ui\loading.tsx
+  52:9  warning  'BrandLogo' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\hooks\use-cards.ts
+  39:18  warning  'err' is defined but never used           @typescript-eslint/no-unused-vars
+  46:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  56:18  warning  'err' is defined but never used           @typescript-eslint/no-unused-vars
+  61:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  71:18  warning  'err' is defined but never used           @typescript-eslint/no-unused-vars
+  86:18  warning  'err' is defined but never used           @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\lib\api-client.ts
+    3:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+    9:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   85:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   92:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  121:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  156:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  163:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  192:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  199:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  228:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  235:47  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\lib\api-utils.ts
+   5:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  23:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  75:14  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\lib\database-error-handler.ts
+   11:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   59:62  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   75:72  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  116:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  197:82  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  247:79  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\lib\database-logger.ts
+   11:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   32:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   50:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   70:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   88:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  172:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  236:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\lib\env-validator.ts
+  185:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\lib\prisma.ts
+   2:10  warning  'DatabaseURLValidator' is defined but never used  @typescript-eslint/no-unused-vars
+  91:42  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\lib\razorpay.ts
+  76:24  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\projects\visiting-card\lib\startup-validator.ts
+  126:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\projects\visiting-card\scripts\setup-production.js
+  3:16  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  4:12  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  5:14  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\projects\visiting-card\scripts\test-database-fix.js
+   7:34  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  63:36  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\projects\visiting-card\scripts\test-db-connection.js
+   3:26  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  26:14  warning  'error' is defined but never used        @typescript-eslint/no-unused-vars
+  33:14  warning  'error' is defined but never used        @typescript-eslint/no-unused-vars
+  40:14  warning  'error' is defined but never used        @typescript-eslint/no-unused-vars
+
+D:\projects\visiting-card\scripts\test-neon-connection.js
+  7:20  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\projects\visiting-card\scripts\test-supabase-connection.js
+  7:20  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+D:\projects\visiting-card\scripts\update-business-info.js
+  12:12  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  13:14  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  14:18  warning  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+Γ£û 228 problems (0 errors, 228 warnings)
+
