@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import PublicCardClient from "./client";
+import { extractKeywords } from "@/lib/seo-utils";
 
 interface Props {
   params: Promise<{ username: string }>;
@@ -53,11 +54,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = card.bio || `View ${card.title}'s professional digital business card on eProfile. Connect, share, and network efficiently.`;
   const image = card.profileImage || "/og-image.png";
 
+  const keywords = extractKeywords(card.title, card.subtitle, card.bio, card.services, card.seoDescription || "");
+
   return {
     title: {
       absolute: title // Override template
     },
     description: description,
+    keywords: keywords,
     openGraph: {
       type: "profile",
       title: title,
