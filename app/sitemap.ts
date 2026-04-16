@@ -1,22 +1,32 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
+import { unstable_cache } from 'next/cache'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://eprofile.cv'
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://eprofile.cv'
 
     let publicProfiles: MetadataRoute.Sitemap = []
 
     try {
-        // Fetch all public cards
-        const publicCards = await prisma.card.findMany({
-            where: {
-                isPublic: true,
+        // Fetch all public cards with caching
+        const publicCards = await unstable_cache(
+            async () => {
+                return await prisma.card.findMany({
+                    where: {
+                        isPublic: true,
+                    },
+                    select: {
+                        username: true,
+                        updatedAt: true,
+                    },
+                    orderBy: {
+                        updatedAt: 'desc'
+                    }
+                })
             },
-            select: {
-                username: true,
-                updatedAt: true,
-            },
-        })
+            ['sitemap-public-cards'],
+            { revalidate: 3600, tags: ['cards'] }
+        )()
 
         publicProfiles = publicCards.map((card) => ({
             url: `${baseUrl}/${encodeURIComponent(card.username)}`,

@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server'
+import { revalidateTag } from 'next/cache'
 import { prisma } from '@/lib/prisma'
 import { updateCardSchema } from '@/lib/validations/card'
 import {
@@ -110,6 +111,10 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
             }
         })
 
+        // Revalidate the cache for this card's public profile
+        revalidateTag(`card-${updatedCard.username}`)
+        revalidateTag('cards')
+
         return createSuccessResponse(updatedCard)
     } catch (error) {
         return handleApiError(error)
@@ -142,6 +147,10 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
         await prisma.card.delete({
             where: { id: resolvedParams.id }
         })
+
+        // Revalidate the cache
+        revalidateTag(`card-${existingCard.username}`)
+        revalidateTag('cards')
 
         return createSuccessResponse({ message: 'Card deleted successfully' })
     } catch (error) {
