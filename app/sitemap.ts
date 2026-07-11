@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
 import { unstable_cache } from 'next/cache'
+import { getCardUrl } from '@/lib/utils/card-url'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://eprofile.cv'
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eprofile.cv'
 
     let publicProfiles: MetadataRoute.Sitemap = []
 
@@ -29,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         )()
 
         publicProfiles = publicCards.map((card) => ({
-            url: `${baseUrl}/${encodeURIComponent(card.username)}`,
+            url: getCardUrl(card.username),
             lastModified: card.updatedAt,
             changeFrequency: 'weekly' as const,
             priority: 0.9,
@@ -92,18 +93,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             lastModified: new Date(),
             changeFrequency: 'yearly' as const,
             priority: 0.3,
-        },
-        {
-            url: `${baseUrl}/auth/signin`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.5,
-        },
-        {
-            url: `${baseUrl}/auth/signup`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.5,
         },
     ]
 

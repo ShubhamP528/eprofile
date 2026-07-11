@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     default: "Dashboard",
   },
   description: "Manage your digital business cards and track performance.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function DashboardLayout({

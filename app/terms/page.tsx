@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Read eProfile's Terms of Service to understand the rules and regulations for using our digital business card platform.",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 export default function TermsOfServicePage() {
@@ -294,15 +297,9 @@ export default function TermsOfServicePage() {
                   <br />
                   <strong>Support Email:</strong> support@eprofile.com
                   <br />
-                  <strong>Business Address:</strong> [Complete Business Address
-                  with PIN Code]
+                  <strong>Business Address:</strong> Rudraksh Colony, Janpth Road, Fulsunga, Rudrapur, Uttrakhand, Pin - 263153
                   <br />
-                  <strong>Phone:</strong> +91-[Your 10-digit Phone Number]
-                  <br />
-                  <strong>GST Number:</strong> [Your GST Number if applicable]
-                  <br />
-                  <strong>Business Registration:</strong> [Your business
-                  registration details]
+                  <strong>Phone:</strong> +919027640571
                 </p>
               </div>
             </section>

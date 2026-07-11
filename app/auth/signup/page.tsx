@@ -4,6 +4,10 @@ import SignUpClient from "./client";
 export const metadata: Metadata = {
   title: "Sign Up",
   description: "Create your free eProfile account today. Build professional digital business cards and grow your network.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function SignUpPage() {

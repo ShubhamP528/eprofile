@@ -5,6 +5,7 @@ import PublicCardClient from "./client";
 import { extractKeywords } from "@/lib/seo-utils";
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
+import { getCardUrl } from "@/lib/utils/card-url";
 
 interface Props {
   params: Promise<{ username: string }>;
@@ -73,8 +74,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const keywords = extractKeywords(card.title, card.subtitle, card.bio, card.services, card.seoDescription || "");
 
   // Use absolute URL for meta images to ensure crawlers can reach them
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile.cv";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
   const absoluteImageUrl = image.startsWith('http') ? image : `${baseUrl}${image}`;
+  const canonicalUrl = getCardUrl(card.username);
 
   return {
     title: {
@@ -96,6 +98,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: title,
       description: description,
       images: [absoluteImageUrl],
+    },
+    alternates: {
+      canonical: canonicalUrl,
     },
   };
 }
@@ -131,7 +136,7 @@ export default async function PublicCardPage({ params }: Props) {
 
   // Use environment variable for baseUrl or fallback to a default
   // This avoids calling headers() which forces dynamic rendering
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile.cv";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
 
   if (!card) {
     notFound();

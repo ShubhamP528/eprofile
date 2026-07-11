@@ -4,6 +4,10 @@ import SignInClient from "./client";
 export const metadata: Metadata = {
     title: "Sign In",
     description: "Sign in to your eProfile account to manage your digital business cards and view analytics.",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 export default function SignInPage() {

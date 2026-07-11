@@ -4,6 +4,9 @@ import ContactClient from "./client";
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Get in touch with the eProfile team. We're here to help you revolutionize your professional networking.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

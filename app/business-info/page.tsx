@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Business Information",
   description: "View eProfile's business details, contact information, and corporate identity.",
+  alternates: {
+    canonical: "/business-info",
+  },
 };
 
 export default function BusinessInfoPage() {
@@ -40,15 +43,7 @@ export default function BusinessInfoPage() {
                   </div>
                   <div>
                     <p className="text-gray-700">
-                      <strong>Registration Number:</strong> [Your Business
-                      Registration Number]
-                    </p>
-                    <p className="text-gray-700">
                       <strong>PAN Number:</strong> [Your PAN Number]
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>GST Number:</strong> [Your GST Number if
-                      applicable]
                     </p>
                     <p className="text-gray-700">
                       <strong>CIN:</strong> [Corporate Identification Number if
@@ -70,9 +65,9 @@ export default function BusinessInfoPage() {
                       Registered Office Address
                     </h3>
                     <p className="text-gray-700">
-                      [Your Complete Business Address]
+                      Rudraksh Colony, Janpth Road, Fulsunga
                       <br />
-                      [City, State - PIN Code]
+                      Rudrapur, Uttrakhand - 263153
                       <br />
                       India
                     </p>
@@ -82,7 +77,7 @@ export default function BusinessInfoPage() {
                       Contact Details
                     </h3>
                     <p className="text-gray-700">
-                      <strong>Phone:</strong> +91-[Your 10-digit Phone Number]
+                      <strong>Phone:</strong> +919027640571
                       <br />
                       <strong>Email:</strong> contact@eprofile.com
                       <br />
@@ -243,7 +238,7 @@ export default function BusinessInfoPage() {
                     <strong>Email Support:</strong> support@eprofile.com
                   </li>
                   <li>
-                    <strong>Phone Support:</strong> +91-[Your Phone Number]
+                    <strong>Phone Support:</strong> +919027640571
                   </li>
                   <li>
                     <strong>Live Chat:</strong> Available on website during

@@ -4,6 +4,9 @@ import PricingClient from "./client";
 export const metadata: Metadata = {
     title: "Pricing",
     description: "Simple, transparent pricing for every professional. Choose the perfect plan for your networking needs.",
+    alternates: {
+        canonical: "/pricing",
+    },
 };
 
 export default function PricingPage() {

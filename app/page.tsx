@@ -8,6 +8,9 @@ import Footer from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "Home",
   description: "Build your professional digital identity in minutes. Share your contact info, social links, and portfolio with a single link.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function Home() {

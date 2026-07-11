@@ -136,29 +136,6 @@ export default function PricingPage() {
       buttonStyle: "bg-blue-600 text-white hover:bg-blue-700",
       popular: false,
     },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      period: "contact us",
-      description: "For teams and organizations with advanced needs",
-      features: [
-        "Everything in Pro",
-        "Team Management",
-        "Bulk Card Creation",
-        "Advanced Integrations",
-        "Custom Branding",
-        "API Access",
-        "Dedicated Support",
-        "Training & Onboarding",
-        "SLA Guarantee",
-        "Custom Features",
-      ],
-      limitations: [],
-      buttonText: "Contact Sales",
-      buttonAction: handleContactSales,
-      buttonStyle: "border-2 border-gray-300 text-gray-700 hover:bg-gray-50",
-      popular: false,
-    },
   ];
 
   const faqs = [
@@ -355,9 +332,6 @@ export default function PricingPage() {
                   <th className="text-center py-4 px-6 font-semibold text-gray-900">
                     Pro
                   </th>
-                  <th className="text-center py-4 px-6 font-semibold text-gray-900">
-                    Enterprise
-                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -367,77 +341,66 @@ export default function PricingPage() {
                     free: "1",
                     standard: "3",
                     pro: "Unlimited",
-                    enterprise: "Unlimited",
                   },
                   {
                     feature: "Templates",
                     free: "Basic",
                     standard: "All Premium",
                     pro: "All Premium",
-                    enterprise: "All + Custom",
                   },
                   {
                     feature: "Services Showcase",
                     free: "❌",
                     standard: "✅ (3)",
                     pro: "✅ (Unlimited)",
-                    enterprise: "✅ (Unlimited)",
                   },
                   {
                     feature: "Portfolio Gallery",
                     free: "❌",
                     standard: "✅ (5)",
                     pro: "✅ (Unlimited)",
-                    enterprise: "✅ (Unlimited)",
                   },
                   {
                     feature: "Testimonials",
                     free: "❌",
                     standard: "❌",
                     pro: "✅",
-                    enterprise: "✅",
                   },
                   {
                     feature: "Payment Integration",
                     free: "❌",
                     standard: "❌",
                     pro: "✅",
-                    enterprise: "✅",
                   },
                   {
                     feature: "Advanced Analytics",
                     free: "Basic",
                     standard: "✅",
                     pro: "✅",
-                    enterprise: "✅",
                   },
                   {
                     feature: "Custom Domain",
                     free: "❌",
                     standard: "❌",
                     pro: "✅",
-                    enterprise: "✅",
                   },
                   {
                     feature: "Team Management",
                     free: "❌",
                     standard: "❌",
                     pro: "❌",
-                    enterprise: "✅",
                   },
                   {
                     feature: "API Access",
                     free: "❌",
                     standard: "❌",
                     pro: "❌",
-                    enterprise: "✅",
                   },
                   {
                     feature: "Support",
                     free: "Community",
                     standard: "Email",
                     pro: "Priority",
-                    enterprise: "Dedicated",
                   },
                 ].map((row, index) => (
                   <tr key={index} className="hover:bg-gray-50">
@@ -450,9 +413,6 @@ export default function PricingPage() {
                     </td>
                     <td className="py-4 px-6 text-center text-gray-600">
                       {row.pro}
-                    </td>
-                    <td className="py-4 px-6 text-center text-gray-600">
-                      {row.enterprise}
                     </td>
                   </tr>
                 ))}

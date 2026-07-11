@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Read eProfile's Privacy Policy to understand how we collect, use, and protect your personal information.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPolicyPage() {
@@ -245,10 +248,9 @@ export default function PrivacyPolicyPage() {
                   <br />
                   <strong>Support Email:</strong> support@eprofile.com
                   <br />
-                  <strong>Business Address:</strong> [Complete Business Address
-                  with PIN Code]
+                  <strong>Business Address:</strong> Rudraksh Colony, Janpth Road, Fulsunga, Rudrapur, Uttrakhand, Pin - 263153
                   <br />
-                  <strong>Phone:</strong> +91-[Your 10-digit Phone Number]
+                  <strong>Phone:</strong> +919027640571
                   <br />
                   <strong>Business Hours:</strong> Monday to Friday, 9:00 AM to
                   6:00 PM IST

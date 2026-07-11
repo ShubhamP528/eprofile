@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us",
   description: "Learn about eProfile's mission to revolutionize professional networking with eco-friendly digital business cards.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {
@@ -217,9 +220,9 @@ export default function AboutPage() {
                   <br />
                   <strong>Business:</strong> business@eprofile.com
                   <br />
-                  <strong>Address:</strong> [Your Business Address]
+                  <strong>Address:</strong> Rudraksh Colony, Janpth Road, Fulsunga, Rudrapur, Uttrakhand, Pin - 263153
                   <br />
-                  <strong>Phone:</strong> [Your Contact Number]
+                  <strong>Phone:</strong> +919027640571
                 </p>
               </div>
             </section>

@@ -1,18 +1,25 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eprofile.cv'
     return {
         rules: [
             {
                 userAgent: '*',
                 allow: '/',
-                disallow: '/private/',
+                disallow: [
+                    '/api/',
+                    '/dashboard/',
+                    '/add-card/',
+                    '/private/',
+                    '/auth/',
+                ],
             },
             {
                 userAgent: ['GPTBot', 'ChatGPT-User', 'CCBot', 'ImagesiftBot', 'OAI-SearchBot', 'Amazonbot', 'Applebot-Extended', 'Bytespider'],
                 disallow: '/',
             }
         ],
-        sitemap: 'https://eprofile.cv/sitemap.xml',
+        sitemap: `${baseUrl}/sitemap.xml`,
     }
 }

@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv"),
   title: {
     default: "eProfile - Professional Digital Profiles",
     template: "%s | eProfile",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://eprofile.cv",
+    url: "https://www.eprofile.cv",
     title: "eProfile - Professional Digital Profiles",
     description: "Create and share stunning professional digital visiting cards and portfolios with eProfile.",
     siteName: "eProfile",

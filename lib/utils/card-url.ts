@@ -16,7 +16,8 @@ export function getCardUrl(username: string): string {
         return `https://${username}.${rootDomain}`
     }
 
-    return `https://${rootDomain}/${username}`
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || `https://www.${rootDomain}`
+    return `${baseUrl}/${username}`
 }
 
 /**

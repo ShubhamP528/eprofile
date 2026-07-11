@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Refund Policy",
   description: "Read eProfile's Refund & Cancellation Policy to understand our guidelines on subscriptions, cancellations, and refunds.",
+  alternates: {
+    canonical: "/refund",
+  },
 };
 
 export default function RefundPolicyPage() {
@@ -271,7 +274,7 @@ export default function RefundPolicyPage() {
                   <br />
                   <strong>Refund Requests:</strong> refunds@eprofile.com
                   <br />
-                  <strong>Phone:</strong> +91-[Your 10-digit Phone Number]
+                  <strong>Phone:</strong> +919027640571
                   <br />
                   <strong>Support Hours:</strong> Monday to Friday, 9:00 AM to
                   6:00 PM IST
