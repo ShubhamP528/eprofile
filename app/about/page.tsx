@@ -214,11 +214,7 @@ export default function AboutPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  <strong>Email:</strong> hello@eprofile.com
-                  <br />
-                  <strong>Support:</strong> support@eprofile.com
-                  <br />
-                  <strong>Business:</strong> business@eprofile.com
+                  <strong>Email:</strong> support@eprofile.cv
                   <br />
                   <strong>Address:</strong> Rudraksh Colony, Janpth Road, Fulsunga, Rudrapur, Uttrakhand, Pin - 263153
                   <br />

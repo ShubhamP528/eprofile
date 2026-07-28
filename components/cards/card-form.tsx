@@ -142,19 +142,17 @@ export default function CardForm({
                     <label htmlFor="username" className="mobile-form-label">
                       Username *
                     </label>
-                    <div className="relative">
+                    <div className="flex rounded-lg shadow-sm border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
+                      <span className="inline-flex items-center px-3 border-r border-gray-300 bg-gray-50 text-gray-500 text-sm select-none">
+                        eprofile.cv/
+                      </span>
                       <input
                         {...register("username")}
                         type="text"
-                        className="mobile-form-input pr-24 sm:pr-28"
+                        className="block w-full min-w-0 flex-1 border-0 bg-white px-3 py-2.5 text-sm text-gray-900 focus:ring-0 focus:outline-none disabled:bg-gray-100 disabled:text-gray-500"
                         placeholder="your-username"
                         disabled={isEditing}
                       />
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                        <span className="responsive-text-xs text-gray-500">
-                          .eprofile.cv
-                        </span>
-                      </div>
                     </div>
                     {errors.username && (
                       <p className="mt-1 responsive-text-xs text-red-600">

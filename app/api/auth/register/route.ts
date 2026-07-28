@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/prisma'
 import { registerSchema } from '@/lib/validations/auth'
+import { sendWelcomeEmail } from '@/lib/mail'
 import {
     createSuccessResponse,
     createErrorResponse,
@@ -48,6 +49,11 @@ export async function POST(request: NextRequest) {
                 createdAt: true,
             }
         })
+
+        // Dispatch welcome email in the background without blocking the HTTP response
+        sendWelcomeEmail(user.email, user.name || "").catch((err) => {
+            console.error("Failed to dispatch welcome email in background:", err);
+        });
 
         return createSuccessResponse(
             { message: 'User created successfully', user },

@@ -422,6 +422,13 @@ input[type="reset"]:disabled {
 /* Add padding for fixed navbar - only when navbar is present */
 .has-navbar {
   padding-top: 64px !important; /* Height of navbar (h-16 = 64px) */
+  background-color: #f9fafb !important; /* Prevent dark body bg from leaking */
+}
+
+@media (prefers-color-scheme: dark) {
+  .has-navbar {
+    background-color: #f9fafb !important;
+  }
 }
 
 /* Adjust for safe area on mobile devices */

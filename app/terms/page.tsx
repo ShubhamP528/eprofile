@@ -293,9 +293,7 @@ export default function TermsOfServicePage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  <strong>Legal Email:</strong> legal@eprofile.com
-                  <br />
-                  <strong>Support Email:</strong> support@eprofile.com
+                  <strong>Email:</strong> support@eprofile.cv
                   <br />
                   <strong>Business Address:</strong> Rudraksh Colony, Janpth Road, Fulsunga, Rudrapur, Uttrakhand, Pin - 263153
                   <br />

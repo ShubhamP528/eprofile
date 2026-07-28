@@ -16,6 +16,7 @@ export default function DashboardPage() {
     maxCards: number;
   } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showTipsModal, setShowTipsModal] = useState(false);
 
   useEffect(() => {
     const checkCardLimit = async () => {
@@ -176,12 +177,70 @@ export default function DashboardPage() {
             <div className="relative z-10">
               <h3 className="font-bold text-lg mb-1">Boost Your Reach</h3>
               <p className="text-gray-300 text-sm mb-4">Share your card on social media to get more leads.</p>
-              <button className="text-xs font-semibold bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors border border-white/10">
+              <button 
+                onClick={() => setShowTipsModal(true)}
+                className="text-xs font-semibold bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors border border-white/10 cursor-pointer"
+              >
                 View Tips
               </button>
             </div>
             {/* Decorative circle */}
             <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+          </div>
+        </div>
+      )}
+
+      {/* Sharing Tips Modal */}
+      {showTipsModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-gray-100 animate-in fade-in zoom-in-95 duration-150">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-lg font-bold text-gray-900">🚀 Sharing Tips</h3>
+              <button 
+                onClick={() => setShowTipsModal(false)}
+                className="text-gray-400 hover:text-gray-600 font-semibold cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="space-y-4 text-sm text-gray-600">
+              <div className="flex gap-3">
+                <div className="text-xl">🔗</div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Add to Social Bios</h4>
+                  <p>Place your unique eProfile link in your Instagram, LinkedIn, or Twitter bio for maximum visibility.</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="text-xl">📧</div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Email Signature</h4>
+                  <p>Add your digital card link to your email signature so every email you send acts as a networking tool.</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="text-xl">📱</div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">QR Code Sharing</h4>
+                  <p>Download and save your QR code on your phone widget or print it on physical media for instant in-person scans.</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <div className="text-xl">⚡</div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">NFC Integration</h4>
+                  <p>Write your card URL onto a cheap NFC card or tag to share your profile simply by tapping it on other phones.</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 text-right">
+              <button
+                onClick={() => setShowTipsModal(false)}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold transition cursor-pointer"
+              >
+                Got it
+              </button>
+            </div>
           </div>
         </div>
       )}

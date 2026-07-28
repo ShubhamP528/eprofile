@@ -21,19 +21,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm border-b border-gray-200 safe-area-top z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-gray-100 safe-area-top z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto mobile-container">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
           <div className="flex items-center">
             <Link
               href="/"
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2.5 group"
               onClick={closeMobileMenu}
             >
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-9 h-9 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
                 <svg
-                  className="w-5 h-5 text-white"
+                  className="w-5.5 h-5.5 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -41,34 +41,34 @@ export default function Navbar() {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeWidth={2.2}
                     d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v10a1 1 0 01-1 1H8a1 1 0 01-1-1V4m0 0H5a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V5a1 1 0 00-1-1h-2"
                   />
                 </svg>
               </div>
-              <span className="text-lg sm:text-xl font-bold text-gray-900">
+              <span className="text-xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                 eProfile
               </span>
             </Link>
           </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-2">
             <Link
               href="/"
-              className="text-gray-600 hover:text-gray-900 transition-colors touch-target flex items-center justify-center"
+              className="text-base font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50/40 px-3.5 py-2 rounded-xl transition-all duration-200"
             >
               Home
             </Link>
             <Link
               href="/features"
-              className="text-gray-600 hover:text-gray-900 transition-colors touch-target flex items-center justify-center"
+              className="text-base font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50/40 px-3.5 py-2 rounded-xl transition-all duration-200"
             >
               Features
             </Link>
             <Link
               href="/pricing"
-              className="text-gray-600 hover:text-gray-900 transition-colors touch-target flex items-center justify-center"
+              className="text-base font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50/40 px-3.5 py-2 rounded-xl transition-all duration-200"
             >
               Pricing
             </Link>
@@ -79,15 +79,15 @@ export default function Navbar() {
             {status === "loading" ? (
               <div className="w-8 h-8 animate-spin rounded-full border-2 border-blue-600 border-t-transparent"></div>
             ) : session ? (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-5">
                 <Link
                   href="/dashboard"
-                  className="text-gray-600 hover:text-gray-900 transition-colors touch-target flex items-center justify-center"
+                  className="text-base font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50/40 px-3.5 py-2 rounded-xl transition-all duration-200"
                 >
                   Dashboard
                 </Link>
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center ring-2 ring-gray-100 overflow-hidden">
                     {session.user?.image ? (
                       <img
                         src={session.user.image}
@@ -108,28 +108,28 @@ export default function Navbar() {
                       </svg>
                     )}
                   </div>
-                  <span className="text-sm text-gray-700 hidden lg:block">
+                  <span className="text-base text-gray-700 hidden lg:block">
                     {session.user?.name || session.user?.email}
                   </span>
                 </div>
                 <button
                   onClick={handleSignOut}
-                  className="text-gray-600 cursor-pointer hover:text-gray-900 transition-colors touch-target flex items-center justify-center"
+                  className="text-base font-medium text-gray-600 hover:text-red-600 hover:bg-red-50 border border-gray-200 hover:border-red-200 px-4 py-2 rounded-xl transition cursor-pointer"
                 >
                   Sign Out
                 </button>
               </div>
             ) : (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
                 <Link
                   href="/auth/signin"
-                  className="text-gray-600 hover:text-gray-900 transition-colors touch-target flex items-center justify-center"
+                  className="text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 border border-transparent hover:border-gray-200 px-4 py-2 rounded-xl transition"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors touch-target"
+                  className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold px-5 py-2.5 rounded-xl hover:from-blue-700 hover:to-indigo-700 shadow-md shadow-blue-600/10 hover:shadow-lg hover:shadow-blue-600/20 hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Get Started
                 </Link>

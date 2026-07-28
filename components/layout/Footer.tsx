@@ -108,7 +108,7 @@ export default function Footer() {
                         <ul className="space-y-4">
                             <li>
                                 <a
-                                    href="mailto:support@eprofile.com"
+                                    href="mailto:support@eprofile.cv"
                                     className="text-base text-gray-500 hover:text-gray-900"
                                 >
                                     Help Center
@@ -116,7 +116,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="mailto:support@eprofile.com"
+                                    href="mailto:support@eprofile.cv"
                                     className="text-base text-gray-500 hover:text-gray-900"
                                 >
                                     Contact Support

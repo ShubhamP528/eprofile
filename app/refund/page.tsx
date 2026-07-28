@@ -134,7 +134,7 @@ export default function RefundPolicyPage() {
               <p className="text-gray-700 mb-4">To request a refund:</p>
               <ol className="list-decimal pl-6 text-gray-700 mb-4">
                 <li>
-                  Contact our support team at support@eprofile.com within 7 days
+                  Contact our support team at support@eprofile.cv within 7 days
                   of the charge
                 </li>
                 <li>
@@ -268,11 +268,7 @@ export default function RefundPolicyPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  <strong>Email:</strong> support@eprofile.com
-                  <br />
-                  <strong>Billing Support:</strong> billing@eprofile.com
-                  <br />
-                  <strong>Refund Requests:</strong> refunds@eprofile.com
+                  <strong>Email:</strong> support@eprofile.cv
                   <br />
                   <strong>Phone:</strong> +919027640571
                   <br />

@@ -79,11 +79,7 @@ export default function BusinessInfoPage() {
                     <p className="text-gray-700">
                       <strong>Phone:</strong> +919027640571
                       <br />
-                      <strong>Email:</strong> contact@eprofile.com
-                      <br />
-                      <strong>Support:</strong> support@eprofile.com
-                      <br />
-                      <strong>Legal:</strong> legal@eprofile.com
+                      <strong>Email:</strong> support@eprofile.cv
                     </p>
                   </div>
                 </div>
@@ -235,7 +231,7 @@ export default function BusinessInfoPage() {
                 </h3>
                 <ul className="list-disc pl-6 text-gray-700 mb-4">
                   <li>
-                    <strong>Email Support:</strong> support@eprofile.com
+                    <strong>Email Support:</strong> support@eprofile.cv
                   </li>
                   <li>
                     <strong>Phone Support:</strong> +919027640571

@@ -77,11 +77,11 @@ export default function DashboardLayoutClient({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="h-screen bg-gray-50 flex overflow-hidden">
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 bg-white shadow-xl transition-transform duration-300 ease-in-out lg:translate-x-0 lg:shadow-none lg:static",
+          "fixed inset-y-0 left-0 z-50 bg-white shadow-xl transition-transform duration-300 ease-in-out lg:translate-x-0 lg:shadow-none lg:sticky lg:top-0 lg:h-screen",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full",
           isSidebarCollapsed && !isMobile ? "w-20" : "w-64"
         )}

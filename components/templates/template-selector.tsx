@@ -191,7 +191,18 @@ export default function TemplateSelector({
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                   {/* Template Preview */}
                   <div className="w-16 h-24 sm:w-20 sm:h-28 md:w-24 md:h-32 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden shrink-0 relative mx-auto sm:mx-0 template-preview-mobile">
-                    <div className="transform scale-12 sm:scale-15 md:scale-20 origin-center">
+                    <div 
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '360px',
+                        height: '500px',
+                        transform: 'scale(var(--preview-scale, 0.18))',
+                        transformOrigin: 'top left',
+                      }}
+                      className="shrink-0 [--preview-scale:0.18] sm:[--preview-scale:0.22] md:[--preview-scale:0.26]"
+                    >
                       <TemplateComponent data={sampleData} isPreview={true} />
                     </div>
                     {isLocked && (
@@ -240,7 +251,7 @@ export default function TemplateSelector({
                       <div className="mt-2">
                         <Link
                           href="/dashboard/subscription"
-                          className="responsive-text-xs text-blue-600 hover:text-blue-800 font-medium inline-block"
+                          className="responsive-text-xs text-blue-600 hover:text-blue-800 font-medium inline-block cursor-pointer relative z-10"
                         >
                           Upgrade to Pro to unlock →
                         </Link>
@@ -272,7 +283,7 @@ export default function TemplateSelector({
 
                 {/* Hover Effect */}
                 <div
-                  className={`absolute inset-0 bg-blue-500 bg-opacity-5 rounded-lg transition-opacity duration-200 ${
+                  className={`absolute inset-0 bg-blue-500/5 rounded-lg transition-opacity duration-200 ${
                     isPreview && !isSelected && !isLocked
                       ? "opacity-100"
                       : "opacity-0"
