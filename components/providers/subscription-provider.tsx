@@ -81,17 +81,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
     loadSubscription();
   }, [session]);
 
-  // Refresh subscription when window gains focus (user comes back from payment)
-  useEffect(() => {
-    const handleFocus = () => {
-      if (session && !loading) {
-        refreshSubscription();
-      }
-    };
 
-    window.addEventListener("focus", handleFocus);
-    return () => window.removeEventListener("focus", handleFocus);
-  }, [session, loading]);
 
   const value: SubscriptionContextType = {
     subscription,

@@ -70,6 +70,37 @@ export default function CardForm({
 }: CardFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isGeneratingBio, setIsGeneratingBio] = useState(false);
+
+  const generateBioWithAI = async () => {
+    const title = watchedValues.title;
+    const subtitle = watchedValues.subtitle;
+
+    if (!title) return;
+
+    setIsGeneratingBio(true);
+    try {
+      const response = await fetch("/api/ai/generate-bio", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title, subtitle }),
+      });
+
+      const data = await response.json();
+      if (data.success && data.bio) {
+        setValue("bio", data.bio);
+      } else {
+        alert(data.error || "Failed to generate bio with AI");
+      }
+    } catch (error) {
+      console.error("AI generation failed:", error);
+      alert("An unexpected error occurred while generating bio");
+    } finally {
+      setIsGeneratingBio(false);
+    }
+  };
 
   const {
     register,
@@ -201,9 +232,30 @@ export default function CardForm({
                   </div>
 
                   <div>
-                    <label htmlFor="bio" className="mobile-form-label">
-                      About Me
-                    </label>
+                    <div className="flex justify-between items-center mb-1">
+                      <label htmlFor="bio" className="mobile-form-label mb-0">
+                        About Me
+                      </label>
+                      <button
+                        type="button"
+                        onClick={generateBioWithAI}
+                        disabled={isGeneratingBio || !watchedValues.title}
+                        className="text-xs font-semibold text-blue-600 hover:text-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer"
+                        title={!watchedValues.title ? "Enter your Name to generate bio" : "Generate a professional bio using AI"}
+                      >
+                        {isGeneratingBio ? (
+                          <>
+                            <svg className="animate-spin h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                            </svg>
+                            Generating...
+                          </>
+                        ) : (
+                          <>✨ Generate with AI</>
+                        )}
+                      </button>
+                    </div>
                     <textarea
                       {...register("bio")}
                       rows={3}
