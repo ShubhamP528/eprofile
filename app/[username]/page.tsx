@@ -142,5 +142,34 @@ export default async function PublicCardPage({ params }: Props) {
     notFound();
   }
 
-  return <PublicCardClient params={params} initialCard={card} baseUrl={baseUrl} />;
+  const image = card.profileImage || "/og-image.png";
+  const absoluteImageUrl = image.startsWith("http") ? image : `${baseUrl}${image}`;
+  const canonicalUrl = getCardUrl(card.username);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: card.title,
+    ...(card.subtitle && { jobTitle: card.subtitle }),
+    ...(card.bio && { description: card.bio }),
+    image: absoluteImageUrl,
+    url: canonicalUrl,
+    ...(card.email && { email: card.email }),
+    ...(card.phone && { telephone: card.phone }),
+    ...(card.address && { address: card.address }),
+    ...(card.socialLinks?.length && {
+      sameAs: card.socialLinks.map((link: { url: string }) => link.url),
+    }),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // Escape `<` so user-supplied fields (bio, title, etc.) can't break out of the script tag
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
+      <PublicCardClient params={params} initialCard={card} baseUrl={baseUrl} />
+    </>
+  );
 }
