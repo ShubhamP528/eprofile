@@ -13,6 +13,7 @@ export default function robots(): MetadataRoute.Robots {
                     '/add-card/',
                     '/private/',
                     '/auth/',
+                    '/_next/static/media/',
                 ],
             },
             {

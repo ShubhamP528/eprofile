@@ -5,6 +5,7 @@ import { getCardUrl } from '@/lib/utils/card-url'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eprofile.cv'
+    const staticDate = new Date('2026-08-17')
 
     let publicProfiles: MetadataRoute.Sitemap = []
 
@@ -42,55 +43,55 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const routes = [
         {
             url: baseUrl,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'yearly' as const,
             priority: 1,
         },
         {
             url: `${baseUrl}/features`,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/pricing`,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/about`,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/contact`,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'monthly' as const,
             priority: 0.5,
         },
         {
             url: `${baseUrl}/business-info`,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'monthly' as const,
             priority: 0.5,
         },
         {
             url: `${baseUrl}/privacy`,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'yearly' as const,
             priority: 0.3,
         },
         {
             url: `${baseUrl}/terms`,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'yearly' as const,
             priority: 0.3,
         },
         {
             url: `${baseUrl}/refund`,
-            lastModified: new Date(),
+            lastModified: staticDate,
             changeFrequency: 'yearly' as const,
             priority: 0.3,
         },
