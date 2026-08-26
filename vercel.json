@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/campaign",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/festivals",
+      "schedule": "0 8 * * *"
+    }
+  ]
+}
