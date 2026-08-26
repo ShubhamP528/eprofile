@@ -94,8 +94,8 @@ export default function CardList() {
   if (cards.length === 0) {
     return (
       <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-gray-200">
-        <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-          <Layout className="w-8 h-8 text-blue-500" />
+        <div className="mx-auto w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mb-4">
+          <Layout className="w-8 h-8 text-indigo-500" />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
           No cards created yet
@@ -105,7 +105,7 @@ export default function CardList() {
         </p>
         <Link
           href="/dashboard/cards/new"
-          className="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+          className="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
         >
           Create First Card
         </Link>
@@ -118,7 +118,7 @@ export default function CardList() {
       {cards.map((card) => (
         <div
           key={card.id}
-          className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-xl hover:border-gray-200 transition-all duration-300 group flex flex-col h-full relative"
+          className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-xl hover:border-slate-200 transition-all duration-300 group flex flex-col h-full relative"
         >
           {/* Status Badge - Absolute */}
           <div className="absolute top-6 right-6 z-10">
@@ -136,7 +136,7 @@ export default function CardList() {
           {/* Header Section */}
           <div className="flex items-start space-x-4 mb-6">
             <div className="relative shrink-0">
-              <div className="w-16 h-16 rounded-xl overflow-hidden border border-gray-100 shadow-xs bg-gray-50">
+              <div className="w-16 h-16 rounded-xl overflow-hidden border border-slate-100 shadow-xs bg-gray-50">
                 {card.profileImage ? (
                   <img
                     src={card.profileImage}
@@ -144,7 +144,7 @@ export default function CardList() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 text-blue-500">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-50 to-violet-50 text-indigo-500">
                     <User className="w-8 h-8" />
                   </div>
                 )}
@@ -161,7 +161,7 @@ export default function CardList() {
           </div>
 
           {/* Quick Info Grid */}
-          <div className="grid grid-cols-2 gap-3 mb-6 bg-gray-50/50 rounded-xl p-3 border border-gray-100/50">
+          <div className="grid grid-cols-2 gap-3 mb-6 bg-gray-50/50 rounded-xl p-3 border border-slate-100">
             <div>
               <span className="text-xs text-gray-400 font-medium uppercase tracking-wider block mb-1">Username</span>
               <span className="text-sm font-medium text-gray-700 block truncate font-mono">
@@ -177,19 +177,19 @@ export default function CardList() {
           </div>
 
           {/* Action Footer */}
-          <div className="mt-auto pt-4 border-t border-gray-100 flex items-center gap-3">
+          <div className="mt-auto pt-4 border-t border-slate-100 flex items-center gap-3">
             <Link
               href={`/${card.username}`}
               target="_blank"
-              className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors shadow-sm hover:shadow group/btn"
+              className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold text-xs shadow-md shadow-indigo-600/10 hover:shadow-lg transition-all group/btn"
             >
-              <ExternalLink className="w-4 h-4 mr-2 opacity-90 group-hover/btn:scale-110 transition-transform" />
+              <ExternalLink className="w-3.5 h-3.5 mr-2 opacity-90 group-hover/btn:scale-110 transition-transform" />
               View
             </Link>
 
             <Link
               href={`/dashboard/cards/${card.id}/edit`}
-              className="inline-flex items-center justify-center p-2.5 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+              className="inline-flex items-center justify-center p-2.5 rounded-xl border border-slate-200 text-gray-700 hover:bg-slate-50 hover:text-gray-900 transition-colors cursor-pointer"
               title="Edit Card"
             >
               <Edit className="w-4 h-4" />
@@ -197,7 +197,7 @@ export default function CardList() {
 
             <button
               onClick={() => copyCardUrl(card.username)}
-              className="inline-flex items-center justify-center p-2.5 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+              className="inline-flex items-center justify-center p-2.5 rounded-xl border border-slate-200 text-gray-700 hover:bg-slate-50 hover:text-gray-900 transition-colors cursor-pointer"
               title="Copy Link"
             >
               <Copy className="w-4 h-4" />
@@ -206,7 +206,7 @@ export default function CardList() {
             <button
               onClick={() => handleDelete(card.id, card.title)}
               disabled={deletingId === card.id}
-              className="inline-flex items-center justify-center p-2.5 rounded-lg border border-gray-200 text-gray-500 hover:border-red-200 hover:bg-red-50 hover:text-red-600 transition-colors"
+              className="inline-flex items-center justify-center p-2.5 rounded-xl border border-slate-200 text-gray-500 hover:border-red-200 hover:bg-red-50 hover:text-red-600 transition-colors cursor-pointer"
               title="Delete Card"
             >
               {deletingId === card.id ? (

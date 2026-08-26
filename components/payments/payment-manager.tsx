@@ -120,7 +120,7 @@ export default function PaymentManager({
             }
             className="sr-only peer"
           />
-          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
         </label>
       </div>
 
@@ -136,12 +136,12 @@ export default function PaymentManager({
               value={paymentData.paymentText}
               onChange={(e) => handleInputChange("paymentText", e.target.value)}
               placeholder="Pay Now"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
             />
           </div>
 
           {/* UPI Section */}
-          <div className="bg-gray-50 p-4 rounded-lg">
+          <div className="bg-slate-50/50 p-4 rounded-2xl border border-slate-100">
             <h4 className="font-medium text-gray-900 mb-4">UPI Payment</h4>
 
             <div className="space-y-4">
@@ -154,7 +154,7 @@ export default function PaymentManager({
                   value={paymentData.upiId}
                   onChange={(e) => handleInputChange("upiId", e.target.value)}
                   placeholder="yourname@paytm"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                 />
               </div>
 
@@ -169,14 +169,14 @@ export default function PaymentManager({
                       accept="image/*"
                       onChange={handleFileUpload}
                       disabled={uploading}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                     />
                     <p className="text-xs text-gray-500 mt-1">
                       Upload your UPI QR code image (max 5MB)
                     </p>
                   </div>
                   {paymentData.upiQrCode && (
-                    <div className="w-20 h-20 border border-gray-300 rounded-md overflow-hidden">
+                    <div className="w-20 h-20 border border-slate-200 rounded-xl overflow-hidden">
                       <img
                         src={paymentData.upiQrCode}
                         alt="UPI QR Code"
@@ -186,14 +186,14 @@ export default function PaymentManager({
                   )}
                 </div>
                 {uploading && (
-                  <p className="text-sm text-blue-600 mt-2">Uploading...</p>
+                  <p className="text-sm text-indigo-600 mt-2">Uploading...</p>
                 )}
               </div>
             </div>
           </div>
 
           {/* Payment Gateway Section */}
-          <div className="bg-gray-50 p-4 rounded-lg">
+          <div className="bg-slate-50/50 p-4 rounded-2xl border border-slate-100">
             <h4 className="font-medium text-gray-900 mb-4">Payment Gateways</h4>
 
             <div className="space-y-4">
@@ -208,7 +208,7 @@ export default function PaymentManager({
                     handleInputChange("razorpayId", e.target.value)
                   }
                   placeholder="rzp_live_xxxxxxxxxx"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   Your Razorpay merchant ID
@@ -224,7 +224,7 @@ export default function PaymentManager({
                   value={paymentData.paytmId}
                   onChange={(e) => handleInputChange("paytmId", e.target.value)}
                   placeholder="PAYTM_MERCHANT_ID"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   Your Paytm merchant ID
@@ -234,21 +234,21 @@ export default function PaymentManager({
           </div>
 
           {/* Preview */}
-          <div className="bg-blue-50 p-4 rounded-lg">
+          <div className="bg-slate-50/50 p-4 rounded-2xl border border-slate-100">
             <h4 className="font-medium text-gray-900 mb-3">Preview</h4>
             <div className="space-y-2">
               {paymentData.upiId && (
-                <button className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors">
+                <button className="w-full bg-green-600 text-white py-2.5 px-4 rounded-xl hover:bg-green-700 transition-colors font-semibold text-xs shadow-sm hover:shadow cursor-pointer">
                   {paymentData.paymentText} via UPI
                 </button>
               )}
               {paymentData.razorpayId && (
-                <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
+                <button className="w-full bg-indigo-600 text-white py-2.5 px-4 rounded-xl hover:bg-indigo-700 transition-colors font-semibold text-xs shadow-sm hover:shadow cursor-pointer">
                   {paymentData.paymentText} via Razorpay
                 </button>
               )}
               {paymentData.paytmId && (
-                <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors">
+                <button className="w-full bg-indigo-600 text-white py-2.5 px-4 rounded-xl hover:bg-indigo-700 transition-colors font-semibold text-xs shadow-sm hover:shadow cursor-pointer">
                   {paymentData.paymentText} via Paytm
                 </button>
               )}

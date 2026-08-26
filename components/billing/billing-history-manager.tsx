@@ -219,7 +219,7 @@ export default function BillingHistoryManager() {
       <BillingStatistics statistics={statistics} loading={statisticsLoading} />
 
       {/* Billing History Section */}
-      <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
+      <div className="bg-white rounded-2xl border border-slate-100 p-4 sm:p-6 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 space-y-3 sm:space-y-0">
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
@@ -232,7 +232,7 @@ export default function BillingHistoryManager() {
           <button
             onClick={handleRefresh}
             disabled={loading}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 text-sm font-medium"
+            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors disabled:opacity-50 text-sm font-semibold cursor-pointer shadow-sm"
           >
             <svg
               className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
@@ -261,11 +261,11 @@ export default function BillingHistoryManager() {
         {/* Summary Cards */}
         {summary && (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <div className="text-sm font-medium text-blue-600">
+            <div className="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100/50">
+              <div className="text-xs font-bold text-indigo-600 uppercase tracking-wider">
                 Total Spent
               </div>
-              <div className="text-xl font-bold text-blue-900">
+              <div className="text-xl font-extrabold text-indigo-950 mt-1">
                 ₹{(summary.totalAmount / 100).toFixed(2)}
               </div>
             </div>

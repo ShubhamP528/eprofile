@@ -19,7 +19,7 @@ export default function SubscriptionPage() {
       <BillingHistoryManager />
 
       {/* FAQ */}
-      <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
+      <div className="bg-white rounded-2xl border border-slate-100 p-4 sm:p-6 shadow-sm">
         <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">
           Frequently Asked Questions
         </h3>

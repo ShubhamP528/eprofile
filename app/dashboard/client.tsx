@@ -79,20 +79,20 @@ export default function DashboardPage() {
           {cardLimitInfo?.canCreate ? (
             <Link
               href="/dashboard/cards/new"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition-all duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 shadow-lg shadow-indigo-600/10 hover:shadow-indigo-600/20 transition-all duration-200 hover:-translate-y-0.5"
             >
               <Plus className="w-5 h-5 mr-2" />
               Create New Card
             </Link>
           ) : (
             <div className="flex items-center gap-3">
-              <span className="text-sm font-medium text-amber-600 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-100">
+              <span className="text-sm font-medium text-amber-600 bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-100/70 shadow-xs">
                 Limit Reached
               </span>
               {!isPro && (
                 <Link
                   href="/dashboard/subscription"
-                  className="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-xl text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md transition-all"
+                  className="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-xl text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 shadow-md shadow-indigo-600/10 hover:shadow-lg transition-all"
                 >
                   Upgrade to Pro
                 </Link>
@@ -106,12 +106,12 @@ export default function DashboardPage() {
       {cardLimitInfo && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Total Cards Card */}
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
               <CreditCard className="w-16 h-16 text-blue-600" />
             </div>
             <div className="flex items-center space-x-4">
-              <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
+              <div className="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
                 <CreditCard className="w-6 h-6" />
               </div>
               <div>
@@ -126,9 +126,9 @@ export default function DashboardPage() {
             </div>
             {/* Progress Bar */}
             <div className="mt-4 pt-4 border-t border-gray-50">
-              <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+              <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
                 <div
-                  className="bg-blue-500 h-1.5 rounded-full transition-all duration-500"
+                  className="bg-indigo-600 h-1.5 rounded-full transition-all duration-500"
                   style={{ width: `${Math.min((cardLimitInfo.currentCount / (cardLimitInfo.maxCards === -1 ? 100 : cardLimitInfo.maxCards)) * 100, 100)}%` }}
                 ></div>
               </div>
@@ -142,7 +142,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Subscription Status Card */}
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
               <Layers className="w-16 h-16 text-indigo-600" />
             </div>
@@ -172,20 +172,20 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Quick Tip or Feature Highlight (Optional placeholder) */}
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 shadow-sm text-white relative overflow-hidden">
+          {/* Quick Tip or Feature Highlight */}
+          <div className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-900 rounded-2xl p-6 shadow-md shadow-indigo-600/10 text-white relative overflow-hidden border border-indigo-500/20">
             <div className="relative z-10">
               <h3 className="font-bold text-lg mb-1">Boost Your Reach</h3>
-              <p className="text-gray-300 text-sm mb-4">Share your card on social media to get more leads.</p>
+              <p className="text-indigo-100 text-sm mb-4">Share your card on social media to get more leads.</p>
               <button 
                 onClick={() => setShowTipsModal(true)}
-                className="text-xs font-semibold bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors border border-white/10 cursor-pointer"
+                className="text-xs font-bold bg-white/20 hover:bg-white/30 px-3.5 py-2 rounded-xl transition-all border border-white/25 hover:scale-[1.02] cursor-pointer shadow-sm shadow-indigo-900/10"
               >
                 View Tips
               </button>
             </div>
             {/* Decorative circle */}
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-indigo-400/20 rounded-full blur-2xl"></div>
           </div>
         </div>
       )}
@@ -193,7 +193,7 @@ export default function DashboardPage() {
       {/* Sharing Tips Modal */}
       {showTipsModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-gray-100 animate-in fade-in zoom-in-95 duration-150">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 animate-in fade-in zoom-in-95 duration-150">
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-lg font-bold text-gray-900">🚀 Sharing Tips</h3>
               <button 
@@ -236,7 +236,7 @@ export default function DashboardPage() {
             <div className="mt-6 text-right">
               <button
                 onClick={() => setShowTipsModal(false)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold transition cursor-pointer"
+                className="px-5 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white rounded-xl text-xs font-bold shadow-md shadow-indigo-600/10 hover:shadow-lg transition-all cursor-pointer"
               >
                 Got it
               </button>

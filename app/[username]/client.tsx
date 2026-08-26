@@ -169,7 +169,7 @@ export default function PublicCardClient({ params, initialCard, baseUrl }: Publi
             <div className="min-h-screen bg-gray-50 py-8">
                 <div className="max-w-4xl mx-auto px-4">
                     {/* Profile Header Skeleton */}
-                    <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
+                    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-6">
                         <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
                             <SkeletonBase
                                 width="6rem"
@@ -201,7 +201,7 @@ export default function PublicCardClient({ params, initialCard, baseUrl }: Publi
                     </div>
 
                     {/* Contact Info Skeleton */}
-                    <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
+                    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-6">
                         <SkeletonBase width="8rem" height="1.5rem" className="mb-4" />
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {Array.from({ length: 4 }).map((_, i) => (
@@ -214,11 +214,11 @@ export default function PublicCardClient({ params, initialCard, baseUrl }: Publi
                     </div>
 
                     {/* Services Skeleton */}
-                    <div className="bg-white rounded-lg shadow-sm border p-6">
+                    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
                         <SkeletonBase width="5rem" height="1.5rem" className="mb-4" />
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {Array.from({ length: 4 }).map((_, i) => (
-                                <div key={i} className="p-4 border border-gray-200 rounded-lg">
+                                <div key={i} className="p-4 border border-slate-100 rounded-2xl">
                                     <SkeletonBase
                                         width="6rem"
                                         height="1.25rem"

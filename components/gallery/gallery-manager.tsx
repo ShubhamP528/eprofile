@@ -222,7 +222,7 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
 
   if (loading) {
     return (
-      <div className="mobile-card bg-white rounded-lg shadow-sm border">
+      <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <SkeletonBase width="5rem" height="1.5rem" />
@@ -239,7 +239,7 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
   }
 
   return (
-    <div className="mobile-card bg-white rounded-lg shadow-sm border">
+    <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
         <h3 className="responsive-text-lg font-semibold text-gray-900">
           Portfolio Gallery
@@ -247,7 +247,7 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
         <button
           onClick={() => setShowForm(true)}
           disabled={items.length >= 10}
-          className="mobile-button bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed touch-target w-full sm:w-auto"
+          className="mobile-button bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all font-semibold text-xs shadow-sm hover:shadow cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed touch-target w-full sm:w-auto"
         >
           Add Item
         </button>
@@ -270,7 +270,7 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
         {items.map((item, index) => (
           <div
             key={item.id}
-            className="border border-gray-200 rounded-lg p-3 sm:p-4 hover:shadow-sm transition-shadow"
+            className="border border-slate-100 rounded-2xl p-3 sm:p-4 hover:shadow-sm transition-shadow"
           >
             {/* Preview */}
             <div className="mb-3">{getPreview(item)}</div>
@@ -409,7 +409,7 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
       {/* Gallery Item Form Modal */}
       {showForm && (
         <div className="fixed inset-0 bg-opacity-20 backdrop-blur-md flex items-center justify-center z-50 p-4 safe-area-top safe-area-bottom">
-          <div className="bg-white rounded-lg mobile-card w-full max-w-md max-h-full overflow-y-auto">
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-xl mobile-card w-full max-w-md max-h-full overflow-y-auto">
             <h4 className="responsive-text-lg font-semibold text-gray-900 mb-4">
               {editingItem ? "Edit Gallery Item" : "Add Gallery Item"}
             </h4>
@@ -462,17 +462,17 @@ export default function GalleryManager({ cardId }: GalleryManagerProps) {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:justify-end pt-4">
-                <button
+                 <button
                   type="button"
                   onClick={resetForm}
-                  className="mobile-button border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 touch-target order-2 sm:order-1"
+                  className="mobile-button border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-50 cursor-pointer touch-target order-2 sm:order-1 text-xs font-semibold"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="mobile-button bg-blue-600 text-white rounded-md hover:bg-blue-700 touch-target font-medium order-1 sm:order-2"
+                  className="mobile-button bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 cursor-pointer touch-target font-semibold order-1 sm:order-2 text-xs shadow-sm hover:shadow"
                 >
                   {editingItem ? "Update" : "Add"} Item
                 </button>

@@ -4,6 +4,7 @@ import "./globals.css";
 import AuthSessionProvider from "@/components/providers/session-provider";
 import { SubscriptionProvider } from "@/components/providers/subscription-provider";
 import ConditionalNavbar from "@/components/layout/conditional-navbar";
+import ConditionalFooter from "@/components/layout/conditional-footer";
 import StartupProvider from "@/components/providers/startup-provider";
 
 const geistSans = Geist({
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2563eb",
+  themeColor: "#6366f1",
 };
 
 export default function RootLayout({
@@ -78,6 +79,7 @@ export default function RootLayout({
           <SubscriptionProvider>
             <ConditionalNavbar />
             <main>{children}</main>
+            <ConditionalFooter />
           </SubscriptionProvider>
         </AuthSessionProvider>
       </body>

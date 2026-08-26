@@ -63,7 +63,7 @@ export default function NewCardPage() {
               <SkeletonBase width="14rem" height="2rem" className="mb-6" />
 
               {/* Basic Information Card */}
-              <div className="bg-white rounded-lg shadow-sm border p-6">
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
                 <SkeletonBase width="10rem" height="1.5rem" className="mb-4" />
                 <div className="space-y-4">
                   <div>
@@ -86,7 +86,7 @@ export default function NewCardPage() {
               </div>
 
               {/* Contact Information Card */}
-              <div className="bg-white rounded-lg shadow-sm border p-6">
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
                 <SkeletonBase width="11rem" height="1.5rem" className="mb-4" />
                 <div className="space-y-4">
                   <div>
@@ -103,9 +103,9 @@ export default function NewCardPage() {
 
             {/* Preview Skeleton */}
             <div className="lg:sticky lg:top-6">
-              <div className="bg-gray-50 rounded-lg p-6">
+              <div className="bg-slate-50/50 rounded-2xl p-6 border border-slate-100">
                 <SkeletonBase width="7rem" height="1.5rem" className="mb-4" />
-                <div className="bg-white rounded-lg shadow-sm border p-4">
+                <div className="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
                   <SkeletonBase className="w-full aspect-3/4" />
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function NewCardPage() {
           </Link>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border p-6 text-center">
+        <div className="bg-white rounded-2xl border border-slate-100 p-6 text-center shadow-sm">
           <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg
               className="w-8 h-8 text-yellow-600"

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { apiClient } from "@/lib/api-client";
 import { SkeletonList } from "@/components/ui/skeleton/skeleton-list";
+import Loading from "@/components/ui/loading";
 
 interface Lead {
   id: string;
@@ -118,23 +119,21 @@ export default function LeadsPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "NEW":
-        return "bg-blue-100 text-blue-800";
+        return "bg-indigo-50 text-indigo-700 ring-1 ring-indigo-700/10";
       case "CONTACTED":
-        return "bg-yellow-100 text-yellow-800";
+        return "bg-amber-50 text-amber-700 ring-1 ring-amber-600/10";
       case "CONVERTED":
-        return "bg-green-100 text-green-800";
+        return "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/10";
       case "CLOSED":
-        return "bg-gray-100 text-gray-800";
+        return "bg-slate-50 text-slate-600 ring-1 ring-slate-500/10";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-slate-50 text-slate-600 ring-1 ring-slate-500/10";
     }
   };
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
+      <Loading variant="fullscreen" message="Loading leads..." />
     );
   }
 
@@ -180,7 +179,7 @@ export default function LeadsPage() {
       )}
 
       {/* Filters */}
-      <div className="mobile-card bg-white rounded-lg shadow-sm border mb-6">
+      <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm mb-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="mobile-form-label">Filter by Card</label>
@@ -215,7 +214,7 @@ export default function LeadsPage() {
       </div>
 
       {/* Leads List */}
-      <div className="bg-white rounded-lg shadow-sm border">
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
         {loading ? (
           <SkeletonList
             items={5}
@@ -224,13 +223,17 @@ export default function LeadsPage() {
             showActions={true}
           />
         ) : leads?.length === 0 ? (
-          <div className="p-6 sm:p-8 text-center">
-            <div className="text-gray-400 text-4xl sm:text-6xl mb-4">📋</div>
-            <h3 className="responsive-text-lg font-semibold text-gray-900 mb-2">
+          <div className="p-12 text-center bg-white rounded-2xl border border-dashed border-gray-200 max-w-xl mx-auto my-8">
+            <div className="mx-auto w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mb-4">
+              <svg className="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">
               No leads yet
             </h3>
-            <p className="responsive-text-sm text-gray-600">
-              Leads from your eProfiles will appear here.
+            <p className="text-sm text-gray-500">
+              Leads from your eProfiles contact forms will automatically appear here.
             </p>
           </div>
         ) : (
@@ -283,7 +286,7 @@ export default function LeadsPage() {
                         onChange={(e) =>
                           updateLeadStatus(lead.id, e.target.value)
                         }
-                        className="responsive-text-xs border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="responsive-text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
                       >
                         <option value="NEW">New</option>
                         <option value="CONTACTED">Contacted</option>
@@ -372,7 +375,7 @@ export default function LeadsPage() {
                           onChange={(e) =>
                             updateLeadStatus(lead.id, e.target.value)
                           }
-                          className="responsive-text-xs border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="responsive-text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
                         >
                           <option value="NEW">New</option>
                           <option value="CONTACTED">Contacted</option>
@@ -398,7 +401,7 @@ export default function LeadsPage() {
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="mobile-button border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed touch-target"
+                className="px-4 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed touch-target"
               >
                 Previous
               </button>
@@ -407,7 +410,7 @@ export default function LeadsPage() {
                   setCurrentPage(Math.min(totalPages, currentPage + 1))
                 }
                 disabled={currentPage === totalPages}
-                className="mobile-button border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed touch-target"
+                className="px-4 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed touch-target"
               >
                 Next
               </button>

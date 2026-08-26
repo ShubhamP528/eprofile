@@ -190,7 +190,7 @@ export default function TestimonialsManager({
 
   if (loading) {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-sm border">
+      <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <SkeletonBase width="7rem" height="1.5rem" />
@@ -198,7 +198,7 @@ export default function TestimonialsManager({
           </div>
           <div className="space-y-4">
             {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="border border-gray-200 rounded-lg p-4">
+              <div key={i} className="border border-slate-100 rounded-2xl p-4">
                 <div className="flex items-start space-x-3">
                   <SkeletonBase
                     width="2.5rem"
@@ -225,7 +225,7 @@ export default function TestimonialsManager({
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border">
+    <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-lg font-semibold text-gray-900">
           Customer Testimonials
@@ -233,7 +233,7 @@ export default function TestimonialsManager({
         <button
           onClick={() => setShowForm(true)}
           disabled={testimonials.length >= 10}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition-all font-semibold text-xs shadow-sm hover:shadow cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Add Testimonial
         </button>
@@ -256,7 +256,7 @@ export default function TestimonialsManager({
         {testimonials.map((testimonial, index) => (
           <div
             key={testimonial.id}
-            className="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow"
+            className="border border-slate-100 rounded-2xl p-4 hover:shadow-sm transition-shadow"
           >
             <div className="flex justify-between items-start mb-3">
               <div className="flex-1">
@@ -273,7 +273,7 @@ export default function TestimonialsManager({
             </div>
 
             {/* Actions */}
-            <div className="flex justify-between items-center pt-3 border-t border-gray-100">
+            <div className="flex justify-between items-center pt-3 border-t border-slate-100">
               <div className="flex items-center space-x-1">
                 <button
                   onClick={() => moveTestimonial(testimonial.id, "up")}
@@ -386,7 +386,7 @@ export default function TestimonialsManager({
       {/* Testimonial Form Modal */}
       {showForm && (
         <div className="fixed inset-0   bg-opacity-20 backdrop-blur-md flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-xl p-6 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <h4 className="text-lg font-semibold text-gray-900 mb-4">
               {editingTestimonial ? "Edit Testimonial" : "Add Testimonial"}
             </h4>
@@ -402,7 +402,7 @@ export default function TestimonialsManager({
                   onChange={(e) =>
                     setFormData({ ...formData, customerName: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                   placeholder="John Doe"
                   required
                 />
@@ -428,7 +428,7 @@ export default function TestimonialsManager({
                   onChange={(e) =>
                     setFormData({ ...formData, content: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                   placeholder="Share your experience working with this professional..."
                   rows={4}
                   required
@@ -442,14 +442,14 @@ export default function TestimonialsManager({
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                  className="px-4 py-2 border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-50 cursor-pointer text-sm font-semibold"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                  className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 cursor-pointer text-sm font-semibold shadow-sm hover:shadow"
                 >
                   {editingTestimonial ? "Update" : "Add"} Testimonial
                 </button>

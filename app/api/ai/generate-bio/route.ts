@@ -40,49 +40,55 @@ export async function POST(request: NextRequest) {
 
     console.log("🔑 [DEBUG] Loaded Key:", GEMINI_API_KEY ? `${GEMINI_API_KEY.length} chars, starts with "${GEMINI_API_KEY.slice(0, 5)}", ends with "${GEMINI_API_KEY.slice(-5)}"` : "undefined");
 
+    let generatedText = "";
     if (GEMINI_API_KEY) {
-      // Call Gemini 1.5 Flash API
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_API_KEY}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  {
-                    text: `Generate a professional, warm, and engaging bio (exactly 2 to 3 sentences, maximum 45 words) suitable for a digital business card. The person's name is "${title}"${
-                      subtitle ? ` and their role/profession is "${subtitle}"` : ""
-                    }. Do not include quotes, greetings, placeholders, or intro text. Just return the bio text directly.`,
-                  },
-                ],
-              },
-            ],
-            generationConfig: {
-              temperature: 0.7,
-              maxOutputTokens: 4096,
+      try {
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash-lite:generateContent`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-goog-api-key": GEMINI_API_KEY,
             },
-          }),
-        }
-      );
+            body: JSON.stringify({
+              contents: [
+                {
+                  parts: [
+                    {
+                      text: `Generate a professional, warm, and engaging bio (exactly 2 to 3 sentences, maximum 45 words) suitable for a digital business card. The person's name is "${title}"${
+                        subtitle ? ` and their role/profession is "${subtitle}"` : ""
+                      }. Do not include quotes, greetings, placeholders, or intro text. Just return the bio text directly.`,
+                    },
+                  ],
+                },
+              ],
+              generationConfig: {
+                temperature: 0.7,
+                maxOutputTokens: 4096,
+              },
+            }),
+          }
+        );
 
-      if (response.ok) {
-        const data = await response.json();
-        const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-        if (generatedText) {
-          return NextResponse.json({ success: true, bio: generatedText });
+        if (response.ok) {
+          const data = await response.json();
+          generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "";
+        } else {
+          const errData = await response.json().catch(() => ({}));
+          console.error("❌ Gemini API request failed:", {
+            status: response.status,
+            statusText: response.statusText,
+            error: errData,
+          });
         }
-      } else {
-        const errData = await response.json().catch(() => ({}));
-        console.error("❌ Gemini API request failed:", {
-          status: response.status,
-          statusText: response.statusText,
-          error: errData,
-        });
+      } catch (e: any) {
+        console.error("❌ Gemini API request threw error:", e.message || e);
       }
+    }
+
+    if (generatedText) {
+      return NextResponse.json({ success: true, bio: generatedText });
     }
 
     // Fallback template-based generator if Gemini fails or API key is not configured

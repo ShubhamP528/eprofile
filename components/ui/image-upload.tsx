@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface ImageUploadProps {
   value?: string;
@@ -77,7 +77,12 @@ export default function ImageUpload({
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [compressedSize, setCompressedSize] = useState<string | null>(null);
+  const [imageError, setImageError] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setImageError(false);
+  }, [value]);
 
   const handleFileSelect = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -137,27 +142,57 @@ export default function ImageUpload({
   };
 
   return (
-    <div className={`space-y-3 ${className}`}>
-      {/* Current Image Preview */}
-      {value && (
-        <div className="relative inline-block">
-          <img
-            src={value}
-            alt="Profile"
-            className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-2 border-gray-200"
-          />
+    <div className={`flex flex-col sm:flex-row items-center gap-5 sm:gap-6 ${className}`}>
+      {/* Profile Image / Initials Slot */}
+      <div className="relative group shrink-0">
+        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-indigo-150 bg-slate-50 shadow-sm transition-all duration-300 group-hover:border-indigo-300">
+          {value && !imageError ? (
+            <img
+              src={value}
+              alt="Profile"
+              className="w-full h-full object-cover"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-indigo-50 to-violet-100 flex items-center justify-center text-indigo-500 animate-pulse">
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+          )}
+        </div>
+
+        {/* Delete button (only if image is active and has no error) */}
+        {value && !imageError && (
           <button
             type="button"
             onClick={handleRemove}
-            className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-red-600 transition-colors"
+            className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors shadow-sm cursor-pointer z-20"
+            title="Remove Photo"
           >
-            ×
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
-        </div>
-      )}
+        )}
 
-      {/* Upload Button */}
-      <div>
+        {/* Upload Trigger overlay badge */}
+        <button
+          type="button"
+          onClick={() => fileInputRef.current?.click()}
+          disabled={uploading}
+          className="absolute -bottom-1 -right-1 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center hover:bg-indigo-700 hover:scale-105 transition-all shadow-md cursor-pointer z-10 border-2 border-white"
+          title="Upload Photo"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Upload Details and Status */}
+      <div className="flex-1 space-y-2 text-center sm:text-left">
         <input
           ref={fileInputRef}
           type="file"
@@ -167,53 +202,44 @@ export default function ImageUpload({
           disabled={uploading}
         />
 
-        <button
-          type="button"
-          onClick={() => fileInputRef.current?.click()}
-          disabled={uploading}
-          className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {uploading ? (
-            <>
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
-              <span>Compressing...</span>
-            </>
-          ) : (
-            <>
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                />
-              </svg>
-              <span>{value ? "Change Image" : placeholder}</span>
-            </>
+        <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-3">
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={uploading}
+            className="px-4 py-2 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shadow-sm"
+          >
+            {uploading ? "Compressing..." : value ? "Change Photo" : placeholder}
+          </button>
+
+          {value && (
+            <button
+              type="button"
+              onClick={handleRemove}
+              className="px-4 py-2 border border-red-200 rounded-xl text-xs font-bold text-red-600 bg-white hover:bg-red-50 transition-all focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer shadow-sm"
+            >
+              Remove Photo
+            </button>
           )}
-        </button>
-      </div>
+        </div>
 
-      {/* Error Message */}
-      {error && <p className="text-sm text-red-600">{error}</p>}
+        {/* Error message */}
+        {error && <p className="text-xs font-semibold text-red-600 mt-1">{error}</p>}
 
-      {/* Compressed Size Display */}
-      {compressedSize && (
-        <p className="text-xs text-green-600">
-          ✓ Image compressed to {compressedSize}
+        {/* Compressed size verification check */}
+        {compressedSize && (
+          <p className="text-xs font-semibold text-emerald-600 flex items-center justify-center sm:justify-start gap-1">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Processed image size: {compressedSize}</span>
+          </p>
+        )}
+
+        <p className="text-[10px] text-slate-400 font-medium">
+          Images are automatically optimized. Recommended size: Square aspect ratio, under 5MB.
         </p>
-      )}
-
-      {/* Help Text */}
-      <p className="text-xs text-gray-500">
-        Images are automatically compressed to reduce size. Recommended: Square
-        image, max 5MB original size.
-      </p>
+      </div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function Loading({
   const Spinner = ({ className: spinnerClassName }: { className?: string }) => (
     <div
       className={cn(
-        "animate-spin rounded-full border-2 border-gray-300 border-t-blue-600",
+        "animate-spin rounded-full border-2 border-slate-200 border-t-indigo-600",
         spinnerSizes[size],
         spinnerClassName
       )}
@@ -43,14 +43,14 @@ export default function Loading({
     if (!showMessage && !text) return null;
 
     return (
-      <p className="text-gray-600 text-sm sm:text-base mt-3 animate-pulse">
+      <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mt-3 animate-pulse">
         {text || message || "Loading..."}
       </p>
     );
   };
 
   const BrandLogo = () => (
-    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+    <div className="w-12 h-12 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center mb-4 shadow-md shadow-indigo-500/10">
       <svg
         className="w-7 h-7 text-white"
         fill="none"
@@ -60,7 +60,7 @@ export default function Loading({
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2}
+          strokeWidth={2.2}
           d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v10a1 1 0 01-1 1H8a1 1 0 01-1-1V4m0 0H5a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V5a1 1 0 00-1-1h-2"
         />
       </svg>
@@ -71,78 +71,51 @@ export default function Loading({
     return (
       <div
         className={cn(
-          "fixed inset-0 bg-gray-50 z-50 safe-area-top safe-area-bottom animate-pulse",
+          "fixed inset-0 bg-slate-50/80 backdrop-blur-md z-50 flex flex-col items-center justify-center safe-area-top safe-area-bottom",
           className
         )}
         role="dialog"
         aria-modal="true"
         aria-label="Loading content"
       >
-        {/* Full screen shimmer layout */}
-        <div className="h-full flex flex-col">
-          {/* Header shimmer */}
-          <div className="bg-white border-b border-gray-200 p-4">
-            <div className="flex items-center justify-between max-w-7xl mx-auto">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-gray-200 rounded-lg"></div>
-                <div className="w-24 h-6 bg-gray-200 rounded"></div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="w-20 h-6 bg-gray-200 rounded"></div>
-                <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
-              </div>
-            </div>
+        {/* Glow effect in background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-indigo-500/10 blur-3xl pointer-events-none" />
+
+        {/* Animated Brand Logo Container */}
+        <div className="relative flex flex-col items-center z-10 select-none">
+          {/* Logo icon */}
+          <div className="w-16 h-16 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20 mb-4 animate-pulse">
+            <svg
+              className="w-9 h-9 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.2}
+                d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v10a1 1 0 01-1 1H8a1 1 0 01-1-1V4m0 0H5a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V5a1 1 0 00-1-1h-2"
+              />
+            </svg>
           </div>
 
-          {/* Main content shimmer */}
-          <div className="flex-1 flex">
-            {/* Sidebar shimmer (desktop) */}
-            <div className="hidden lg:block w-64 bg-white border-r border-gray-200 p-6">
-              <div className="w-20 h-6 bg-gray-200 rounded mb-6"></div>
-              <div className="space-y-3">
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="flex items-center space-x-3">
-                    <div className="w-5 h-5 bg-gray-200 rounded"></div>
-                    <div className="w-16 h-4 bg-gray-200 rounded"></div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Brand Name */}
+          <h2 className="text-2xl font-extrabold bg-gradient-to-r from-slate-900 to-indigo-950 bg-clip-text text-transparent mb-1">
+            eProfile
+          </h2>
 
-            {/* Content area shimmer */}
-            <div className="flex-1 p-6 lg:p-8">
-              <div className="max-w-7xl mx-auto">
-                {/* Page title */}
-                <div className="w-48 h-8 bg-gray-200 rounded mb-8"></div>
+          {showMessage && (
+            <p className="text-slate-500 text-xs mt-3 font-semibold uppercase tracking-wider animate-pulse">
+              {message || "Loading content..."}
+            </p>
+          )}
 
-                {/* Content cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-white rounded-lg border border-gray-200 p-6"
-                    >
-                      <div className="flex items-center space-x-4 mb-4">
-                        <div className="w-12 h-12 bg-gray-200 rounded-full"></div>
-                        <div className="flex-1">
-                          <div className="w-24 h-4 bg-gray-200 rounded mb-2"></div>
-                          <div className="w-16 h-3 bg-gray-200 rounded"></div>
-                        </div>
-                      </div>
-                      <div className="space-y-3">
-                        <div className="w-full h-4 bg-gray-200 rounded"></div>
-                        <div className="w-3/4 h-4 bg-gray-200 rounded"></div>
-                        <div className="w-1/2 h-4 bg-gray-200 rounded"></div>
-                      </div>
-                      <div className="flex justify-between items-center mt-6">
-                        <div className="w-16 h-6 bg-gray-200 rounded"></div>
-                        <div className="w-20 h-8 bg-gray-200 rounded"></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          {/* Loading dot strip */}
+          <div className="flex items-center gap-1.5 mt-5">
+            <span className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+            <span className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+            <span className="w-2 h-2 bg-indigo-600 rounded-full animate-bounce"></span>
           </div>
         </div>
       </div>
@@ -166,7 +139,7 @@ export default function Loading({
     return (
       <div
         className={cn(
-          "bg-white rounded-lg shadow-sm border p-4 sm:p-6 animate-pulse",
+          "bg-white rounded-2xl border border-slate-100 shadow-sm p-4 sm:p-6 animate-pulse",
           className
         )}
         role="status"

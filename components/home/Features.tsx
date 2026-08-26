@@ -42,28 +42,36 @@ const features = [
 
 export default function Features() {
     return (
-        <div className="bg-gray-50 py-24 sm:py-32">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="mx-auto max-w-2xl lg:text-center">
-                    <h2 className="text-base font-semibold leading-7 text-blue-600">Everything you need</h2>
-                    <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <div className="relative bg-slate-50/50 py-24 sm:py-32 overflow-hidden border-y border-slate-200/40">
+            {/* Glow Blob */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
+
+            <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="mx-auto max-w-2xl lg:text-center mb-20">
+                    <h2 className="text-base font-semibold leading-7 text-indigo-600">Everything you need</h2>
+                    <p className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
                         Why Choose eProfile?
                     </p>
-                    <p className="mt-6 text-lg leading-8 text-gray-600">
+                    <p className="mt-4 text-lg text-slate-600">
                         We provide all the tools you need to create a professional online presence that converts.
                     </p>
                 </div>
-                <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-                    <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                <div className="mx-auto max-w-none">
+                    <dl className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {features.map((feature) => (
-                            <div key={feature.name} className="relative pl-16">
-                                <dt className="text-base font-semibold leading-7 text-gray-900">
-                                    <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                                        <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
-                                    </div>
+                            <div 
+                                key={feature.name} 
+                                className="relative bg-white border border-slate-200/60 rounded-2xl p-8 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1.5 transition-all duration-300 shadow-sm group"
+                            >
+                                <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 shadow-sm mb-6 group-hover:bg-gradient-to-tr group-hover:from-indigo-600 group-hover:to-violet-600 group-hover:text-white group-hover:border-indigo-600 transition-all duration-300">
+                                    <feature.icon className="h-6 w-6" aria-hidden="true" />
+                                </div>
+                                <dt className="text-lg font-bold text-slate-900 mb-2">
                                     {feature.name}
                                 </dt>
-                                <dd className="mt-2 text-base leading-7 text-gray-600">{feature.description}</dd>
+                                <dd className="text-sm text-slate-600 leading-relaxed">
+                                    {feature.description}
+                                </dd>
                             </div>
                         ))}
                     </dl>

@@ -72,7 +72,7 @@ export default function EditCardClient({ params }: EditCardClientProps) {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                         <div className="space-y-6">
                             <SkeletonBase width="14rem" height="2rem" className="mb-6" />
-                            <div className="bg-white rounded-lg shadow-sm border p-6">
+                            <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
                                 <SkeletonBase width="100%" height="20rem" />
                             </div>
                         </div>

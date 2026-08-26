@@ -21,7 +21,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-gray-100 safe-area-top z-50 transition-all duration-300">
+    <nav className="fixed top-0 left-0 right-0 bg-white/75 backdrop-blur-lg border-b border-slate-200/40 safe-area-top z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto mobile-container">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Brand */}
@@ -31,7 +31,7 @@ export default function Navbar() {
               className="flex items-center space-x-2.5 group"
               onClick={closeMobileMenu}
             >
-              <div className="w-9 h-9 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
+              <div className="w-9 h-9 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-xl flex items-center justify-center shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
                 <svg
                   className="w-5.5 h-5.5 text-white"
                   fill="none"
@@ -46,7 +46,7 @@ export default function Navbar() {
                   />
                 </svg>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 bg-clip-text text-transparent">
                 eProfile
               </span>
             </Link>
@@ -56,19 +56,19 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-2">
             <Link
               href="/"
-              className="text-base font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50/40 px-3.5 py-2 rounded-xl transition-all duration-200"
+              className="text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/30 px-3.5 py-2 rounded-xl transition-all duration-200"
             >
               Home
             </Link>
             <Link
               href="/features"
-              className="text-base font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50/40 px-3.5 py-2 rounded-xl transition-all duration-200"
+              className="text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/30 px-3.5 py-2 rounded-xl transition-all duration-200"
             >
               Features
             </Link>
             <Link
               href="/pricing"
-              className="text-base font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50/40 px-3.5 py-2 rounded-xl transition-all duration-200"
+              className="text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/30 px-3.5 py-2 rounded-xl transition-all duration-200"
             >
               Pricing
             </Link>
@@ -77,17 +77,20 @@ export default function Navbar() {
           {/* Desktop Auth Section */}
           <div className="hidden md:flex items-center space-x-4">
             {status === "loading" ? (
-              <div className="w-8 h-8 animate-spin rounded-full border-2 border-blue-600 border-t-transparent"></div>
+              <div className="flex items-center space-x-3 animate-pulse">
+                <div className="w-16 h-8 bg-slate-100 rounded-xl"></div>
+                <div className="w-24 h-9 bg-slate-100 rounded-xl"></div>
+              </div>
             ) : session ? (
               <div className="flex items-center space-x-5">
                 <Link
                   href="/dashboard"
-                  className="text-base font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50/40 px-3.5 py-2 rounded-xl transition-all duration-200"
+                  className="text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/30 px-3.5 py-2 rounded-xl transition-all duration-200"
                 >
                   Dashboard
                 </Link>
                 <div className="flex items-center space-x-2.5">
-                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center ring-2 ring-gray-100 overflow-hidden">
+                  <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center ring-2 ring-slate-100 overflow-hidden">
                     {session.user?.image ? (
                       <img
                         src={session.user.image}
@@ -96,7 +99,7 @@ export default function Navbar() {
                       />
                     ) : (
                       <svg
-                        className="w-5 h-5 text-gray-400"
+                        className="w-5 h-5 text-slate-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -108,13 +111,13 @@ export default function Navbar() {
                       </svg>
                     )}
                   </div>
-                  <span className="text-base text-gray-700 hidden lg:block">
+                  <span className="text-base text-slate-700 hidden lg:block">
                     {session.user?.name || session.user?.email}
                   </span>
                 </div>
                 <button
                   onClick={handleSignOut}
-                  className="text-base font-medium text-gray-600 hover:text-red-600 hover:bg-red-50 border border-gray-200 hover:border-red-200 px-4 py-2 rounded-xl transition cursor-pointer"
+                  className="text-base font-medium text-slate-600 hover:text-red-600 hover:bg-red-50/50 border border-slate-200/60 hover:border-red-200 px-4 py-2 rounded-xl transition cursor-pointer"
                 >
                   Sign Out
                 </button>
@@ -123,13 +126,13 @@ export default function Navbar() {
               <div className="flex items-center space-x-3">
                 <Link
                   href="/auth/signin"
-                  className="text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 border border-transparent hover:border-gray-200 px-4 py-2 rounded-xl transition"
+                  className="text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/30 border border-transparent hover:border-slate-200/60 px-4 py-2 rounded-xl transition"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold px-5 py-2.5 rounded-xl hover:from-blue-700 hover:to-indigo-700 shadow-md shadow-blue-600/10 hover:shadow-lg hover:shadow-blue-600/20 hover:-translate-y-0.5 transition-all duration-200"
+                  className="inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-base font-semibold px-5 py-2.5 rounded-xl hover:from-indigo-700 hover:to-violet-700 shadow-md shadow-indigo-600/10 hover:shadow-lg hover:shadow-indigo-600/20 hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Get Started
                 </Link>
@@ -206,13 +209,14 @@ export default function Navbar() {
 
               {/* Auth Section */}
               {status === "loading" ? (
-                <div className="flex justify-center py-3">
-                  <div className="w-6 h-6 animate-spin rounded-full border-2 border-blue-600 border-t-transparent"></div>
+                <div className="border-t border-slate-100 pt-4 mt-3 space-y-3 animate-pulse px-3">
+                  <div className="w-full h-10 bg-slate-100 rounded-xl"></div>
+                  <div className="w-full h-10 bg-slate-100 rounded-xl"></div>
                 </div>
               ) : session ? (
-                <div className="border-t border-gray-200 pt-3 mt-3">
+                <div className="border-t border-slate-100 pt-3 mt-3">
                   <div className="flex items-center px-3 py-2">
-                    <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mr-3">
                       {session.user?.image ? (
                         <img
                           src={session.user.image}
@@ -221,7 +225,7 @@ export default function Navbar() {
                         />
                       ) : (
                         <svg
-                          className="w-5 h-5 text-gray-400"
+                          className="w-5 h-5 text-slate-400"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -234,17 +238,17 @@ export default function Navbar() {
                       )}
                     </div>
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-slate-900">
                         {session.user?.name || "User"}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-slate-500">
                         {session.user?.email}
                       </div>
                     </div>
                   </div>
                   <Link
                     href="/dashboard"
-                    className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md touch-target"
+                    className="block px-3 py-3 text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-xl touch-target"
                     onClick={closeMobileMenu}
                   >
                     Dashboard
@@ -254,23 +258,23 @@ export default function Navbar() {
                       handleSignOut();
                       closeMobileMenu();
                     }}
-                    className="block w-full text-left px-3 py-3 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md touch-target"
+                    className="block w-full text-left px-3 py-3 text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-xl touch-target"
                   >
                     Sign Out
                   </button>
                 </div>
               ) : (
-                <div className="border-t border-gray-200 pt-3 mt-3 space-y-2">
+                <div className="border-t border-slate-100 pt-3 mt-3 space-y-2">
                   <Link
                     href="/auth/signin"
-                    className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md touch-target"
+                    className="block px-3 py-3 text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-xl touch-target"
                     onClick={closeMobileMenu}
                   >
                     Sign In
                   </Link>
                   <Link
                     href="/auth/signup"
-                    className="block mx-3 py-3 px-4 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md text-center touch-target"
+                    className="block mx-3 py-3 px-4 text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 rounded-xl text-center touch-target"
                     onClick={closeMobileMenu}
                   >
                     Get Started

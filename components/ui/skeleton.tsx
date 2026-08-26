@@ -25,7 +25,7 @@ export function Skeleton({ className }: SkeletonProps) {
 // Card skeleton for loading card lists
 export function CardSkeleton() {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 animate-pulse">
+    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 animate-pulse">
       <div className="flex items-center space-x-4 mb-4">
         <Skeleton className="w-12 h-12 rounded-full" />
         <div className="flex-1 space-y-2">
@@ -78,7 +78,7 @@ export function TableRowSkeleton() {
 // List item skeleton for loading lists
 export function ListItemSkeleton() {
   return (
-    <div className="flex items-center space-x-4 p-4 bg-white rounded-lg border border-gray-200 animate-pulse">
+    <div className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm animate-pulse">
       <Skeleton className="w-10 h-10 rounded-full" />
       <div className="flex-1 space-y-2">
         <Skeleton className="h-4 w-2/3" />
@@ -92,7 +92,7 @@ export function ListItemSkeleton() {
 // Analytics card skeleton
 export function AnalyticsCardSkeleton() {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 animate-pulse">
+    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 animate-pulse">
       <div className="flex items-center justify-between mb-4">
         <Skeleton className="h-5 w-24" />
         <Skeleton className="h-8 w-8 rounded" />

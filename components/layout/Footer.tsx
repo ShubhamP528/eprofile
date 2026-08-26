@@ -2,18 +2,46 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="bg-white border-t border-gray-200 py-12">
+        <footer className="bg-white border-t border-slate-100 py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                    {/* Brand Info */}
+                    <div className="col-span-2 md:col-span-1">
+                        <Link href="/" className="flex items-center space-x-2.5 mb-4 group">
+                            <div className="w-8 h-8 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
+                                <svg
+                                    className="w-4.5 h-4.5 text-white"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2.2}
+                                        d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v10a1 1 0 01-1 1H8a1 1 0 01-1-1V4m0 0H5a1 1 0 00-1 1v14a1 1 0 001 1h14a1 1 0 001-1V5a1 1 0 00-1-1h-2"
+                                    />
+                                </svg>
+                            </div>
+                            <span className="text-lg font-bold bg-gradient-to-r from-slate-900 to-indigo-950 bg-clip-text text-transparent">
+                                eProfile
+                            </span>
+                        </Link>
+                        <p className="text-sm text-slate-500 mb-6 leading-relaxed">
+                            Build your professional digital identity in minutes. Share your contact info, social links, and portfolio with a single link.
+                        </p>
+                    </div>
+
+                    {/* Columns */}
                     <div>
-                        <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
+                        <h3 className="text-xs font-semibold text-slate-900 tracking-wider uppercase mb-4">
                             Product
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3">
                             <li>
                                 <Link
                                     href="/features"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Features
                                 </Link>
@@ -21,7 +49,7 @@ export default function Footer() {
                             <li>
                                 <Link
                                     href="/pricing"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Pricing
                                 </Link>
@@ -29,7 +57,7 @@ export default function Footer() {
                             <li>
                                 <Link
                                     href="/dashboard"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Dashboard
                                 </Link>
@@ -38,14 +66,14 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
+                        <h3 className="text-xs font-semibold text-slate-900 tracking-wider uppercase mb-4">
                             Company
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3">
                             <li>
                                 <Link
                                     href="/about"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     About Us
                                 </Link>
@@ -53,7 +81,7 @@ export default function Footer() {
                             <li>
                                 <Link
                                     href="/business-info"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Business Info
                                 </Link>
@@ -61,7 +89,7 @@ export default function Footer() {
                             <li>
                                 <Link
                                     href="/contact"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Contact
                                 </Link>
@@ -70,14 +98,14 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
+                        <h3 className="text-xs font-semibold text-slate-900 tracking-wider uppercase mb-4">
                             Legal
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3">
                             <li>
                                 <Link
                                     href="/privacy"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Privacy Policy
                                 </Link>
@@ -85,7 +113,7 @@ export default function Footer() {
                             <li>
                                 <Link
                                     href="/terms"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Terms of Service
                                 </Link>
@@ -93,7 +121,7 @@ export default function Footer() {
                             <li>
                                 <Link
                                     href="/refund"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Refund Policy
                                 </Link>
@@ -101,7 +129,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="/sitemap.xml"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Sitemap
                                 </a>
@@ -110,14 +138,14 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
+                        <h3 className="text-xs font-semibold text-slate-900 tracking-wider uppercase mb-4">
                             Support
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3">
                             <li>
                                 <a
                                     href="mailto:support@eprofile.cv"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Help Center
                                 </a>
@@ -125,7 +153,7 @@ export default function Footer() {
                             <li>
                                 <a
                                     href="mailto:support@eprofile.cv"
-                                    className="text-base text-gray-500 hover:text-gray-900"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Contact Support
                                 </a>
@@ -134,33 +162,33 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-200 pt-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-base text-gray-400">
+                <div className="border-t border-slate-200/50 pt-8 mt-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-xs text-slate-400">
                             © {new Date().getFullYear()} eProfile. All rights reserved.
                         </p>
-                        <div className="flex space-x-6 mt-4 md:mt-0">
+                        <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
                             <Link
                                 href="/privacy"
-                                className="text-gray-400 hover:text-gray-500"
+                                className="text-xs text-slate-400 hover:text-indigo-600 transition-colors"
                             >
                                 Privacy
                             </Link>
                             <Link
                                 href="/terms"
-                                className="text-gray-400 hover:text-gray-500"
+                                className="text-xs text-slate-400 hover:text-indigo-600 transition-colors"
                             >
                                 Terms
                             </Link>
                             <Link
                                 href="/refund"
-                                className="text-gray-400 hover:text-gray-500"
+                                className="text-xs text-slate-400 hover:text-indigo-600 transition-colors"
                             >
                                 Refunds
                             </Link>
                             <a
                                 href="/sitemap.xml"
-                                className="text-gray-400 hover:text-gray-500"
+                                className="text-xs text-slate-400 hover:text-indigo-600 transition-colors"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

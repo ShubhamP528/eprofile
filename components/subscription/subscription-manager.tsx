@@ -68,7 +68,7 @@ export default function SubscriptionManager() {
 
   if (loading) {
     return (
-      <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 sm:p-6">
         <div className="animate-pulse">
           <div className="h-4 bg-gray-200 rounded w-1/2 sm:w-1/4 mb-4"></div>
           <div className="h-6 sm:h-8 bg-gray-200 rounded w-3/4 sm:w-1/2 mb-4"></div>
@@ -90,7 +90,7 @@ export default function SubscriptionManager() {
   if (!subscription) {
     // Still loading or no data yet, show loading state instead of error
     return (
-      <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 sm:p-6">
         <div className="animate-pulse">
           <div className="h-4 bg-gray-200 rounded w-1/2 sm:w-1/4 mb-4"></div>
           <div className="h-6 sm:h-8 bg-gray-200 rounded w-3/4 sm:w-1/2 mb-4"></div>
@@ -105,7 +105,7 @@ export default function SubscriptionManager() {
   const expiryDate = subscription.expiry ? new Date(subscription.expiry) : null;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
+    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 sm:p-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6 space-y-3 sm:space-y-0">
         <div className="flex-1">
           <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
@@ -117,8 +117,10 @@ export default function SubscriptionManager() {
         </div>
         <div className="flex items-center space-x-2 shrink-0">
           <div
-            className={`px-3 py-1 rounded-full text-sm font-medium ${
-              isPro ? "bg-blue-100 text-blue-800" : "bg-gray-100 text-gray-800"
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold ring-1 ${
+              isPro 
+                ? "bg-indigo-50 text-indigo-700 ring-indigo-600/10" 
+                : "bg-slate-50 text-slate-700 ring-slate-500/10"
             }`}
           >
             {subscription.plan} Plan
@@ -179,19 +181,19 @@ export default function SubscriptionManager() {
               </p>
             )}
 
-            <div className="bg-blue-50 p-3 sm:p-4 rounded-lg mb-4">
-              <h4 className="font-medium text-blue-900 mb-2 text-sm sm:text-base">
+            <div className="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100/50 mb-6">
+              <h4 className="font-bold text-indigo-950 mb-3 text-sm">
                 Pro Features Unlocked:
               </h4>
-              <ul className="text-xs sm:text-sm text-blue-800 space-y-1 grid grid-cols-1 sm:grid-cols-2 gap-1">
-                <li>• Unlimited eProfiles</li>
-                <li>• All premium templates</li>
-                <li>• Services showcase</li>
-                <li>• Portfolio gallery</li>
-                <li>• Payment integration</li>
-                <li>• Advanced analytics</li>
-                <li>• Custom domain support</li>
-                <li>• Priority support</li>
+              <ul className="text-xs text-indigo-900 space-y-2 grid grid-cols-1 sm:grid-cols-2 gap-1 font-medium">
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Unlimited eProfiles</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>All premium templates</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Services showcase</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Portfolio gallery</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Payment integration</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Advanced analytics</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Custom domain support</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Priority support</li>
               </ul>
             </div>
 
@@ -220,36 +222,37 @@ export default function SubscriptionManager() {
               <span className="text-gray-700 font-medium">Free Plan</span>
             </div>
 
-            <div className="bg-yellow-50 p-3 sm:p-4 rounded-lg mb-4">
-              <h4 className="font-medium text-yellow-900 mb-2 text-sm sm:text-base">
+            <div className="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100/50 mb-6">
+              <h4 className="font-bold text-indigo-950 mb-3 text-sm">
                 Upgrade to Pro to unlock:
               </h4>
-              <ul className="text-xs sm:text-sm text-yellow-800 space-y-1 grid grid-cols-1 sm:grid-cols-2 gap-1">
-                <li>• Unlimited eProfiles</li>
-                <li>• Premium templates</li>
-                <li>• Services & portfolio showcase</li>
-                <li>• Payment integration</li>
-                <li>• Advanced analytics</li>
-                <li>• Custom domain support</li>
-                <li>• Remove eProfile branding</li>
+              <ul className="text-xs text-indigo-900 space-y-2 grid grid-cols-1 sm:grid-cols-2 gap-1 font-medium">
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Unlimited eProfiles</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Premium templates</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Services & portfolio</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Payment integration</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Advanced analytics</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Custom domain support</li>
+                <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2 shrink-0"></span>Remove eProfile branding</li>
               </ul>
             </div>
 
-            <div className="bg-gray-50 p-3 sm:p-4 rounded-lg mb-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-2 sm:space-y-0">
+            <div className="bg-gradient-to-r from-slate-900 to-indigo-950 p-5 rounded-2xl mb-6 text-white shadow-md relative overflow-hidden group">
+              <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-white/5 rounded-full blur-xl group-hover:scale-110 transition-transform"></div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 relative z-10">
                 <div>
-                  <h4 className="font-medium text-gray-900 text-sm sm:text-base">
-                    Pro Plan
+                  <h4 className="font-bold text-white text-base">
+                    Pro Plan Access
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-600">
-                    ₹299 per month
+                  <p className="text-xs text-indigo-200 mt-1">
+                    Billed monthly. Cancel anytime.
                   </p>
                 </div>
-                <div className="text-left sm:text-right">
-                  <p className="text-xl sm:text-2xl font-bold text-gray-900">
+                <div className="text-left sm:text-right flex items-baseline gap-1">
+                  <p className="text-2xl sm:text-3xl font-extrabold text-white">
                     ₹299
                   </p>
-                  <p className="text-xs sm:text-sm text-gray-500">/month</p>
+                  <p className="text-xs text-indigo-200">/month</p>
                 </div>
               </div>
             </div>
@@ -260,7 +263,7 @@ export default function SubscriptionManager() {
               onSuccess={handlePaymentSuccess}
               onError={handlePaymentError}
             >
-              <div className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 font-medium text-center text-sm sm:text-base">
+              <div className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white py-3.5 px-6 rounded-xl font-bold text-sm shadow-md shadow-indigo-600/10 hover:shadow-lg hover:-translate-y-0.5 transition-all disabled:opacity-50 text-center cursor-pointer">
                 <span className="hidden sm:inline">
                   Upgrade to Pro - ₹299/month
                 </span>

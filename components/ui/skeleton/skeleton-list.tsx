@@ -21,7 +21,7 @@ export function SkeletonList({
   const renderSimpleItem = (index: number) => (
     <div
       key={index}
-      className="flex items-center space-x-4 p-4 bg-white rounded-lg border border-gray-200"
+      className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm"
     >
       {showAvatar && <SkeletonBase className="w-10 h-10" rounded="full" />}
       <div className="flex-1 space-y-2">
@@ -35,7 +35,7 @@ export function SkeletonList({
   const renderDetailedItem = (index: number) => (
     <div
       key={index}
-      className="flex items-start space-x-4 p-6 bg-white rounded-lg border border-gray-200"
+      className="flex items-start space-x-4 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm"
     >
       {showAvatar && <SkeletonBase className="w-12 h-12" rounded="full" />}
       <div className="flex-1 space-y-3">
@@ -93,7 +93,7 @@ export function SkeletonList({
     return (
       <div
         className={cn(
-          "bg-white rounded-lg border border-gray-200 overflow-hidden",
+          "bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm",
           className
         )}
       >

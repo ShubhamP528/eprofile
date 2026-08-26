@@ -116,7 +116,7 @@ export default function PaymentHistoryTable({
     const planName = plan === "PRO" ? "Pro" : "Standard";
     const colorClass =
       plan === "PRO"
-        ? "bg-blue-100 text-blue-800"
+        ? "bg-indigo-50 text-indigo-700 ring-1 ring-indigo-600/10"
         : "bg-purple-100 text-purple-800";
 
     return (
@@ -232,7 +232,7 @@ export default function PaymentHistoryTable({
         </p>
         <button
           onClick={onRefresh}
-          className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+          className="inline-flex items-center px-4 py-2 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 transition-all cursor-pointer shadow-sm"
         >
           Refresh
         </button>
@@ -244,7 +244,7 @@ export default function PaymentHistoryTable({
     <div className="space-y-4">
       {/* Desktop Table */}
       <div className="hidden md:block">
-        <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+        <div className="overflow-hidden border border-slate-100 md:rounded-2xl shadow-sm">
           <table className="min-w-full divide-y divide-gray-300">
             <thead className="bg-gray-50">
               <tr>
@@ -536,7 +536,7 @@ export default function PaymentHistoryTable({
                         onClick={() => onPageChange(pageNum)}
                         className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
                           pageNum === pagination.page
-                            ? "bg-blue-600 text-white"
+                            ? "bg-indigo-600 text-white"
                             : "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                         }`}
                       >

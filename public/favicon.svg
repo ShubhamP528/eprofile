@@ -1,14 +1,20 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
   <!-- Background with rounded corners -->
-  <rect width="32" height="32" rx="6" fill="#2563eb"/>
+  <rect width="32" height="32" rx="8" fill="url(#brand-grad)"/>
   
   <!-- Simplified card icon matching navbar style -->
   <g stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
     <!-- Main card -->
-    <rect x="8" y="10" width="16" height="12" rx="1"/>
+    <rect x="8" y="10" width="16" height="12" rx="1.5"/>
     <!-- Card details -->
-    <line x1="10" y1="14" x2="14" y2="14"/>
-    <line x1="10" y1="17" x2="18" y2="17"/>
-    <line x1="10" y1="20" x2="16" y2="20"/>
+    <line x1="11" y1="14" x2="15" y2="14"/>
+    <line x1="11" y1="17" x2="21" y2="17"/>
+    <line x1="11" y1="20" x2="18" y2="20"/>
   </g>
 </svg>

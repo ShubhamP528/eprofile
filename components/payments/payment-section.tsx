@@ -81,7 +81,7 @@ export default function PaymentSection({ card }: PaymentSectionProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border p-6">
+    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
       <div className="text-center mb-6">
         <h3 className="text-xl font-semibold text-gray-900 mb-2">
           Make a Payment
@@ -103,7 +103,7 @@ export default function PaymentSection({ card }: PaymentSectionProps) {
             value={selectedAmount}
             onChange={(e) => setSelectedAmount(e.target.value)}
             placeholder="Enter amount"
-            className="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-8 pr-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
           />
         </div>
       </div>
@@ -125,7 +125,7 @@ export default function PaymentSection({ card }: PaymentSectionProps) {
         {card.razorpayId && (
           <button
             onClick={handleRazorpayPayment}
-            className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
+            className="w-full bg-indigo-600 text-white py-3 px-4 rounded-xl hover:bg-indigo-700 transition-all flex items-center justify-center space-x-2 font-semibold text-sm shadow-sm hover:shadow cursor-pointer"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM12 13.5L8.5 16 12 18.5 15.5 16 12 13.5z" />
@@ -137,7 +137,7 @@ export default function PaymentSection({ card }: PaymentSectionProps) {
         {card.paytmId && (
           <button
             onClick={handlePaytmPayment}
-            className="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 transition-colors flex items-center justify-center space-x-2"
+            className="w-full bg-indigo-600 text-white py-3 px-4 rounded-xl hover:bg-indigo-700 transition-all flex items-center justify-center space-x-2 font-semibold text-sm shadow-sm hover:shadow cursor-pointer"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
@@ -150,7 +150,7 @@ export default function PaymentSection({ card }: PaymentSectionProps) {
       {/* QR Code Modal */}
       {showQrCode && card.upiQrCode && (
         <div className="fixed inset-0 bg-opacity-20 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 max-w-sm w-full">
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-xl p-6 max-w-sm w-full">
             <div className="text-center">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">
                 Scan QR Code to Pay
@@ -159,7 +159,7 @@ export default function PaymentSection({ card }: PaymentSectionProps) {
                 <img
                   src={card.upiQrCode}
                   alt="UPI QR Code"
-                  className="w-48 h-48 mx-auto border border-gray-300 rounded-lg"
+                  className="w-48 h-48 mx-auto border border-slate-200 rounded-2xl"
                 />
               </div>
               {selectedAmount && (
@@ -172,7 +172,7 @@ export default function PaymentSection({ card }: PaymentSectionProps) {
               </p>
               <button
                 onClick={() => setShowQrCode(false)}
-                className="w-full bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition-colors"
+                className="w-full bg-slate-600 text-white py-2.5 px-4 rounded-xl hover:bg-slate-700 transition-all font-semibold cursor-pointer text-sm"
               >
                 Close
               </button>

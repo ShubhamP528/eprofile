@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import RazorpayCheckout from "@/components/payments/razorpay-checkout";
+import { Check, X, ArrowRight, HelpCircle } from "lucide-react";
 
 interface PricingPlan {
   name: string;
@@ -48,10 +49,6 @@ export default function PricingPage() {
     alert(`Payment failed: ${error}`);
   };
 
-  const handleContactSales = () => {
-    router.push("/contact");
-  };
-
   const plans = [
     {
       name: "Free",
@@ -76,7 +73,7 @@ export default function PricingPage() {
       buttonText: session ? "Go to Dashboard" : "Get Started Free",
       buttonAction: handleGetStarted,
       buttonStyle:
-        "border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
+        "border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white rounded-xl shadow-sm hover:shadow transition-all duration-200",
       popular: false,
     },
     {
@@ -105,7 +102,7 @@ export default function PricingPage() {
       useRazorpay: session ? true : false,
       plan: "STANDARD",
       amount: 14900,
-      buttonStyle: "bg-green-600 text-white hover:bg-green-700",
+      buttonStyle: "bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700 rounded-xl shadow-md shadow-indigo-600/10 hover:shadow-lg transition-all duration-200",
       popular: true,
     },
     {
@@ -133,7 +130,7 @@ export default function PricingPage() {
       useRazorpay: session ? true : false,
       plan: "PRO",
       amount: 29900,
-      buttonStyle: "bg-blue-600 text-white hover:bg-blue-700",
+      buttonStyle: "bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700 rounded-xl shadow-md shadow-indigo-600/10 hover:shadow-lg transition-all duration-200",
       popular: false,
     },
   ];
@@ -152,12 +149,12 @@ export default function PricingPage() {
     {
       question: "What payment methods do you accept?",
       answer:
-        "We accept all major credit cards, debit cards, UPI, net banking, and digital wallets through our secure payment partners.",
+        "We accept UPI, Credit/Debit cards, Net Banking, and wallets through our secure payment gateway Razorpay.",
     },
     {
       question: "Can I use my own domain name?",
       answer:
-        "Yes, Pro and Enterprise plans include custom domain support. You can use your own domain for your eProfiles.",
+        "Yes, our Pro plan includes custom domain support. You can connect your own domain to your eProfiles.",
     },
     {
       question: "Is there a setup fee?",
@@ -172,16 +169,19 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative bg-white border-b border-slate-200/50 overflow-hidden py-16 sm:py-20">
+        <div className="absolute top-[-10%] left-[-10%] w-[350px] h-[350px] rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[350px] h-[350px] rounded-full bg-violet-500/5 blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
               Simple, Transparent
-              <span className="text-blue-600"> Pricing</span>
+              <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent"> Pricing</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Choose the perfect plan for your needs. Start free and upgrade as
               you grow.
             </p>
@@ -190,151 +190,135 @@ export default function PricingPage() {
       </div>
 
       {/* Pricing Cards */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 ${
-                plan.popular ? "ring-2 ring-blue-600 scale-105" : ""
+              className={`relative bg-white rounded-3xl border border-slate-200/60 shadow-sm p-8 flex flex-col justify-between hover:shadow-xl transition-all duration-300 ${
+                plan.popular ? "ring-2 ring-indigo-600 lg:scale-[1.03] z-10" : ""
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-indigo-600 text-white px-4.5 py-1.5 rounded-full text-xs font-bold shadow-md shadow-indigo-600/10">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {plan.name}
-                </h3>
-                <div className="mb-4">
-                  <span className="text-4xl font-bold text-gray-900">
-                    {plan.price}
-                  </span>
-                  {plan.period !== "contact us" && (
-                    <span className="text-gray-500 ml-2">/{plan.period}</span>
+              <div>
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    {plan.name}
+                  </h3>
+                  <div className="mb-4">
+                    <span className="text-5xl font-extrabold text-slate-900">
+                      {plan.price}
+                    </span>
+                    {plan.period !== "contact us" && (
+                      <span className="text-slate-500 font-medium ml-1.5">/{plan.period}</span>
+                    )}
+                  </div>
+                  <p className="text-sm text-slate-500 min-h-[40px]">{plan.description}</p>
+                </div>
+
+                <div className="border-t border-slate-100 pt-6 mb-8">
+                  <h4 className="font-bold text-slate-900 text-sm mb-4">
+                    What's included:
+                  </h4>
+                  <ul className="space-y-3.5">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li
+                        key={featureIndex}
+                        className="flex items-start text-sm text-slate-600"
+                      >
+                        <Check className="w-4.5 h-4.5 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {plan.limitations.length > 0 && (
+                    <div className="mt-6 border-t border-slate-50 pt-5">
+                      <h4 className="font-bold text-slate-400 text-xs uppercase tracking-wider mb-4">
+                        Limitations:
+                      </h4>
+                      <ul className="space-y-3">
+                        {plan.limitations.map((limitation, limitationIndex) => (
+                          <li
+                            key={limitationIndex}
+                            className="flex items-start text-sm text-slate-400"
+                          >
+                            <X className="w-4.5 h-4.5 text-slate-300 mr-3 flex-shrink-0 mt-0.5" />
+                            <span>{limitation}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                 </div>
-                <p className="text-gray-600">{plan.description}</p>
               </div>
 
-              <div className="mb-8">
-                <h4 className="font-semibold text-gray-900 mb-4">
-                  What's included:
-                </h4>
-                <ul className="space-y-3">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li
-                      key={featureIndex}
-                      className="flex items-center text-sm text-gray-600"
+              <div className="mt-auto">
+                {(plan as any).useRazorpay ? (
+                  <RazorpayCheckout
+                    plan={(plan as any).plan}
+                    amount={(plan as any).amount}
+                    onSuccess={handlePaymentSuccess}
+                    onError={handlePaymentError}
+                  >
+                    <div
+                      className={`w-full py-3.5 px-6 font-bold text-sm text-center transition-colors cursor-pointer ${plan.buttonStyle}`}
                     >
-                      <svg
-                        className="w-4 h-4 text-green-500 mr-3 flex-shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {plan.limitations.length > 0 && (
-                  <div className="mt-6">
-                    <h4 className="font-semibold text-gray-900 mb-4">
-                      Limitations:
-                    </h4>
-                    <ul className="space-y-3">
-                      {plan.limitations.map((limitation, limitationIndex) => (
-                        <li
-                          key={limitationIndex}
-                          className="flex items-center text-sm text-gray-500"
-                        >
-                          <svg
-                            className="w-4 h-4 text-gray-400 mr-3 flex-shrink-0"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          {limitation}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-
-              {(plan as any).useRazorpay ? (
-                <RazorpayCheckout
-                  plan={(plan as any).plan}
-                  amount={(plan as any).amount}
-                  onSuccess={handlePaymentSuccess}
-                  onError={handlePaymentError}
-                >
-                  <div
-                    className={`w-full py-3 px-6 rounded-lg font-semibold text-center transition-colors ${plan.buttonStyle}`}
+                      {plan.buttonText}
+                    </div>
+                  </RazorpayCheckout>
+                ) : (
+                  <button
+                    onClick={plan.buttonAction}
+                    className={`w-full py-3.5 px-6 font-bold text-sm text-center transition-colors ${plan.buttonStyle}`}
                   >
                     {plan.buttonText}
-                  </div>
-                </RazorpayCheckout>
-              ) : (
-                <button
-                  onClick={plan.buttonAction}
-                  className={`w-full py-3 px-6 rounded-lg font-semibold text-center transition-colors ${plan.buttonStyle}`}
-                >
-                  {plan.buttonText}
-                </button>
-              )}
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Feature Comparison */}
-      <div className="bg-white py-16">
+      <div className="bg-white border-y border-slate-200/40 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
               Compare Plans
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg text-slate-600">
               See what's included in each plan
             </p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full">
+          <div className="overflow-x-auto rounded-2xl border border-slate-200/60 shadow-sm max-w-4xl mx-auto bg-white">
+            <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-4 px-6 font-semibold text-gray-900">
+                <tr className="bg-slate-50 border-b border-slate-200/60">
+                  <th className="text-left py-4.5 px-6 font-bold text-slate-900 text-sm">
                     Features
                   </th>
-                  <th className="text-center py-4 px-6 font-semibold text-gray-900">
+                  <th className="text-center py-4.5 px-6 font-bold text-slate-900 text-sm w-32">
                     Free
                   </th>
-                  <th className="text-center py-4 px-6 font-semibold text-gray-900">
+                  <th className="text-center py-4.5 px-6 font-bold text-slate-900 text-sm w-32">
                     Standard
                   </th>
-                  <th className="text-center py-4 px-6 font-semibold text-gray-900">
+                  <th className="text-center py-4.5 px-6 font-bold text-slate-900 text-sm w-32">
                     Pro
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-slate-100">
                 {[
                   {
                     feature: "eProfiles",
@@ -385,34 +369,22 @@ export default function PricingPage() {
                     pro: "✅",
                   },
                   {
-                    feature: "Team Management",
-                    free: "❌",
-                    standard: "❌",
-                    pro: "❌",
-                  },
-                  {
-                    feature: "API Access",
-                    free: "❌",
-                    standard: "❌",
-                    pro: "❌",
-                  },
-                  {
                     feature: "Support",
                     free: "Community",
                     standard: "Email",
                     pro: "Priority",
                   },
                 ].map((row, index) => (
-                  <tr key={index} className="hover:bg-gray-50">
-                    <td className="py-4 px-6 text-gray-900">{row.feature}</td>
-                    <td className="py-4 px-6 text-center text-gray-600">
-                      {row.free}
+                  <tr key={index} className="hover:bg-slate-50/40 transition-colors">
+                    <td className="py-4 px-6 text-sm font-semibold text-slate-700">{row.feature}</td>
+                    <td className="py-4 px-6 text-center text-sm font-medium text-slate-500">
+                      {row.free === "❌" ? <X className="w-4 h-4 text-slate-300 mx-auto" /> : row.free === "✅" ? <Check className="w-4.5 h-4.5 text-emerald-500 mx-auto" /> : row.free}
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-600">
-                      {row.standard}
+                    <td className="py-4 px-6 text-center text-sm font-medium text-slate-500">
+                      {row.standard.startsWith("✅") ? <Check className="w-4.5 h-4.5 text-emerald-500 mx-auto" /> : row.standard}
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-600">
-                      {row.pro}
+                    <td className="py-4 px-6 text-center text-sm font-medium text-slate-900 font-semibold">
+                      {row.pro.startsWith("✅") ? <Check className="w-4.5 h-4.5 text-emerald-500 mx-auto" /> : row.pro}
                     </td>
                   </tr>
                 ))}
@@ -423,54 +395,60 @@ export default function PricingPage() {
       </div>
 
       {/* FAQ Section */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-4 flex items-center justify-center gap-2.5">
+            <HelpCircle className="w-8 h-8 text-indigo-600" />
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-lg text-slate-600">
             Got questions? We've got answers.
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-sm border p-6"
+              className="bg-white rounded-2xl border border-slate-200/60 p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              <h3 className="text-base font-bold text-slate-900 mb-2">
                 {faq.question}
               </h3>
-              <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+              <p className="text-sm text-slate-500 leading-relaxed">{faq.answer}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* CTA Section */}
-      <div className="bg-blue-600 text-white py-16">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join thousands of professionals who trust eProfile for their digital
-            networking needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={handleGetStarted}
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              {session ? "Go to Dashboard" : "Start Free Trial"}
-            </button>
-            <Link
-              href="/features"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
-            >
-              View Features
-            </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 via-violet-600 to-blue-600 text-white py-16 px-8 sm:px-12 text-center shadow-xl shadow-indigo-500/10">
+          <div className="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
+
+          <div className="relative max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 leading-tight">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg text-indigo-100 mb-8 max-w-lg mx-auto">
+              Join thousands of professionals who trust eProfile for their digital
+              networking needs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button
+                onClick={handleGetStarted}
+                className="w-full sm:w-auto bg-white text-indigo-600 hover:bg-slate-50 px-8 py-3.5 rounded-xl font-bold text-sm shadow transition-all hover:-translate-y-0.5"
+              >
+                {session ? "Go to Dashboard" : "Start Free Trial"}
+              </button>
+              <Link
+                href="/features"
+                className="w-full sm:w-auto border border-white/35 hover:border-white/60 text-white hover:bg-white/10 px-8 py-3.5 rounded-xl font-bold text-sm transition-all"
+              >
+                View Features
+              </Link>
+            </div>
           </div>
         </div>
       </div>

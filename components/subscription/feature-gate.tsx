@@ -18,7 +18,7 @@ export default function FeatureGate({
 
   if (loading) {
     return (
-      <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
+      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 sm:p-6">
         <div className="animate-pulse">
           <div className="h-4 bg-gray-200 rounded w-1/2 sm:w-1/4 mb-4"></div>
           <div className="h-6 sm:h-8 bg-gray-200 rounded w-3/4 sm:w-1/2"></div>
@@ -48,7 +48,7 @@ export default function FeatureGate({
   if (!hasAccess) {
     return (
       fallback || (
-        <div className="bg-white rounded-lg shadow-sm border p-4 sm:p-6">
+        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 sm:p-6">
           <div className="text-center">
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
               <svg
@@ -75,13 +75,13 @@ export default function FeatureGate({
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/dashboard/subscription"
-                className="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm sm:text-base"
+                className="bg-indigo-600 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl hover:bg-indigo-700 transition-colors font-semibold text-sm sm:text-base cursor-pointer shadow-sm hover:shadow"
               >
                 {requiresPro ? "Upgrade to Pro" : "Upgrade Plan"}
               </Link>
               <Link
                 href="/pricing"
-                className="border border-gray-300 text-gray-700 px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
+                className="border border-slate-200 text-slate-700 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl hover:bg-slate-50 transition-colors text-sm sm:text-base cursor-pointer"
               >
                 View Pricing
               </Link>

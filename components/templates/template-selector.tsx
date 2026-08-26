@@ -84,7 +84,7 @@ const templates = [
     name: "Corporate Elite",
     description: "Professional corporate design with elegant styling",
     component: Template6,
-    isPro: true,
+    isPro: false,
   },
   {
     id: "template7",
@@ -98,7 +98,7 @@ const templates = [
     name: "Tech Innovator",
     description: "Modern tech-focused design with clean lines",
     component: Template8,
-    isPro: true,
+    isPro: false,
   },
   {
     id: "template9",
@@ -179,7 +179,7 @@ export default function TemplateSelector({
                   isLocked
                     ? "border-gray-200 bg-gray-50 opacity-75"
                     : isSelected
-                    ? "border-blue-500 bg-blue-50 cursor-pointer"
+                    ? "border-indigo-500 bg-indigo-50/50 cursor-pointer"
                     : "border-gray-200 hover:border-gray-300 bg-white cursor-pointer"
                 }`}
                 onClick={() => canSelect && onTemplateChange(template.id)}
@@ -229,7 +229,7 @@ export default function TemplateSelector({
                     <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2">
                       <h4
                         className={`responsive-text-sm font-semibold truncate ${
-                          isSelected ? "text-blue-700" : "text-gray-900"
+                          isSelected ? "text-indigo-700" : "text-gray-900"
                         }`}
                       >
                         {template.name}
@@ -242,7 +242,7 @@ export default function TemplateSelector({
                     </div>
                     <p
                       className={`responsive-text-xs leading-relaxed mb-2 ${
-                        isSelected ? "text-blue-600" : "text-gray-600"
+                        isSelected ? "text-indigo-600" : "text-gray-600"
                       }`}
                     >
                       {template.description}
@@ -251,7 +251,7 @@ export default function TemplateSelector({
                       <div className="mt-2">
                         <Link
                           href="/dashboard/subscription"
-                          className="responsive-text-xs text-blue-600 hover:text-blue-800 font-medium inline-block cursor-pointer relative z-10"
+                          className="responsive-text-xs text-indigo-600 hover:text-indigo-800 font-medium inline-block cursor-pointer relative z-10"
                         >
                           Upgrade to Pro to unlock →
                         </Link>
@@ -262,7 +262,7 @@ export default function TemplateSelector({
                   {/* Selection Indicator */}
                   <div className="shrink-0 mx-auto sm:mx-0">
                     {isSelected && !isLocked && (
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-indigo-600 rounded-full flex items-center justify-center">
                         <svg
                           className="w-3 h-3 sm:w-5 sm:h-5 text-white"
                           fill="none"
@@ -283,7 +283,7 @@ export default function TemplateSelector({
 
                 {/* Hover Effect */}
                 <div
-                  className={`absolute inset-0 bg-blue-500/5 rounded-lg transition-opacity duration-200 ${
+                  className={`absolute inset-0 bg-indigo-500/5 rounded-lg transition-opacity duration-200 ${
                     isPreview && !isSelected && !isLocked
                       ? "opacity-100"
                       : "opacity-0"

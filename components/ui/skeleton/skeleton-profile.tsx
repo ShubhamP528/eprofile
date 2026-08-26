@@ -21,7 +21,7 @@ export function SkeletonProfile({
   const renderCompact = () => (
     <div
       className={cn(
-        "flex items-center space-x-4 p-4 bg-white rounded-lg border border-gray-200",
+        "flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm",
         className
       )}
     >
@@ -37,7 +37,7 @@ export function SkeletonProfile({
   const renderDetailed = () => (
     <div
       className={cn(
-        "bg-white rounded-lg border border-gray-200 p-6",
+        "bg-white rounded-2xl border border-slate-100 shadow-sm p-6",
         className
       )}
     >
@@ -76,7 +76,7 @@ export function SkeletonProfile({
   const renderCard = () => (
     <div
       className={cn(
-        "bg-white rounded-lg border border-gray-200 overflow-hidden",
+        "bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden",
         className
       )}
     >

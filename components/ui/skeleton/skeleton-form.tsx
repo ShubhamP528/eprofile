@@ -63,7 +63,7 @@ export function SkeletonForm({
   return (
     <div
       className={cn(
-        "bg-white rounded-lg border border-gray-200 p-6",
+        "bg-white rounded-2xl border border-slate-100 p-6 shadow-sm",
         className
       )}
     >

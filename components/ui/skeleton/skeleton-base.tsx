@@ -33,20 +33,15 @@ export function SkeletonBase({
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-gray-200/80",
+        "relative overflow-hidden bg-slate-100",
         roundedClasses[rounded],
-        animate && "animate-pulse",
         className
       )}
       style={style}
     >
       {animate && (
         <div
-          className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite]"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent)",
-          }}
+          className="absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent"
         />
       )}
     </div>

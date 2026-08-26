@@ -162,8 +162,32 @@ export default function CardForm({
               onSubmit={handleSubmit(handleFormSubmit as any)}
               className="mobile-spacing"
             >
+              {/* Form Actions (Top) */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-end mb-4">
+                {onCancel && (
+                  <button
+                    type="button"
+                    onClick={onCancel}
+                    className="px-5 py-2.5 border border-gray-200 text-gray-700 font-bold rounded-xl text-xs hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all cursor-pointer order-2 sm:order-1"
+                  >
+                    Cancel
+                  </button>
+                )}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold rounded-xl text-xs hover:from-indigo-700 hover:to-violet-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md shadow-indigo-600/10 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer order-1 sm:order-2"
+                >
+                  {isSubmitting
+                    ? "Saving..."
+                    : isEditing
+                    ? "Update Card"
+                    : "Create Card"}
+                </button>
+              </div>
+
               {/* Basic Information */}
-              <div className="mobile-card bg-white rounded-lg shadow-sm border">
+              <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
                   Basic Information
                 </h3>
@@ -240,12 +264,12 @@ export default function CardForm({
                         type="button"
                         onClick={generateBioWithAI}
                         disabled={isGeneratingBio || !watchedValues.title}
-                        className="text-xs font-semibold text-blue-600 hover:text-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer"
+                        className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 cursor-pointer"
                         title={!watchedValues.title ? "Enter your Name to generate bio" : "Generate a professional bio using AI"}
                       >
                         {isGeneratingBio ? (
                           <>
-                            <svg className="animate-spin h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24">
+                            <svg className="animate-spin h-3 w-3 text-indigo-600" fill="none" viewBox="0 0 24 24">
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                             </svg>
@@ -281,7 +305,7 @@ export default function CardForm({
               </div>
 
               {/* Contact Information */}
-              <div className="mobile-card bg-white rounded-lg shadow-sm border">
+              <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
                   Contact Information
                 </h3>
@@ -341,7 +365,7 @@ export default function CardForm({
               </div>
 
               {/* Template Selection */}
-              <div className="mobile-card bg-white rounded-lg shadow-sm border">
+              <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
                 <TemplateSelector
                   selectedTemplate={watchedValues.template || "template1"}
                   onTemplateChange={(template) =>
@@ -388,7 +412,7 @@ export default function CardForm({
               )}
 
               {/* Settings */}
-              <div className="mobile-card bg-white rounded-lg shadow-sm border">
+              <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
                   Privacy Settings
                 </h3>
@@ -396,7 +420,7 @@ export default function CardForm({
                   <input
                     {...register("isPublic")}
                     type="checkbox"
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-0.5 shrink-0"
+                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-350 rounded mt-0.5 shrink-0"
                   />
                   <label
                     htmlFor="isPublic"
@@ -407,40 +431,17 @@ export default function CardForm({
                 </div>
               </div>
 
-              {/* Form Actions */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-end">
-                {onCancel && (
-                  <button
-                    type="button"
-                    onClick={onCancel}
-                    className="mobile-button border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 touch-target order-2 sm:order-1"
-                  >
-                    Cancel
-                  </button>
-                )}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="mobile-button bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed touch-target font-medium order-1 sm:order-2"
-                >
-                  {isSubmitting
-                    ? "Saving..."
-                    : isEditing
-                    ? "Update Card"
-                    : "Create Card"}
-                </button>
-              </div>
             </form>
           </div>
         </div>
 
         {/* Live Preview Section */}
         <div className="lg:sticky lg:top-6">
-          <div className="mobile-card bg-gray-50 rounded-lg">
+          <div className="mobile-card bg-slate-50/50 rounded-2xl border border-slate-100">
             <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
               Live Preview
             </h3>
-            <div className="bg-white rounded-lg shadow-sm border p-4 overflow-hidden">
+            <div className="bg-white rounded-2xl border border-slate-100 p-4 overflow-hidden shadow-sm">
               <div className="w-full">
                 <CardPreview
                   data={watchedValues}
@@ -504,7 +505,7 @@ function CardPreview({
 
   return (
     <div className="w-full">
-      <SelectedTemplate data={cardData} isPreview={true} />
+      <SelectedTemplate data={cardData} isPreview={false} />
     </div>
   );
 }

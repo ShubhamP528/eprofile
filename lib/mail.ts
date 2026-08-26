@@ -3,7 +3,7 @@ const EMAIL_FROM = process.env.EMAIL_FROM || "eProfile <onboarding@resend.dev>";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
 
 interface MailOptions {
-  to: string;
+  to: string | string[];
   subject: string;
   html: string;
 }
@@ -27,7 +27,7 @@ export async function sendEmail({ to, subject, html }: MailOptions): Promise<boo
       },
       body: JSON.stringify({
         from: EMAIL_FROM,
-        to: [to],
+        to: Array.isArray(to) ? to : [to],
         subject: subject,
         html: html,
       }),
@@ -77,7 +77,7 @@ export async function sendWelcomeEmail(toEmail: string, userName: string): Promi
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
           }
           .header {
-            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             padding: 40px 20px;
             text-align: center;
             color: #ffffff;
@@ -118,14 +118,14 @@ export async function sendWelcomeEmail(toEmail: string, userName: string): Promi
           }
           .step-number {
             font-weight: bold;
-            color: #2563eb;
+            color: #6366f1;
           }
           .button-wrapper {
             text-align: center;
             margin: 35px 0 15px 0;
           }
           .btn {
-            background-color: #2563eb;
+            background-color: #6366f1;
             color: #ffffff !important;
             padding: 14px 28px;
             text-decoration: none;
@@ -144,7 +144,7 @@ export async function sendWelcomeEmail(toEmail: string, userName: string): Promi
             color: #9ca3af;
           }
           .footer a {
-            color: #2563eb;
+            color: #6366f1;
             text-decoration: none;
           }
         </style>

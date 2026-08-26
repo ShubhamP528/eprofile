@@ -17,7 +17,7 @@ export default function DashboardLayoutClient({
   const router = useRouter();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -81,9 +81,9 @@ export default function DashboardLayoutClient({
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 bg-white shadow-xl transition-transform duration-300 ease-in-out lg:translate-x-0 lg:shadow-none lg:sticky lg:top-0 lg:h-screen",
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full",
-          isSidebarCollapsed && !isMobile ? "w-20" : "w-64"
+          "fixed inset-y-0 left-0 z-50 transition-all duration-300 ease-in-out lg:translate-x-0 lg:sticky lg:top-0 lg:h-screen lg:z-30 bg-transparent",
+          isMobileMenuOpen ? "translate-x-0 bg-white shadow-xl w-64" : "-translate-x-full lg:translate-x-0",
+          !isMobile && isSidebarCollapsed ? "w-20" : "w-64"
         )}
       >
         <Sidebar
@@ -110,8 +110,12 @@ export default function DashboardLayoutClient({
           isSidebarCollapsed={isSidebarCollapsed}
         />
 
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 scroll-smooth">
-          <div className="max-w-7xl mx-auto">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 scroll-smooth relative">
+          {/* Ambient Background Glow Blobs */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-indigo-500/5 blur-3xl pointer-events-none z-0" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-violet-500/5 blur-3xl pointer-events-none z-0" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
             {children}
           </div>
         </main>

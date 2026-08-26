@@ -3,6 +3,34 @@
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { 
+  Palette, 
+  Smartphone, 
+  Briefcase, 
+  Image, 
+  Star, 
+  CreditCard, 
+  BarChart3, 
+  Share2, 
+  TrendingUp, 
+  Zap, 
+  ShieldCheck, 
+  Check,
+  ArrowRight
+} from "lucide-react";
+
+// Icon mapping to render Lucide React components dynamically
+const iconMap = {
+  Palette,
+  Smartphone,
+  Briefcase,
+  Image,
+  Star,
+  CreditCard,
+  BarChart3,
+  Share2,
+  TrendingUp,
+};
 
 export default function FeaturesPage() {
   const { data: session } = useSession();
@@ -15,9 +43,10 @@ export default function FeaturesPage() {
       router.push("/auth/signup");
     }
   };
+
   const features = [
     {
-      icon: "🎨",
+      icon: "Palette",
       title: "Professional Templates",
       description:
         "Choose from 10 beautifully designed templates that make your eProfile stand out.",
@@ -29,7 +58,7 @@ export default function FeaturesPage() {
       ],
     },
     {
-      icon: "📱",
+      icon: "Smartphone",
       title: "Interactive Contact Buttons",
       description:
         "Make it easy for visitors to reach you with one-click contact options.",
@@ -41,7 +70,7 @@ export default function FeaturesPage() {
       ],
     },
     {
-      icon: "💼",
+      icon: "Briefcase",
       title: "Services Showcase",
       description:
         "Display your services with pricing and highlight your featured offerings.",
@@ -53,7 +82,7 @@ export default function FeaturesPage() {
       ],
     },
     {
-      icon: "🖼️",
+      icon: "Image",
       title: "Portfolio Gallery",
       description:
         "Showcase your work with images, videos, and documents in a beautiful gallery.",
@@ -65,7 +94,7 @@ export default function FeaturesPage() {
       ],
     },
     {
-      icon: "⭐",
+      icon: "Star",
       title: "Customer Testimonials",
       description:
         "Build trust with customer reviews and star ratings on your card.",
@@ -77,7 +106,7 @@ export default function FeaturesPage() {
       ],
     },
     {
-      icon: "💳",
+      icon: "CreditCard",
       title: "Payment Integration",
       description:
         "Accept payments directly through your eProfile with multiple options.",
@@ -89,7 +118,7 @@ export default function FeaturesPage() {
       ],
     },
     {
-      icon: "📊",
+      icon: "BarChart3",
       title: "Analytics Dashboard",
       description:
         "Track your card performance with detailed analytics and insights.",
@@ -101,7 +130,7 @@ export default function FeaturesPage() {
       ],
     },
     {
-      icon: "🔗",
+      icon: "Share2",
       title: "Easy Sharing",
       description:
         "Share your card effortlessly with QR codes and social media integration.",
@@ -113,7 +142,7 @@ export default function FeaturesPage() {
       ],
     },
     {
-      icon: "📈",
+      icon: "TrendingUp",
       title: "Lead Generation",
       description:
         "Capture leads directly from your card with built-in contact forms.",
@@ -127,16 +156,19 @@ export default function FeaturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative bg-white border-b border-slate-200/50 overflow-hidden py-16 sm:py-20">
+        <div className="absolute top-[-10%] left-[-10%] w-[350px] h-[350px] rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[350px] h-[350px] rounded-full bg-violet-500/5 blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
               Powerful Features for
-              <span className="text-blue-600"> Digital Success</span>
+              <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent"> Digital Success</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Everything you need to create a professional eProfile that
               converts visitors into customers.
             </p>
@@ -145,155 +177,120 @@ export default function FeaturesPage() {
       </div>
 
       {/* Features Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8"
-            >
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                {feature.description}
-              </p>
-              <ul className="space-y-2">
-                {feature.details.map((detail, detailIndex) => (
-                  <li
-                    key={detailIndex}
-                    className="flex items-center text-sm text-gray-500"
-                  >
-                    <svg
-                      className="w-4 h-4 text-green-500 mr-2 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+          {features.map((feature, index) => {
+            const IconComponent = iconMap[feature.icon as keyof typeof iconMap];
+            return (
+              <div
+                key={index}
+                className="bg-white border border-slate-200/60 rounded-2xl p-8 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-300 shadow-sm group"
+              >
+                <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 shadow-sm mb-6 group-hover:bg-gradient-to-tr group-hover:from-indigo-600 group-hover:to-violet-600 group-hover:text-white group-hover:border-indigo-600 transition-all duration-300">
+                  <IconComponent className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+                  {feature.description}
+                </p>
+                <ul className="space-y-2.5 border-t border-slate-100 pt-5">
+                  {feature.details.map((detail, detailIndex) => (
+                    <li
+                      key={detailIndex}
+                      className="flex items-center text-xs text-slate-500"
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                      <Check className="w-4 h-4 text-emerald-500 mr-2.5 flex-shrink-0" />
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
 
       {/* CTA Section */}
-      <div className="bg-blue-600 text-white py-16">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Create Your eProfile?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join thousands of professionals who have transformed their
-            networking with eProfile.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={handleGetStarted}
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              {session ? "Go to Dashboard" : "Get Started Free"}
-            </button>
-            <Link
-              href="/pricing"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
-            >
-              View Pricing
-            </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 via-violet-600 to-blue-600 text-white py-16 px-8 sm:px-12 text-center shadow-xl shadow-indigo-500/10">
+          {/* Subtle overlay circles */}
+          <div className="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
+
+          <div className="relative max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 leading-tight">
+              Ready to Create Your eProfile?
+            </h2>
+            <p className="text-lg text-indigo-100 mb-8 max-w-lg mx-auto">
+              Join thousands of professionals who have transformed their
+              networking with eProfile.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button
+                onClick={handleGetStarted}
+                className="w-full sm:w-auto bg-white text-indigo-600 hover:bg-slate-50 px-8 py-3.5 rounded-xl font-bold text-sm shadow transition-all hover:-translate-y-0.5"
+              >
+                {session ? "Go to Dashboard" : "Get Started Free"}
+              </button>
+              <Link
+                href="/pricing"
+                className="w-full sm:w-auto border border-white/35 hover:border-white/60 text-white hover:bg-white/10 px-8 py-3.5 rounded-xl font-bold text-sm transition-all"
+              >
+                View Pricing
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Feature Highlights */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Feature Highlights (Why Choose) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
             Why Choose eProfile?
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Built for professionals who want to make a lasting impression
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Built for professionals who want to make a lasting impression.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg
-                className="w-8 h-8 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
+          <div className="text-center bg-white border border-slate-200/50 p-8 rounded-2xl shadow-sm">
+            <div className="w-14 h-14 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-indigo-600">
+              <Zap className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <h3 className="text-lg font-bold text-slate-900 mb-3">
               Lightning Fast
             </h3>
-            <p className="text-gray-600">
+            <p className="text-sm text-slate-500 leading-relaxed">
               Create your professional eProfile in under 5 minutes. No technical
               skills required.
             </p>
           </div>
 
-          <div className="text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg
-                className="w-8 h-8 text-green-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+          <div className="text-center bg-white border border-slate-200/50 p-8 rounded-2xl shadow-sm">
+            <div className="w-14 h-14 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-emerald-600">
+              <Smartphone className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <h3 className="text-lg font-bold text-slate-900 mb-3">
               Always Updated
             </h3>
-            <p className="text-gray-600">
+            <p className="text-sm text-slate-500 leading-relaxed">
               Update your information anytime and it reflects instantly across
               all shared links.
             </p>
           </div>
 
-          <div className="text-center">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg
-                className="w-8 h-8 text-purple-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                />
-              </svg>
+          <div className="text-center bg-white border border-slate-200/50 p-8 rounded-2xl shadow-sm">
+            <div className="w-14 h-14 bg-violet-50 border border-violet-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-violet-600">
+              <ShieldCheck className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <h3 className="text-lg font-bold text-slate-900 mb-3">
               Secure & Reliable
             </h3>
-            <p className="text-gray-600">
+            <p className="text-sm text-slate-500 leading-relaxed">
               Your data is protected with enterprise-grade security and 99.9%
               uptime guarantee.
             </p>

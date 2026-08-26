@@ -148,7 +148,7 @@ export default function AnalyticsPage() {
             {[...Array(4)].map((_, i) => (
               <div
                 key={i}
-                className="mobile-card bg-white rounded-lg shadow-sm border"
+                className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm"
               >
                 <div className="flex items-center">
                   <SkeletonBase className="w-10 h-10 shrink-0" rounded="lg" />
@@ -164,13 +164,13 @@ export default function AnalyticsPage() {
           {/* Charts Section Skeleton */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-8">
             {/* Views Over Time Chart */}
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <SkeletonBase className="h-6 w-32 mb-4" />
               <SkeletonBase className="h-64 w-full" rounded="md" />
             </div>
 
             {/* Button Clicks Chart */}
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <SkeletonBase className="h-6 w-28 mb-4" />
               <div className="space-y-4">
                 {[...Array(4)].map((_, i) => (
@@ -189,7 +189,7 @@ export default function AnalyticsPage() {
           {/* Bottom Section Skeleton */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Top Referrers */}
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <SkeletonBase className="h-6 w-28 mb-4" />
               <div className="space-y-3">
                 {[...Array(5)].map((_, i) => (
@@ -202,7 +202,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Recent Leads */}
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <SkeletonBase className="h-6 w-24 mb-4" />
               <div className="space-y-4">
                 {[...Array(4)].map((_, i) => (
@@ -233,11 +233,11 @@ export default function AnalyticsPage() {
         <>
           {/* Summary Cards */}
           <div className="mobile-grid">
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <div className="flex items-center">
-                <div className="p-2 bg-blue-100 rounded-lg shrink-0">
+                <div className="p-2 bg-indigo-50 rounded-lg shrink-0">
                   <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -267,11 +267,11 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <div className="flex items-center">
-                <div className="p-2 bg-green-100 rounded-lg shrink-0">
+                <div className="p-2 bg-emerald-50 rounded-lg shrink-0">
                   <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-green-600"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -295,11 +295,11 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <div className="flex items-center">
-                <div className="p-2 bg-purple-100 rounded-lg shrink-0">
+                <div className="p-2 bg-indigo-50 rounded-lg shrink-0">
                   <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -323,11 +323,11 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <div className="flex items-center">
-                <div className="p-2 bg-orange-100 rounded-lg shrink-0">
+                <div className="p-2 bg-amber-50 rounded-lg shrink-0">
                   <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -355,7 +355,7 @@ export default function AnalyticsPage() {
           {/* Charts Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Views Over Time */}
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
                 Views Over Time
               </h3>
@@ -372,7 +372,7 @@ export default function AnalyticsPage() {
                       className="flex flex-col items-center flex-1"
                     >
                       <div
-                        className="w-full bg-blue-500 rounded-t min-h-[4px]"
+                        className="w-full bg-gradient-to-t from-indigo-500 to-violet-500 rounded-t min-h-[4px]"
                         style={{ height: `${height}%` }}
                         title={`${item.views} views on ${new Date(
                           item.date
@@ -391,7 +391,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Button Clicks */}
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
                 Button Clicks
               </h3>
@@ -412,9 +412,9 @@ export default function AnalyticsPage() {
                           {item.clicks}
                         </span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-slate-100 rounded-full h-2">
                         <div
-                          className="bg-blue-600 h-2 rounded-full"
+                          className="bg-gradient-to-r from-indigo-600 to-violet-600 h-2 rounded-full"
                           style={{ width: `${percentage}%` }}
                         ></div>
                       </div>
@@ -428,7 +428,7 @@ export default function AnalyticsPage() {
           {/* Bottom Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Top Referrers */}
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
                 Top Referrers
               </h3>
@@ -456,7 +456,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* Recent Leads */}
-            <div className="mobile-card bg-white rounded-lg shadow-sm border">
+            <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
               <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
                 Recent Leads
               </h3>

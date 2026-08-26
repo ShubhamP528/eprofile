@@ -53,7 +53,7 @@ export default function DashboardHeader({
                             <SubscriptionBadge className="mt-0.5" />
                         </div>
 
-                        <button className="relative h-10 w-10 rounded-full overflow-hidden ring-2 ring-white shadow-sm hover:ring-blue-100 transition-all group">
+                        <button className="relative h-10 w-10 rounded-full overflow-hidden ring-2 ring-white shadow-sm hover:ring-indigo-100 transition-all group">
                             {session?.user?.image ? (
                                 <Image
                                     src={session.user.image}
@@ -62,7 +62,7 @@ export default function DashboardHeader({
                                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
                             ) : (
-                                <div className="h-full w-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center text-blue-600 font-bold">
+                                <div className="h-full w-full bg-gradient-to-br from-indigo-100 to-violet-100 flex items-center justify-center text-indigo-600 font-bold">
                                     {session?.user?.name?.[0]?.toUpperCase() || "U"}
                                 </div>
                             )}
