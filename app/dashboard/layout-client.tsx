@@ -46,50 +46,15 @@ export default function DashboardLayoutClient({
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  // Force light background for dashboard and add debugging error listeners
+  // Force light background for dashboard
   useEffect(() => {
     document.body.style.backgroundColor = "#f9fafb";
     document.body.style.color = "#111827";
-
-    const showVisualError = (message: string, details?: string) => {
-      const errDiv = document.createElement("div");
-      errDiv.id = "mobile-debug-error-card";
-      errDiv.style.position = "fixed";
-      errDiv.style.inset = "0";
-      errDiv.style.backgroundColor = "#fef2f2";
-      errDiv.style.border = "3px solid #fca5a5";
-      errDiv.style.padding = "24px";
-      errDiv.style.zIndex = "999999";
-      errDiv.style.overflowY = "auto";
-      errDiv.style.fontFamily = "monospace";
-      errDiv.style.color = "#991b1b";
-      
-      errDiv.innerHTML = `
-        <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">⚠️ Dashboard Mobile Error</h2>
-        <p style="font-size: 14px; font-weight: bold; margin-bottom: 16px;">${message}</p>
-        <pre style="background-color: #fff; padding: 16px; border-radius: 12px; border: 1px solid #fee2e2; font-size: 11px; white-space: pre-wrap; word-break: break-all; overflow-x: auto; color: #7f1d1d;">${details || ''}</pre>
-        <button onclick="window.location.reload()" style="margin-top: 20px; background-color: #dc2626; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.2);">Reload Page</button>
-      `;
-      document.body.appendChild(errDiv);
-    };
-
-    const handleError = (event: ErrorEvent) => {
-      showVisualError(`Client Error: ${event.message}`, `At: ${event.filename}:${event.lineno}:${event.colno}\n\nStack:\n${event.error?.stack || 'No stack trace'}`);
-    };
-    const handleRejection = (event: PromiseRejectionEvent) => {
-      const reasonDetails = event.reason instanceof Error ? event.reason.stack : String(event.reason);
-      showVisualError(`Unhandled Promise Rejection`, `Reason:\n${reasonDetails}`);
-    };
-
-    window.addEventListener("error", handleError);
-    window.addEventListener("unhandledrejection", handleRejection);
 
     return () => {
       // Reset to default when leaving dashboard
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
-      window.removeEventListener("error", handleError);
-      window.removeEventListener("unhandledrejection", handleRejection);
     };
   }, []);
 
