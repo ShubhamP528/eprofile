@@ -46,15 +46,27 @@ export default function DashboardLayoutClient({
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  // Force light background for dashboard
+  // Force light background for dashboard and add debugging error listeners
   useEffect(() => {
     document.body.style.backgroundColor = "#f9fafb";
     document.body.style.color = "#111827";
+
+    const handleError = (event: ErrorEvent) => {
+      alert(`⚠️ Client Error: ${event.message}\nAt: ${event.filename}:${event.lineno}`);
+    };
+    const handleRejection = (event: PromiseRejectionEvent) => {
+      alert(`⚠️ Unhandled Rejection: ${event.reason}`);
+    };
+
+    window.addEventListener("error", handleError);
+    window.addEventListener("unhandledrejection", handleRejection);
 
     return () => {
       // Reset to default when leaving dashboard
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
+      window.removeEventListener("error", handleError);
+      window.removeEventListener("unhandledrejection", handleRejection);
     };
   }, []);
 
