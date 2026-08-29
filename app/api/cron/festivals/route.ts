@@ -184,8 +184,8 @@ export async function GET(req: NextRequest) {
         sentCount++;
       }
 
-      // Small throttle to avoid hitting Resend rate limits (approx 10 emails per second)
-      await new Promise(r => setTimeout(r, 100));
+      // Small throttle to avoid hitting Resend rate limits (approx 6-7 emails per second)
+      await new Promise(r => setTimeout(r, 150));
     }
 
     return NextResponse.json({
