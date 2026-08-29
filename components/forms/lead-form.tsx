@@ -59,6 +59,20 @@ export default function LeadForm({ cardId, cardOwnerName }: LeadFormProps) {
       const response = await apiClient.createLead(cardId, data);
 
       if (response.success) {
+        // Save visitor profile to localStorage to resolve returning visits
+        try {
+          localStorage.setItem(
+            "eprofile_visitor_profile",
+            JSON.stringify({
+              name: data.name,
+              email: data.email || null,
+              phone: data.phone || null,
+            })
+          );
+        } catch (e) {
+          console.warn("Failed to write visitor profile to localStorage:", e);
+        }
+
         setSubmitStatus("success");
         reset();
       } else {

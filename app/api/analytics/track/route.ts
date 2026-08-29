@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
+import crypto from 'crypto'
 import {
     createSuccessResponse,
     createErrorResponse,
@@ -36,11 +37,18 @@ export async function POST(request: NextRequest) {
             return createErrorResponse('Card not found or not public', 'CARD_NOT_FOUND', 404)
         }
 
+        // Generate standard session visitorId based on IP and User-Agent
+        const forwarded = request.headers.get('x-forwarded-for')
+        const ip = forwarded ? forwarded.split(',')[0].trim() : request.headers.get('x-real-ip') || '127.0.0.1'
+        const userAgent = request.headers.get('user-agent') || ''
+        const visitorId = crypto.createHash('sha256').update(`${ip}-${userAgent}`).digest('hex').slice(0, 32)
+
         // Record the button click (fire and forget for performance)
         prisma.buttonClick.create({
             data: {
                 cardId,
                 buttonType,
+                visitorId,
             }
         }).catch(error => {
             console.error('Failed to record button click:', error)

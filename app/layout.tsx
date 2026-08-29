@@ -6,6 +6,7 @@ import { SubscriptionProvider } from "@/components/providers/subscription-provid
 import ConditionalNavbar from "@/components/layout/conditional-navbar";
 import ConditionalFooter from "@/components/layout/conditional-footer";
 import StartupProvider from "@/components/providers/startup-provider";
+import TelemetryTracker from "@/components/layout/TelemetryTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,6 +78,7 @@ export default function RootLayout({
       >
         <AuthSessionProvider>
           <SubscriptionProvider>
+            <TelemetryTracker />
             <ConditionalNavbar />
             <main>{children}</main>
             <ConditionalFooter />
