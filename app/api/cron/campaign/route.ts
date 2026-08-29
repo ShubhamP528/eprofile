@@ -264,6 +264,9 @@ export async function GET(req: NextRequest) {
           });
           sentCount++;
         }
+
+        // Small throttle to avoid hitting Resend rate limits (approx 6-7 emails per second)
+        await new Promise((resolve) => setTimeout(resolve, 150));
       }
     }
 
