@@ -106,6 +106,15 @@ class ApiClient {
         return this.request('/cards/limit')
     }
 
+    async checkUsernameAvailability(username: string) {
+        return this.request(`/cards/check-username?username=${encodeURIComponent(username)}`)
+    }
+
+    // Referrals API
+    async getReferralInfo() {
+        return this.request('/referrals/me')
+    }
+
     // Leads API
     async getLeads(params?: { cardId?: string; status?: string; page?: number; limit?: number }) {
         const searchParams = new URLSearchParams()

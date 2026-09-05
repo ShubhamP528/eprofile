@@ -69,7 +69,7 @@ export default function Template9({ data, isPreview = false }: Template9Props) {
       {/* Main Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Header Section */}
-        <div className={`${isPreview ? "p-6" : "p-8"} text-center`}>
+        <div className={`${isPreview ? "p-6" : "p-6 sm:p-8"} text-center`}>
           {/* Elegant Profile Frame */}
           <div className="mx-auto mb-6 relative">
             <div className="w-24 h-24 border-4 border-amber-300 rounded-full p-1 bg-white shadow-lg">
@@ -101,7 +101,7 @@ export default function Template9({ data, isPreview = false }: Template9Props) {
           {/* Elegant Typography */}
           <h1
             className={`font-serif font-bold text-amber-900 mb-3 ${
-              isPreview ? "text-xl" : "text-4xl"
+              isPreview ? "text-xl" : "text-2xl sm:text-4xl"
             }`}
           >
             {data.title}
@@ -136,7 +136,11 @@ export default function Template9({ data, isPreview = false }: Template9Props) {
         </div>
 
         {/* Contact Information */}
-        <div className={`flex-1 ${isPreview ? "px-6 pb-6" : "px-8 pb-8"}`}>
+        <div
+          className={`flex-1 ${
+            isPreview ? "px-6 pb-6" : "px-6 sm:px-8 pb-6 sm:pb-8"
+          }`}
+        >
           <div className="space-y-4">
             {data.phone && (
               <div className="bg-white/80 border border-amber-200 rounded-lg p-4 shadow-sm">
@@ -250,7 +254,7 @@ export default function Template9({ data, isPreview = false }: Template9Props) {
 
         {/* Services Section - Full view only */}
         {!isPreview && data.services && data.services.length > 0 && (
-          <div className="px-8 pb-8 border-t border-amber-200 pt-6">
+          <div className="px-6 sm:px-8 pb-6 sm:pb-8 border-t border-amber-200 pt-6">
             <div className="text-center mb-6">
               <h3 className="text-amber-900 font-serif font-bold text-xl mb-2">
                 Professional Services
@@ -292,7 +296,7 @@ export default function Template9({ data, isPreview = false }: Template9Props) {
 
         {/* Action Buttons - Full view only */}
         {!isPreview && (
-          <div className="px-8 pb-8 space-y-4">
+          <div className="px-6 sm:px-8 pb-6 sm:pb-8 space-y-4">
             {data.phone && (
               <button className="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-white py-4 px-6 rounded-lg font-bold hover:from-amber-500 hover:to-orange-600 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg">
                 <svg

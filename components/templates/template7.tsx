@@ -68,7 +68,7 @@ export default function Template7({ data, isPreview = false }: Template7Props) {
       {/* Main Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Header Section */}
-        <div className={`${isPreview ? "p-4" : "p-8"} text-center`}>
+        <div className={`${isPreview ? "p-4" : "p-5 sm:p-8"} text-center`}>
           {/* Profile with Artistic Border */}
           <div className="mx-auto mb-4 relative">
             <div className="w-24 h-24 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 rounded-full p-1">
@@ -100,7 +100,7 @@ export default function Template7({ data, isPreview = false }: Template7Props) {
           {/* Name with Creative Typography */}
           <h1
             className={`font-extrabold text-white mb-2 tracking-wide ${
-              isPreview ? "text-lg" : "text-3xl"
+              isPreview ? "text-lg" : "text-2xl sm:text-3xl"
             }`}
             style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.3)" }}
           >
@@ -128,7 +128,11 @@ export default function Template7({ data, isPreview = false }: Template7Props) {
         </div>
 
         {/* Contact Cards with Creative Design */}
-        <div className={`flex-1 ${isPreview ? "px-4 pb-4" : "px-8 pb-8"}`}>
+        <div
+          className={`flex-1 ${
+            isPreview ? "px-4 pb-4" : "px-5 sm:px-8 pb-5 sm:pb-8"
+          }`}
+        >
           <div className="space-y-3">
             {data.phone && (
               <div className="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 transform hover:scale-105 transition-transform duration-200">
@@ -242,7 +246,7 @@ export default function Template7({ data, isPreview = false }: Template7Props) {
 
         {/* Services Section - Full view only */}
         {!isPreview && data.services && data.services.length > 0 && (
-          <div className="px-8 pb-8">
+          <div className="px-5 sm:px-8 pb-5 sm:pb-8">
             <h3 className="text-white font-bold text-lg mb-4 flex items-center">
               <div className="w-3 h-3 bg-yellow-400 rounded-full mr-3 animate-pulse"></div>
               Creative Services
@@ -278,7 +282,7 @@ export default function Template7({ data, isPreview = false }: Template7Props) {
 
         {/* Action Buttons - Full view only */}
         {!isPreview && (
-          <div className="px-8 pb-8 space-y-3">
+          <div className="px-5 sm:px-8 pb-5 sm:pb-8 space-y-3">
             {data.phone && (
               <button className="w-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white py-4 px-6 rounded-2xl font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
                 <svg

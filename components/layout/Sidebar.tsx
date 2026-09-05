@@ -12,7 +12,8 @@ import {
     ChevronLeft,
     ChevronRight,
     LogOut,
-    Settings
+    Settings,
+    Gift
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
@@ -27,6 +28,7 @@ const navigation = [
     { name: "My Cards", href: "/dashboard", icon: LayoutDashboard },
     { name: "Leads", href: "/dashboard/leads", icon: Users },
     { name: "Analytics", href: "/dashboard/analytics", icon: BarChart3 },
+    { name: "Refer & Earn", href: "/dashboard/referrals", icon: Gift },
     { name: "Subscription", href: "/dashboard/subscription", icon: CreditCard },
     { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];

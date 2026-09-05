@@ -79,7 +79,7 @@ export default function Template5({ data, isPreview = false }: Template5Props) {
       {/* Main Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Header Section */}
-        <div className={`${isPreview ? "p-4" : "p-8"} flex-1`}>
+        <div className={`${isPreview ? "p-4" : "p-5 sm:p-8"} flex-1`}>
           {/* Profile Image */}
           {data.profileImage && (
             <div className="mb-6 flex justify-center">
@@ -96,8 +96,8 @@ export default function Template5({ data, isPreview = false }: Template5Props) {
           {/* Name and Title */}
           <div className="mb-6">
             <h1
-              className={`font-bold text-gray-900 leading-tight mb-2 text-center ${
-                isPreview ? "text-xl" : "text-4xl"
+              className={`font-bold text-gray-900 leading-tight mb-2 text-center break-words ${
+                isPreview ? "text-xl" : "text-2xl sm:text-4xl"
               }`}
             >
               {data.title}
@@ -144,10 +144,10 @@ export default function Template5({ data, isPreview = false }: Template5Props) {
                     />
                   </svg>
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-gray-500 text-sm font-medium">Phone</p>
                   <p
-                    className={`text-gray-900 font-semibold ${
+                    className={`text-gray-900 font-semibold break-words ${
                       isPreview ? "text-sm" : "text-base"
                     }`}
                   >
@@ -229,7 +229,7 @@ export default function Template5({ data, isPreview = false }: Template5Props) {
         <div className="relative">
           {/* Services Section - Full view only */}
           {!isPreview && data.services && data.services.length > 0 && (
-            <div className="px-8 py-6 bg-gradient-to-r from-emerald-50 to-teal-50">
+            <div className="px-5 sm:px-8 py-6 bg-gradient-to-r from-emerald-50 to-teal-50">
               <h3 className="text-gray-900 font-bold text-lg mb-4 flex items-center">
                 <div className="w-3 h-3 bg-emerald-500 rounded-full mr-3"></div>
                 Services
@@ -265,7 +265,7 @@ export default function Template5({ data, isPreview = false }: Template5Props) {
 
           {/* Action Buttons - Full view only */}
           {!isPreview && (
-            <div className="px-8 py-6 bg-gradient-to-r from-teal-600 to-cyan-600">
+            <div className="px-5 sm:px-8 py-6 bg-gradient-to-r from-teal-600 to-cyan-600">
               <div className="grid grid-cols-1 gap-3">
                 {data.phone && (
                   <button className="w-full bg-white text-teal-700 py-3 px-6 rounded-lg font-bold hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center space-x-2 shadow-lg">

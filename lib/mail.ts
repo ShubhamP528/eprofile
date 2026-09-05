@@ -52,7 +52,7 @@ export async function sendEmail({ to, subject, html }: MailOptions): Promise<boo
  * Sends a premium onboarding/welcome email to a newly registered user.
  */
 export async function sendWelcomeEmail(toEmail: string, userName: string): Promise<boolean> {
-  const dashboardUrl = `${APP_URL}/dashboard`;
+  const dashboardUrl = `${APP_URL}/dashboard/cards/new`;
   const welcomeHtml = `
     <!DOCTYPE html>
     <html>

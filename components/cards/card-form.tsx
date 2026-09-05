@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -11,6 +11,9 @@ import TestimonialsManager from "../testimonials/testimonials-manager";
 import PaymentManager from "../payments/payment-manager";
 import FeatureGate from "../subscription/feature-gate";
 import ImageUpload from "../ui/image-upload";
+import { apiClient } from "@/lib/api-client";
+
+const USERNAME_FORMAT_REGEX = /^[a-zA-Z0-9_-]+$/;
 
 const cardFormSchema = z.object({
   username: z
@@ -71,6 +74,11 @@ export default function CardForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isGeneratingBio, setIsGeneratingBio] = useState(false);
+  const [usernameStatus, setUsernameStatus] = useState<
+    "idle" | "checking" | "available" | "taken"
+  >("idle");
+  const usernameCheckTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const latestUsernameRef = useRef<string>("");
 
   const generateBioWithAI = async () => {
     const title = watchedValues.title;
@@ -125,6 +133,52 @@ export default function CardForm({
 
   const watchedValues = watch();
 
+  // Live username-availability check while typing, so a taken username is caught
+  // before the user fills out the rest of the form instead of only on submit.
+  useEffect(() => {
+    if (isEditing) return; // username is locked when editing an existing card
+
+    const username = watchedValues.username;
+    if (usernameCheckTimer.current) clearTimeout(usernameCheckTimer.current);
+
+    if (
+      !username ||
+      username.length < 3 ||
+      username.length > 30 ||
+      !USERNAME_FORMAT_REGEX.test(username)
+    ) {
+      setUsernameStatus("idle");
+      return;
+    }
+
+    setUsernameStatus("checking");
+    latestUsernameRef.current = username;
+    usernameCheckTimer.current = setTimeout(async () => {
+      try {
+        const response = await apiClient.checkUsernameAvailability(username);
+        // Ignore this response if the user has since typed something else -
+        // a slower earlier request can otherwise resolve after a faster,
+        // newer one and clobber the correct status with stale data.
+        if (latestUsernameRef.current !== username) return;
+        if (response.success && response.data) {
+          setUsernameStatus(
+            (response.data as { available: boolean }).available
+              ? "available"
+              : "taken"
+          );
+        } else {
+          setUsernameStatus("idle");
+        }
+      } catch {
+        if (latestUsernameRef.current === username) setUsernameStatus("idle");
+      }
+    }, 500);
+
+    return () => {
+      if (usernameCheckTimer.current) clearTimeout(usernameCheckTimer.current);
+    };
+  }, [watchedValues.username, isEditing]);
+
   const handleFormSubmit = async (data: CardFormData) => {
     setIsSubmitting(true);
     setSubmitError(null);
@@ -134,6 +188,9 @@ export default function CardForm({
 
       if (!result.success) {
         setSubmitError(result.error || "An error occurred");
+        if (result.error?.toLowerCase().includes("username")) {
+          setUsernameStatus("taken");
+        }
       }
     } catch (error) {
       setSubmitError("An unexpected error occurred");
@@ -175,7 +232,12 @@ export default function CardForm({
                 )}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={
+                    isSubmitting ||
+                    (!isEditing &&
+                      (usernameStatus === "checking" ||
+                        usernameStatus === "taken"))
+                  }
                   className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold rounded-xl text-xs hover:from-indigo-700 hover:to-violet-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-md shadow-indigo-600/10 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer order-1 sm:order-2"
                 >
                   {isSubmitting
@@ -213,6 +275,25 @@ export default function CardForm({
                       <p className="mt-1 responsive-text-xs text-red-600">
                         {errors.username.message}
                       </p>
+                    )}
+                    {!errors.username && !isEditing && (
+                      <>
+                        {usernameStatus === "checking" && (
+                          <p className="mt-1 responsive-text-xs text-gray-500">
+                            Checking availability...
+                          </p>
+                        )}
+                        {usernameStatus === "available" && (
+                          <p className="mt-1 responsive-text-xs text-green-600">
+                            ✓ eprofile.cv/{watchedValues.username} is available
+                          </p>
+                        )}
+                        {usernameStatus === "taken" && (
+                          <p className="mt-1 responsive-text-xs text-red-600">
+                            This username is already taken, please choose another
+                          </p>
+                        )}
+                      </>
                     )}
                     {isEditing && (
                       <p className="mt-1 responsive-text-xs text-gray-500">

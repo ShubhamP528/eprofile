@@ -101,12 +101,12 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
       </div>
 
       {/* Content Section */}
-      <div className={`${isPreview ? "pt-16 px-6 pb-6" : "pt-20 px-8 pb-8"}`}>
+      <div className={`${isPreview ? "pt-16 px-6 pb-6" : "pt-20 px-5 sm:px-8 pb-8"}`}>
         {/* Name and Title */}
         <div className={`${isPreview ? "mb-4" : "mb-8"}`}>
           <h1
-            className={`font-bold text-gray-900 ${
-              isPreview ? "text-2xl mb-1" : "text-4xl mb-3"
+            className={`font-bold text-gray-900 break-words ${
+              isPreview ? "text-2xl mb-1" : "text-2xl sm:text-4xl mb-3"
             }`}
           >
             {data.title}
@@ -114,7 +114,7 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
           {data.subtitle && (
             <p
               className={`text-purple-600 font-medium ${
-                isPreview ? "text-base" : "text-xl"
+                isPreview ? "text-base" : "text-lg sm:text-xl"
               }`}
             >
               {data.subtitle}
@@ -127,7 +127,7 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
           <div className={`${isPreview ? "mb-6" : "mb-10"}`}>
             <p
               className={`text-gray-600 leading-relaxed ${
-                isPreview ? "text-sm" : "text-lg"
+                isPreview ? "text-sm" : "text-base sm:text-lg"
               }`}
             >
               {data.bio}
@@ -167,7 +167,7 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
                     />
                   </svg>
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p
                     className={`text-purple-600 font-medium ${
                       isPreview ? "text-xs" : "text-sm"
@@ -176,7 +176,7 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
                     PHONE
                   </p>
                   <p
-                    className={`text-gray-900 font-medium ${
+                    className={`text-gray-900 font-medium break-words ${
                       isPreview ? "text-base" : "text-lg"
                     }`}
                   >
@@ -215,7 +215,7 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
                     />
                   </svg>
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p
                     className={`text-pink-600 font-medium ${
                       isPreview ? "text-xs" : "text-sm"
@@ -224,7 +224,7 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
                     EMAIL
                   </p>
                   <p
-                    className={`text-gray-900 font-medium ${
+                    className={`text-gray-900 font-medium break-all ${
                       isPreview ? "text-base" : "text-lg"
                     }`}
                   >
@@ -269,7 +269,7 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
                     />
                   </svg>
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p
                     className={`text-red-600 font-medium ${
                       isPreview ? "text-xs" : "text-sm"
@@ -278,7 +278,7 @@ export default function Template2({ data, isPreview = false }: Template2Props) {
                     LOCATION
                   </p>
                   <p
-                    className={`text-gray-900 font-medium ${
+                    className={`text-gray-900 font-medium break-words ${
                       isPreview ? "text-sm" : "text-lg"
                     }`}
                   >

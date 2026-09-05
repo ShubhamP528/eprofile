@@ -55,7 +55,7 @@ export default function Template4({ data, isPreview = false }: Template4Props) {
       {/* Header Section - Minimalist */}
       <div
         className={`text-center border-b border-slate-50 ${
-          isPreview ? "px-6 py-6" : "px-10 py-10"
+          isPreview ? "px-6 py-6" : "px-6 sm:px-10 py-8 sm:py-10"
         }`}
       >
         {/* Profile Image - Clean Circle with Light Shadow */}
@@ -89,8 +89,8 @@ export default function Template4({ data, isPreview = false }: Template4Props) {
 
         {/* Name and Title - Clean Typography */}
         <h1
-          className={`font-extrabold text-slate-900 tracking-tight leading-none mb-2 ${
-            isPreview ? "text-lg" : "text-3xl"
+          className={`font-extrabold text-slate-900 tracking-tight leading-none mb-2 break-words ${
+            isPreview ? "text-lg" : "text-2xl sm:text-3xl"
           }`}
         >
           {data.title || "Your Name"}
@@ -114,33 +114,33 @@ export default function Template4({ data, isPreview = false }: Template4Props) {
       </div>
 
       {/* Content Section */}
-      <div className={`${isPreview ? "px-6 py-6" : "px-10 py-8"}`}>
+      <div className={`${isPreview ? "px-6 py-6" : "px-6 sm:px-10 py-8"}`}>
         {/* Contact Information - Clean List */}
         <div className="space-y-3 mb-6">
           {data.phone && (
-            <div className="flex items-center justify-between py-2.5 border-b border-slate-50">
-              <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+            <div className="flex items-center justify-between gap-3 py-2.5 border-b border-slate-50">
+              <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold shrink-0">
                 Phone
               </span>
-              <span className="text-slate-700 font-semibold text-xs">{data.phone}</span>
+              <span className="text-slate-700 font-semibold text-xs truncate min-w-0 flex-1 text-right">{data.phone}</span>
             </div>
           )}
 
           {data.email && (
-            <div className="flex items-center justify-between py-2.5 border-b border-slate-50">
-              <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+            <div className="flex items-center justify-between gap-3 py-2.5 border-b border-slate-50">
+              <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold shrink-0">
                 Email
               </span>
-              <span className="text-slate-700 font-semibold text-xs truncate max-w-[200px]">{data.email}</span>
+              <span className="text-slate-700 font-semibold text-xs truncate min-w-0 flex-1 text-right">{data.email}</span>
             </div>
           )}
 
           {data.address && (
-            <div className="flex items-center justify-between py-2.5 border-b border-slate-50">
-              <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+            <div className="flex items-center justify-between gap-3 py-2.5 border-b border-slate-50">
+              <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold shrink-0">
                 Location
               </span>
-              <span className="text-slate-700 font-semibold text-xs text-right truncate max-w-[180px]">
+              <span className="text-slate-700 font-semibold text-xs text-right truncate min-w-0 flex-1">
                 {data.address}
               </span>
             </div>
@@ -192,7 +192,7 @@ export default function Template4({ data, isPreview = false }: Template4Props) {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 border border-slate-200 rounded-xl flex items-center justify-center text-slate-600 hover:text-slate-900 hover:border-slate-400 hover:scale-105 transition-all shadow-xs"
+                  className="w-10 h-10 border border-slate-200 rounded-xl flex items-center justify-center text-slate-600 hover:text-slate-900 hover:border-slate-400 hover:scale-105 transition-all shadow-xs"
                   title={link.platform}
                 >
                   <span className="text-[10px] font-bold uppercase">{link.platform.substring(0, 2)}</span>
@@ -208,7 +208,7 @@ export default function Template4({ data, isPreview = false }: Template4Props) {
             {data.phone && (
               <a
                 href={`tel:${data.phone}`}
-                className="w-full py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider hover:bg-slate-50 hover:border-slate-300 transition-all text-center flex items-center justify-center"
+                className="w-full py-3 px-4 rounded-xl border border-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider hover:bg-slate-50 hover:border-slate-300 transition-all text-center flex items-center justify-center min-h-11"
               >
                 Call
               </a>
@@ -216,7 +216,7 @@ export default function Template4({ data, isPreview = false }: Template4Props) {
             {data.email && (
               <a
                 href={`mailto:${data.email}`}
-                className="w-full py-2.5 px-4 rounded-xl bg-slate-900 text-white font-bold text-xs uppercase tracking-wider hover:bg-slate-800 transition-all text-center flex items-center justify-center"
+                className="w-full py-3 px-4 rounded-xl bg-slate-900 text-white font-bold text-xs uppercase tracking-wider hover:bg-slate-800 transition-all text-center flex items-center justify-center min-h-11"
               >
                 Email
               </a>

@@ -1,7 +1,22 @@
+import NextAuth from 'next-auth'
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { authConfig } from './auth.config'
 
-export function middleware(request: NextRequest) {
+// Uses the edge-safe authConfig (no Prisma adapter/providers) so the session
+// JWT can be read here without pulling in Node-only deps like bcrypt/Prisma.
+const { auth } = NextAuth(authConfig)
+
+const AUTH_PAGES = ['/auth/signin', '/auth/signup']
+
+export default auth((request) => {
+  const { pathname } = request.nextUrl
+  const isLoggedIn = !!request.auth
+
+  // A logged-in user has no reason to see the login/signup forms again.
+  if (isLoggedIn && AUTH_PAGES.includes(pathname)) {
+    return NextResponse.redirect(new URL('/dashboard', request.nextUrl))
+  }
+
   const hostname = request.headers.get('host') || ''
   const url = request.nextUrl
 
@@ -48,7 +63,7 @@ export function middleware(request: NextRequest) {
   }
 
   return NextResponse.next()
-}
+})
 
 export const config = {
   matcher: [

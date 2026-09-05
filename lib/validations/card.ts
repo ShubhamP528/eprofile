@@ -10,7 +10,7 @@ export const createCardSchema = z.object({
     bio: z.string().max(500, "Bio must be less than 500 characters").optional(),
     profileImage: z.string().optional(),
     phone: z.string().optional(),
-    email: z.string().email("Please enter a valid email address").optional(),
+    email: z.string().email("Please enter a valid email address").optional().or(z.literal("")),
     address: z.string().max(200, "Address must be less than 200 characters").optional(),
     template: z.string().default("template1"),
     isPublic: z.boolean().default(true),

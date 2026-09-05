@@ -20,7 +20,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
 const PROMO_CODE = "EPROFILE20";
 
 const getSegmentATemplate = (name: string, step: number) => {
-  const dashboardUrl = `${APP_URL}/dashboard`;
+  const dashboardUrl = `${APP_URL}/dashboard/cards/new`;
   let subject = "";
   let body = "";
 

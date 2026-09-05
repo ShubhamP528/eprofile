@@ -53,7 +53,7 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
       {/* Header Section */}
       <div
         className={`bg-gradient-to-r from-gray-800 to-gray-900 text-center border-b border-gray-700 ${
-          isPreview ? "px-6 py-8" : "px-8 py-12"
+          isPreview ? "px-6 py-8" : "px-5 sm:px-8 py-8 sm:py-12"
         }`}
       >
         {/* Profile Image */}
@@ -85,8 +85,8 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
 
         {/* Name and Title */}
         <h1
-          className={`font-bold text-white ${
-            isPreview ? "text-xl mb-1" : "text-4xl mb-4"
+          className={`font-bold text-white break-words ${
+            isPreview ? "text-xl mb-1" : "text-2xl sm:text-4xl mb-4"
           }`}
         >
           {data.title}
@@ -94,7 +94,7 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
         {data.subtitle && (
           <p
             className={`text-yellow-400 font-medium uppercase tracking-wide ${
-              isPreview ? "text-sm" : "text-xl"
+              isPreview ? "text-sm" : "text-base sm:text-xl"
             }`}
           >
             {data.subtitle}
@@ -103,14 +103,14 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
       </div>
 
       {/* Content Section */}
-      <div className={`${isPreview ? "p-6" : "p-8"}`}>
+      <div className={`${isPreview ? "p-6" : "p-5 sm:p-8"}`}>
         {/* Bio */}
         {data.bio && (
           <div className={`${isPreview ? "mb-6" : "mb-10"}`}>
             <div className="border-l-4 border-yellow-400 pl-4">
               <p
                 className={`text-gray-300 leading-relaxed italic ${
-                  isPreview ? "text-sm" : "text-lg"
+                  isPreview ? "text-sm" : "text-base sm:text-lg"
                 }`}
               >
                 "{data.bio}"
@@ -148,7 +148,7 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
                   />
                 </svg>
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p
                   className={`text-yellow-400 font-medium uppercase tracking-wide ${
                     isPreview ? "text-xs" : "text-sm"
@@ -157,7 +157,7 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
                   Phone
                 </p>
                 <p
-                  className={`text-white font-medium ${
+                  className={`text-white font-medium break-words ${
                     isPreview ? "text-base" : "text-lg"
                   }`}
                 >
@@ -194,7 +194,7 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
                   />
                 </svg>
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p
                   className={`text-yellow-400 font-medium uppercase tracking-wide ${
                     isPreview ? "text-xs" : "text-sm"
@@ -203,7 +203,7 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
                   Email
                 </p>
                 <p
-                  className={`text-white font-medium ${
+                  className={`text-white font-medium break-all ${
                     isPreview ? "text-base" : "text-lg"
                   }`}
                 >
@@ -246,7 +246,7 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
                   />
                 </svg>
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p
                   className={`text-yellow-400 font-medium uppercase tracking-wide ${
                     isPreview ? "text-xs" : "text-sm"
@@ -255,7 +255,7 @@ export default function Template3({ data, isPreview = false }: Template3Props) {
                   Location
                 </p>
                 <p
-                  className={`text-white font-medium ${
+                  className={`text-white font-medium break-words ${
                     isPreview ? "text-sm" : "text-lg"
                   }`}
                 >

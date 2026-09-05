@@ -58,7 +58,7 @@ export default function Template6({ data, isPreview = false }: Template6Props) {
     >
       {/* Header Section with Navy Background */}
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white">
-        <div className={`${isPreview ? "p-4" : "p-8"} text-center`}>
+        <div className={`${isPreview ? "p-4" : "p-5 sm:p-8"} text-center`}>
           {/* Profile Image */}
           <div className="mx-auto mb-4 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg">
             {data.profileImage ? (
@@ -82,7 +82,9 @@ export default function Template6({ data, isPreview = false }: Template6Props) {
 
           {/* Name */}
           <h1
-            className={`font-bold mb-2 ${isPreview ? "text-lg" : "text-3xl"}`}
+            className={`font-bold mb-2 ${
+              isPreview ? "text-lg" : "text-2xl sm:text-3xl"
+            }`}
           >
             {data.title}
           </h1>
@@ -101,7 +103,7 @@ export default function Template6({ data, isPreview = false }: Template6Props) {
       </div>
 
       {/* Content Section */}
-      <div className={`${isPreview ? "p-4" : "p-8"} bg-gray-50`}>
+      <div className={`${isPreview ? "p-4" : "p-5 sm:p-8"} bg-gray-50`}>
         {/* Bio */}
         {data.bio && !isPreview && (
           <div className="mb-6 text-center">

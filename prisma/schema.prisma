@@ -20,12 +20,27 @@ model User {
   updatedAt          DateTime         @updatedAt
   campaignStep       Int              @default(0)
   campaignLastSent   DateTime?
+  // First-touch acquisition attribution, captured client-side before signup
+  // and synced once the session exists (covers both credentials and OAuth signup).
+  utmSource          String?
+  utmMedium          String?
+  utmCampaign        String?
+  utmTerm            String?
+  utmContent         String?
+  referrer           String?
+  landingPage        String?
+  attributionSetAt   DateTime?
+  // Referral program: a shareable code this user gives out, plus the single
+  // referral record created if someone else's code brought this user in.
+  referralCode       String?          @unique
   accounts           Account[]
   cards              Card[]
   leads              Lead[]
   sessions           Session[]
   paymentHistory     PaymentHistory[]
   subscriptionEvents SubscriptionEvent[]
+  referralsGiven     Referral[]       @relation("ReferralsGiven")
+  referralReceived   Referral?        @relation("ReferralReceived")
 
   @@map("users")
 }
@@ -83,6 +98,7 @@ model Card {
   email          String?
   address        String?
   isPublic       Boolean       @default(true)
+  showInDirectory Boolean      @default(true)
   seoTitle       String?
   seoDescription String?
   // Payment Options
@@ -279,4 +295,25 @@ enum SubscriptionEventType {
   RENEWAL
   EXPIRY
   CANCELLATION
+  REFERRAL_REWARD
+}
+
+model Referral {
+  id              String         @id @default(cuid())
+  code            String
+  referrerId      String
+  referredUserId  String         @unique
+  status          ReferralStatus @default(PENDING)
+  rewardGrantedAt DateTime?
+  createdAt       DateTime       @default(now())
+
+  referrer     User @relation("ReferralsGiven", fields: [referrerId], references: [id], onDelete: Cascade)
+  referredUser User @relation("ReferralReceived", fields: [referredUserId], references: [id], onDelete: Cascade)
+
+  @@map("referrals")
+}
+
+enum ReferralStatus {
+  PENDING
+  REWARDED
 }

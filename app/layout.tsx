@@ -7,6 +7,7 @@ import ConditionalNavbar from "@/components/layout/conditional-navbar";
 import ConditionalFooter from "@/components/layout/conditional-footer";
 import StartupProvider from "@/components/providers/startup-provider";
 import TelemetryTracker from "@/components/layout/TelemetryTracker";
+import AttributionCapture from "@/components/analytics/attribution-capture";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,6 +80,7 @@ export default function RootLayout({
         <AuthSessionProvider>
           <SubscriptionProvider>
             <TelemetryTracker />
+            <AttributionCapture />
             <ConditionalNavbar />
             <main>{children}</main>
             <ConditionalFooter />

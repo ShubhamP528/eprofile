@@ -76,7 +76,7 @@ export default function Template8({ data, isPreview = false }: Template8Props) {
         {/* Header Section */}
         <div
           className={`${
-            isPreview ? "p-4" : "p-8"
+            isPreview ? "p-4" : "p-5 sm:p-8"
           } text-center border-b border-gray-700/50`}
         >
           {/* Profile with Tech Border */}
@@ -110,7 +110,7 @@ export default function Template8({ data, isPreview = false }: Template8Props) {
           {/* Name with Tech Font */}
           <h1
             className={`font-bold text-white mb-2 tracking-wider ${
-              isPreview ? "text-lg" : "text-3xl"
+              isPreview ? "text-lg" : "text-2xl sm:text-3xl"
             }`}
             style={{ fontFamily: "monospace" }}
           >
@@ -139,7 +139,7 @@ export default function Template8({ data, isPreview = false }: Template8Props) {
         </div>
 
         {/* Contact Section */}
-        <div className={`flex-1 ${isPreview ? "p-4" : "p-8"}`}>
+        <div className={`flex-1 ${isPreview ? "p-4" : "p-5 sm:p-8"}`}>
           <div className="space-y-3">
             {data.phone && (
               <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 hover:border-cyan-400/50 transition-colors duration-200">
@@ -253,7 +253,7 @@ export default function Template8({ data, isPreview = false }: Template8Props) {
 
         {/* Services Section - Full view only */}
         {!isPreview && data.services && data.services.length > 0 && (
-          <div className="px-8 pb-8 border-t border-gray-700/50 pt-6">
+          <div className="px-5 sm:px-8 pb-5 sm:pb-8 border-t border-gray-700/50 pt-6">
             <h3 className="text-cyan-400 font-bold text-lg mb-4 flex items-center font-mono">
               <span className="text-gray-500 mr-2">{"//"}</span>
               SERVICES.ARRAY
@@ -289,7 +289,7 @@ export default function Template8({ data, isPreview = false }: Template8Props) {
 
         {/* Action Buttons - Full view only */}
         {!isPreview && (
-          <div className="px-8 pb-8 space-y-3">
+          <div className="px-5 sm:px-8 pb-5 sm:pb-8 space-y-3">
             {data.phone && (
               <button className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 text-gray-900 py-4 px-6 rounded-lg font-bold hover:from-cyan-500 hover:to-blue-600 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg font-mono">
                 <svg

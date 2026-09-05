@@ -94,6 +94,15 @@ export async function POST(request: NextRequest) {
             }
         })
 
+        // First card ever for this user - if they were referred, reward the
+        // referrer now that the referred user has actually activated.
+        if (cardLimitCheck.currentCount === 0) {
+            const { grantReferralRewardIfPending } = await import('@/lib/referral')
+            grantReferralRewardIfPending(authResult.userId).catch((err) => {
+                console.error('Failed to grant referral reward:', err)
+            })
+        }
+
         return createSuccessResponse(card, 201)
     } catch (error) {
         return handleApiError(error)

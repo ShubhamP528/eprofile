@@ -262,8 +262,11 @@ export default function PublicCardClient({ params, initialCard, baseUrl }: Publi
                 <SelectedTemplate data={card} isPreview={false} />
             </div>
 
-            {/* Contact Actions - Floating Action Buttons */}
-            <div className="fixed bottom-4 right-4 space-y-2 z-50">
+            {/* Contact Actions - Floating Action Buttons (desktop only: on mobile
+                the card fills the viewport width, leaving no safe margin for a
+                fixed corner button without overlapping card content - and every
+                template already has its own inline call/email buttons anyway) */}
+            <div className="hidden sm:block fixed bottom-4 right-4 space-y-2 z-50">
                 {card.phone && (
                     <button
                         onClick={handleCall}

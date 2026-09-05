@@ -81,7 +81,7 @@ export default function Template10({
       {/* Main Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Header Section */}
-        <div className={`${isPreview ? "p-4" : "p-8"} text-center`}>
+        <div className={`${isPreview ? "p-4" : "p-5 sm:p-8"} text-center`}>
           {/* Profile Section */}
           <div className="relative inline-block mb-4">
             <div className="w-20 h-20 mx-auto bg-white rounded-full shadow-lg border-4 border-teal-200 flex items-center justify-center">
@@ -118,7 +118,7 @@ export default function Template10({
           {/* Name */}
           <h1
             className={`font-bold text-gray-800 mb-2 ${
-              isPreview ? "text-lg" : "text-3xl"
+              isPreview ? "text-lg" : "text-2xl sm:text-3xl"
             }`}
           >
             {data.title}
@@ -148,7 +148,11 @@ export default function Template10({
         </div>
 
         {/* Contact Cards with Travel Theme */}
-        <div className={`flex-1 ${isPreview ? "px-4 pb-4" : "px-8 pb-8"}`}>
+        <div
+          className={`flex-1 ${
+            isPreview ? "px-4 pb-4" : "px-5 sm:px-8 pb-5 sm:pb-8"
+          }`}
+        >
           <div className="grid gap-3">
             {data.phone && (
               <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-teal-100 shadow-sm hover:shadow-md transition-shadow">
@@ -262,7 +266,7 @@ export default function Template10({
 
         {/* Services Section - Full view only */}
         {!isPreview && data.services && data.services.length > 0 && (
-          <div className="px-8 pb-8">
+          <div className="px-5 sm:px-8 pb-5 sm:pb-8">
             <div className="flex items-center mb-4">
               <div className="w-3 h-3 bg-orange-400 rounded-full mr-3"></div>
               <h3 className="text-gray-800 font-bold text-lg">Services</h3>
@@ -298,7 +302,7 @@ export default function Template10({
 
         {/* Action Buttons - Full view only */}
         {!isPreview && (
-          <div className="px-8 pb-8">
+          <div className="px-5 sm:px-8 pb-5 sm:pb-8">
             <div className="grid grid-cols-1 gap-3">
               {data.phone && (
                 <button className="w-full bg-linear-to-r from-teal-500 to-cyan-500 text-white py-4 px-6 rounded-xl font-bold hover:from-teal-600 hover:to-cyan-600 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg">

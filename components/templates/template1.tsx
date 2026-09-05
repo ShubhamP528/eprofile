@@ -63,7 +63,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
       {/* Main Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Header Section */}
-        <div className={`${isPreview ? "p-4" : "p-8"} text-center`}>
+        <div className={`${isPreview ? "p-4" : "p-5 sm:p-8"} text-center`}>
           {/* Profile Circle with Double Border Glow */}
           <div className="mx-auto mb-4 w-20 h-20 bg-gradient-to-tr from-indigo-500 to-pink-500 rounded-full flex items-center justify-center p-0.5 shadow-lg shadow-indigo-500/20 hover:scale-105 transition-all duration-300">
             <div className="w-full h-full bg-slate-900 rounded-full flex items-center justify-center overflow-hidden">
@@ -104,7 +104,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
         </div>
 
         {/* Contact Info List */}
-        <div className={`flex-1 ${isPreview ? "px-4 pb-4" : "px-8 pb-6"}`}>
+        <div className={`flex-1 ${isPreview ? "px-4 pb-4" : "px-5 sm:px-8 pb-6"}`}>
           <div className="grid gap-2.5">
             {data.phone && (
               <div className="bg-white/[0.04] backdrop-blur-md rounded-xl p-3 border border-white/[0.08] hover:bg-white/[0.08] transition-all">
@@ -114,7 +114,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
-                  <span className="text-slate-200 font-medium text-xs truncate">
+                  <span className="text-slate-200 font-medium text-xs truncate flex-1 min-w-0">
                     {data.phone}
                   </span>
                 </div>
@@ -129,7 +129,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <span className="text-slate-200 font-medium text-xs truncate">
+                  <span className="text-slate-200 font-medium text-xs truncate flex-1 min-w-0">
                     {data.email}
                   </span>
                 </div>
@@ -145,7 +145,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <span className="text-slate-200 font-medium text-xs leading-tight">
+                  <span className="text-slate-200 font-medium text-xs leading-tight flex-1 min-w-0">
                     {data.address}
                   </span>
                 </div>
@@ -156,7 +156,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
 
         {/* Services Showcase */}
         {!isPreview && data.services && data.services.length > 0 && (
-          <div className="px-8 pb-6">
+          <div className="px-5 sm:px-8 pb-6">
             <h3 className="text-indigo-200 text-xs font-bold uppercase tracking-wider mb-3 flex items-center">
               <span className="w-1.5 h-1.5 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full mr-2"></span>
               Services
@@ -192,7 +192,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
 
         {/* Social Links */}
         {!isPreview && data.socialLinks && data.socialLinks.length > 0 && (
-          <div className="px-8 pb-6">
+          <div className="px-5 sm:px-8 pb-6">
             <div className="flex flex-wrap justify-center gap-2.5">
               {data.socialLinks.map((link, idx) => (
                 <a
@@ -200,7 +200,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.08] rounded-xl flex items-center justify-center text-slate-300 hover:text-white hover:scale-110 transition-all duration-200"
+                  className="w-10 h-10 bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.08] rounded-xl flex items-center justify-center text-slate-300 hover:text-white hover:scale-110 transition-all duration-200"
                   title={link.platform}
                 >
                   <span className="text-[10px] font-bold uppercase">{link.platform.substring(0, 2)}</span>
@@ -212,12 +212,12 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
 
         {/* Action Buttons */}
         {!isPreview && (
-          <div className="px-8 pb-8 mt-auto">
+          <div className="px-5 sm:px-8 pb-8 mt-auto">
             <div className="grid grid-cols-2 gap-3">
               {data.phone && (
                 <a
                   href={`tel:${data.phone}`}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 px-4 rounded-xl font-bold text-xs shadow-lg shadow-emerald-600/10 hover:shadow-emerald-600/20 hover:-translate-y-0.5 transition-all text-center flex items-center justify-center space-x-2"
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white py-3 px-4 rounded-xl font-bold text-xs shadow-lg shadow-emerald-600/10 hover:shadow-emerald-600/20 hover:-translate-y-0.5 transition-all text-center flex items-center justify-center space-x-2 min-h-11"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -229,7 +229,7 @@ export default function Template1({ data, isPreview = false }: Template1Props) {
               {data.email && (
                 <a
                   href={`mailto:${data.email}`}
-                  className="bg-white/[0.06] hover:bg-white/[0.1] text-white py-2.5 px-4 rounded-xl font-bold text-xs border border-white/[0.08] hover:-translate-y-0.5 transition-all text-center flex items-center justify-center space-x-2"
+                  className="bg-white/[0.06] hover:bg-white/[0.1] text-white py-3 px-4 rounded-xl font-bold text-xs border border-white/[0.08] hover:-translate-y-0.5 transition-all text-center flex items-center justify-center space-x-2 min-h-11"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
