@@ -6,6 +6,7 @@ import { getCardUrl } from '@/lib/utils/card-url'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eprofile.cv'
     const staticDate = new Date('2026-08-17')
+    const newPageDate = new Date()
 
     let publicProfiles: MetadataRoute.Sitemap = []
 
@@ -62,6 +63,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         {
             url: `${baseUrl}/about`,
             lastModified: staticDate,
+            changeFrequency: 'monthly' as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/digital-business-card-india`,
+            lastModified: newPageDate,
+            changeFrequency: 'monthly' as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/digital-business-card-for-freelancers`,
+            lastModified: newPageDate,
+            changeFrequency: 'monthly' as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/nfc-business-card`,
+            lastModified: newPageDate,
+            changeFrequency: 'monthly' as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/digital-vs-paper-business-cards`,
+            lastModified: newPageDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },

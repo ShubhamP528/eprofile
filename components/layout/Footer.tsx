@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer className="bg-white border-t border-slate-100 py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
                     {/* Brand Info */}
                     <div className="col-span-2 md:col-span-1">
                         <Link href="/" className="flex items-center space-x-2.5 mb-4 group">
@@ -60,6 +60,46 @@ export default function Footer() {
                                     className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
                                 >
                                     Dashboard
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="text-xs font-semibold text-slate-900 tracking-wider uppercase mb-4">
+                            Resources
+                        </h3>
+                        <ul className="space-y-3">
+                            <li>
+                                <Link
+                                    href="/digital-business-card-india"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
+                                >
+                                    Digital Card in India
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/digital-business-card-for-freelancers"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
+                                >
+                                    For Freelancers
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/nfc-business-card"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
+                                >
+                                    NFC Business Cards
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/digital-vs-paper-business-cards"
+                                    className="text-sm text-slate-500 hover:text-indigo-600 transition-colors"
+                                >
+                                    Digital vs Paper
                                 </Link>
                             </li>
                         </ul>

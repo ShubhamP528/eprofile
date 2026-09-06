@@ -36,11 +36,13 @@ export const metadata: Metadata = {
     title: "eProfile - Professional Digital Profiles",
     description: "Create and share stunning professional digital visiting cards and portfolios with eProfile.",
     siteName: "eProfile",
+    images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "eProfile - Professional Digital Profiles",
     description: "Create and share stunning professional digital visiting cards and portfolios with eProfile.",
+    images: ["/og-image.png"],
     creator: "@eprofile",
   },
   icons: {
