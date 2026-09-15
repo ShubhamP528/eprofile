@@ -16,7 +16,10 @@ import {
   Zap, 
   ShieldCheck, 
   Check,
-  ArrowRight
+  ArrowRight,
+  Search,
+  Globe,
+  Sparkles
 } from "lucide-react";
 
 // Icon mapping to render Lucide React components dynamically
@@ -30,6 +33,7 @@ const iconMap = {
   BarChart3,
   Share2,
   TrendingUp,
+  Search,
 };
 
 export default function FeaturesPage() {
@@ -45,6 +49,18 @@ export default function FeaturesPage() {
   };
 
   const features = [
+    {
+      icon: "Search",
+      title: "Google SEO & Page 1 Ranking",
+      description:
+        "Engineered with Schema.org JSON-LD and live XML sitemaps to rank your personal card on Google in 10–20 days.",
+      details: [
+        "Automated Schema.org structured data",
+        "Instant Google sitemap syndication",
+        "Rank in 10–20 days on Google Search",
+        "Customizable SEO title & meta description",
+      ],
+    },
     {
       icon: "Palette",
       title: "Professional Templates",
@@ -256,43 +272,54 @@ export default function FeaturesPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="text-center bg-white border border-slate-200/50 p-8 rounded-2xl shadow-sm">
-            <div className="w-14 h-14 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-indigo-600">
-              <Zap className="w-7 h-7" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="text-center bg-white border border-indigo-200/80 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-4 text-indigo-600">
+              <Search className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-3">
+            <h3 className="text-base font-bold text-slate-900 mb-2">
+              Google SEO Ranked
+            </h3>
+            <p className="text-xs text-slate-500 leading-relaxed">
+              Schema.org JSON-LD and live XML sitemaps get your card to Page 1 of Google in 10–20 days.
+            </p>
+          </div>
+
+          <div className="text-center bg-white border border-slate-200/50 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-4 text-indigo-600">
+              <Zap className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-bold text-slate-900 mb-2">
               Lightning Fast
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed">
+            <p className="text-xs text-slate-500 leading-relaxed">
               Create your professional eProfile in under 5 minutes. No technical
               skills required.
             </p>
           </div>
 
-          <div className="text-center bg-white border border-slate-200/50 p-8 rounded-2xl shadow-sm">
-            <div className="w-14 h-14 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-emerald-600">
-              <Smartphone className="w-7 h-7" />
+          <div className="text-center bg-white border border-slate-200/50 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 bg-emerald-50 border border-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-4 text-emerald-600">
+              <Smartphone className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-3">
+            <h3 className="text-base font-bold text-slate-900 mb-2">
               Always Updated
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed">
+            <p className="text-xs text-slate-500 leading-relaxed">
               Update your information anytime and it reflects instantly across
               all shared links.
             </p>
           </div>
 
-          <div className="text-center bg-white border border-slate-200/50 p-8 rounded-2xl shadow-sm">
-            <div className="w-14 h-14 bg-violet-50 border border-violet-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-violet-600">
-              <ShieldCheck className="w-7 h-7" />
+          <div className="text-center bg-white border border-slate-200/50 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 bg-violet-50 border border-violet-100 rounded-xl flex items-center justify-center mx-auto mb-4 text-violet-600">
+              <ShieldCheck className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-3">
+            <h3 className="text-base font-bold text-slate-900 mb-2">
               Secure & Reliable
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed">
-              Your data is protected with enterprise-grade security and 99.9%
-              uptime guarantee.
+            <p className="text-xs text-slate-500 leading-relaxed">
+              Enterprise SSL security, 99.9% uptime guarantee, and privacy control for your data.
             </p>
           </div>
         </div>

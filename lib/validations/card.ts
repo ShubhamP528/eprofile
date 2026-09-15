@@ -14,6 +14,8 @@ export const createCardSchema = z.object({
     address: z.string().max(200, "Address must be less than 200 characters").optional(),
     template: z.string().default("template1"),
     isPublic: z.boolean().default(true),
+    seoTitle: z.string().max(100, "SEO title must be less than 100 characters").optional().or(z.literal("")),
+    seoDescription: z.string().max(300, "SEO description must be less than 300 characters").optional().or(z.literal("")),
 })
 
 export const paymentSchema = z.object({

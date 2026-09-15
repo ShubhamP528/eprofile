@@ -65,8 +65,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${card.title} - Digital Business Card | eProfile`;
-  const description = card.bio || `View ${card.title}'s professional digital business card on eProfile. Connect, share, and network efficiently.`;
+  const title = card.seoTitle?.trim() || `${card.title} - Digital Business Card | eProfile`;
+  const description = card.seoDescription?.trim() || card.bio || `View ${card.title}'s professional digital business card on eProfile. Connect, share, and network efficiently.`;
   
   // Use the optimized URL from card object
   const image = card.profileImage || "/og-image.png";
@@ -84,11 +84,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     description: description,
     keywords: keywords,
+    robots: {
+      index: card.isPublic,
+      follow: card.isPublic,
+      googleBot: {
+        index: card.isPublic,
+        follow: card.isPublic,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     openGraph: {
       type: "profile",
       title: title,
       description: description,
-      images: [absoluteImageUrl],
+      url: canonicalUrl,
+      siteName: "eProfile",
+      images: [
+        {
+          url: absoluteImageUrl,
+          width: 800,
+          height: 600,
+          alt: `${card.title}'s Digital Business Card Profile`,
+        },
+      ],
       username: card.username,
       firstName: card.title.split(' ')[0],
       lastName: card.title.split(' ').slice(1).join(' '),
@@ -145,21 +165,83 @@ export default async function PublicCardPage({ params }: Props) {
   const image = card.profileImage || "/og-image.png";
   const absoluteImageUrl = image.startsWith("http") ? image : `${baseUrl}${image}`;
   const canonicalUrl = getCardUrl(card.username);
+  const keywords = extractKeywords(card.title, card.subtitle, card.bio, card.services, card.seoDescription || "");
 
-  const jsonLd = {
+  // Comprehensive Schema.org Graph for Google Rich Snippets & Top SERP Ranking
+  const jsonLdGraph = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: card.title,
-    ...(card.subtitle && { jobTitle: card.subtitle }),
-    ...(card.bio && { description: card.bio }),
-    image: absoluteImageUrl,
-    url: canonicalUrl,
-    ...(card.email && { email: card.email }),
-    ...(card.phone && { telephone: card.phone }),
-    ...(card.address && { address: card.address }),
-    ...(card.socialLinks?.length && {
-      sameAs: card.socialLinks.map((link: { url: string }) => link.url),
-    }),
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": `${canonicalUrl}#webpage`,
+        url: canonicalUrl,
+        name: card.seoTitle?.trim() || `${card.title} - Digital Business Card`,
+        isPartOf: {
+          "@type": "WebSite",
+          "@id": `${baseUrl}/#website`,
+          name: "eProfile",
+          url: baseUrl,
+        },
+        mainEntity: {
+          "@id": `${canonicalUrl}#person`,
+        },
+      },
+      {
+        "@type": "Person",
+        "@id": `${canonicalUrl}#person`,
+        name: card.title,
+        ...(card.subtitle && { jobTitle: card.subtitle }),
+        description: card.seoDescription?.trim() || card.bio || undefined,
+        image: absoluteImageUrl,
+        url: canonicalUrl,
+        ...(card.email && { email: card.email }),
+        ...(card.phone && { telephone: card.phone }),
+        ...(card.address && { 
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: card.address,
+          }
+        }),
+        ...(keywords.length > 0 && { knowsAbout: keywords }),
+        ...(card.socialLinks?.length && {
+          sameAs: card.socialLinks.map((link: { url: string }) => link.url),
+        }),
+        ...(card.services?.length && {
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: `${card.title}'s Services`,
+            itemListElement: card.services.map((service: { title: string; description?: string; price?: string }, index: number) => ({
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: service.title,
+                ...(service.description && { description: service.description }),
+              },
+              ...(service.price && { price: service.price, priceCurrency: "INR" }),
+              position: index + 1,
+            })),
+          }
+        }),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: baseUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: card.title,
+            item: canonicalUrl,
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -167,7 +249,7 @@ export default async function PublicCardPage({ params }: Props) {
       <script
         type="application/ld+json"
         // Escape `<` so user-supplied fields (bio, title, etc.) can't break out of the script tag
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph).replace(/</g, "\\u003c") }}
       />
       <PublicCardClient params={params} initialCard={card} baseUrl={baseUrl} />
     </>

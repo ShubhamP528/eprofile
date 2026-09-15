@@ -19,9 +19,12 @@ export default function Hero() {
                     <div className="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:px-0 lg:col-span-7 py-6">
                         <div>
                             {/* Premium Announcement Badge */}
-                            <div className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 rounded-full px-3 py-1.5 text-xs font-semibold text-indigo-700 mb-6 animate-fade-in">
-                                <span className="flex w-2 h-2 bg-indigo-600 rounded-full animate-ping"></span>
-                                Discover the Future of Networking
+                            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-violet-50 border border-indigo-200/80 rounded-full px-3.5 py-1.5 text-xs font-semibold text-indigo-800 mb-6 shadow-sm animate-fade-in">
+                                <span className="flex h-2 w-2 relative">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                <span>⚡ Google SEO Optimized — Rank on Page 1 in 10–20 Days</span>
                             </div>
 
                             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl leading-tight">
@@ -31,7 +34,7 @@ export default function Hero() {
                                 </span>
                             </h1>
                             <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-2xl">
-                                Create a stunning digital visiting card in minutes. Share your contact info, social links, and portfolio with a single tap or QR code. Professional, eco-friendly, and always up-to-date.
+                                Create a stunning digital visiting card in minutes. Built with automated Schema.org SEO so your profile ranks at the top of Google in 10–20 days. Share contact info, showcase your portfolio, and collect leads instantly.
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                 <Link
@@ -54,18 +57,18 @@ export default function Hero() {
                             {/* Trust badges */}
                             <div className="mt-12 flex items-center gap-6 border-t border-slate-100 pt-8">
                                 <div>
-                                    <p className="text-2xl font-bold text-slate-900">10k+</p>
-                                    <p className="text-xs text-slate-500">Active Professionals</p>
+                                    <p className="text-2xl font-bold text-slate-900">10–20 Days</p>
+                                    <p className="text-xs text-indigo-600 font-semibold">Google Top Ranking</p>
                                 </div>
                                 <div className="border-l border-slate-200 h-8"></div>
                                 <div>
-                                    <p className="text-2xl font-bold text-slate-900">10+</p>
-                                    <p className="text-xs text-slate-500">Premium Templates</p>
+                                    <p className="text-2xl font-bold text-slate-900">10k+</p>
+                                    <p className="text-xs text-slate-500">Active Profiles</p>
                                 </div>
                                 <div className="border-l border-slate-200 h-8"></div>
                                 <div>
                                     <p className="text-2xl font-bold text-slate-900">100%</p>
-                                    <p className="text-xs text-slate-500">Eco-Friendly & Digital</p>
+                                    <p className="text-xs text-slate-500">Schema.org SEO</p>
                                 </div>
                             </div>
                         </div>
@@ -76,6 +79,17 @@ export default function Hero() {
                         {/* Decorative Background Ring */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] rounded-full border border-indigo-100 pointer-events-none opacity-40"></div>
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] rounded-full border border-dashed border-slate-200 pointer-events-none opacity-30"></div>
+
+                        {/* Floating SEO Rank Badge */}
+                        <div className="absolute -top-4 -left-6 z-20 bg-slate-900/90 backdrop-blur-md text-white border border-slate-700/80 px-3.5 py-2 rounded-2xl shadow-xl flex items-center gap-2.5 animate-bounce-slow">
+                            <div className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-500 flex items-center justify-center text-emerald-400 text-xs font-bold">
+                                #1
+                            </div>
+                            <div>
+                                <p className="text-[11px] font-bold text-white leading-tight">Google Search Top Rank</p>
+                                <p className="text-[9px] text-emerald-400 font-medium">Ranked in 14 Days</p>
+                            </div>
+                        </div>
 
                         {/* Smartphone Container */}
                         <div className="relative w-full max-w-[340px] bg-slate-950 rounded-[48px] p-3 shadow-2xl ring-12 ring-slate-950 shadow-indigo-600/10 hover:shadow-indigo-600/20 transition-all duration-500 hover:-translate-y-2.5 z-10">

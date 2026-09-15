@@ -12,8 +12,8 @@ const steps = [
         icon: Layout,
     },
     {
-        name: "Share Instantly",
-        description: "Share your unique link or QR code with anyone, anywhere.",
+        name: "Share & Rank on Google",
+        description: "Share via QR code or link. Google indexes your card automatically to rank on Page 1 in 10–20 days.",
         icon: Share2,
     },
 ];

@@ -4,10 +4,18 @@ import {
     BarChart3,
     Palette,
     ShieldCheck,
-    Zap
+    Zap,
+    Search,
+    TrendingUp
 } from "lucide-react";
 
 const features = [
+    {
+        name: "Google SEO & Page 1 Ranking",
+        description: "Engineered with Schema.org JSON-LD and live XML sitemaps to rank your personal brand on Google in 10–20 days.",
+        icon: Search,
+        badge: "Rank on Google",
+    },
     {
         name: "Mobile Optimized",
         description: "Your digital card looks perfect on any device, from smartphones to tablets.",
@@ -29,13 +37,8 @@ const features = [
         icon: Palette,
     },
     {
-        name: "Secure & Private",
-        description: "Your data is encrypted and secure. You control what information is public.",
-        icon: ShieldCheck,
-    },
-    {
-        name: "Fast & Reliable",
-        description: "Built on modern technology for lightning-fast load times and 99.9% uptime.",
+        name: "Fast & Secure",
+        description: "Built on edge SSR for lightning-fast 99+ Core Web Vitals and enterprise data encryption.",
         icon: Zap,
     },
 ];

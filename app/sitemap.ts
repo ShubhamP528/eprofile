@@ -5,8 +5,7 @@ import { getCardUrl } from '@/lib/utils/card-url'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eprofile.cv'
-    const staticDate = new Date('2026-08-17')
-    const newPageDate = new Date()
+    const currentDate = new Date()
 
     let publicProfiles: MetadataRoute.Sitemap = []
 
@@ -34,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         publicProfiles = publicCards.map((card) => ({
             url: getCardUrl(card.username),
             lastModified: card.updatedAt,
-            changeFrequency: 'weekly' as const,
+            changeFrequency: 'daily' as const,
             priority: 0.9,
         }))
     } catch (error) {
@@ -44,79 +43,79 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const routes = [
         {
             url: baseUrl,
-            lastModified: staticDate,
-            changeFrequency: 'yearly' as const,
-            priority: 1,
+            lastModified: currentDate,
+            changeFrequency: 'daily' as const,
+            priority: 1.0,
         },
         {
             url: `${baseUrl}/features`,
-            lastModified: staticDate,
-            changeFrequency: 'monthly' as const,
+            lastModified: currentDate,
+            changeFrequency: 'weekly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/pricing`,
-            lastModified: staticDate,
-            changeFrequency: 'monthly' as const,
+            lastModified: currentDate,
+            changeFrequency: 'weekly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/about`,
-            lastModified: staticDate,
+            lastModified: currentDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/digital-business-card-india`,
-            lastModified: newPageDate,
+            lastModified: currentDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/digital-business-card-for-freelancers`,
-            lastModified: newPageDate,
+            lastModified: currentDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/nfc-business-card`,
-            lastModified: newPageDate,
+            lastModified: currentDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/digital-vs-paper-business-cards`,
-            lastModified: newPageDate,
+            lastModified: currentDate,
             changeFrequency: 'monthly' as const,
             priority: 0.8,
         },
         {
             url: `${baseUrl}/contact`,
-            lastModified: staticDate,
+            lastModified: currentDate,
             changeFrequency: 'monthly' as const,
             priority: 0.5,
         },
         {
             url: `${baseUrl}/business-info`,
-            lastModified: staticDate,
+            lastModified: currentDate,
             changeFrequency: 'monthly' as const,
             priority: 0.5,
         },
         {
             url: `${baseUrl}/privacy`,
-            lastModified: staticDate,
+            lastModified: currentDate,
             changeFrequency: 'yearly' as const,
             priority: 0.3,
         },
         {
             url: `${baseUrl}/terms`,
-            lastModified: staticDate,
+            lastModified: currentDate,
             changeFrequency: 'yearly' as const,
             priority: 0.3,
         },
         {
             url: `${baseUrl}/refund`,
-            lastModified: staticDate,
+            lastModified: currentDate,
             changeFrequency: 'yearly' as const,
             priority: 0.3,
         },

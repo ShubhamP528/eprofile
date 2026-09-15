@@ -12,6 +12,7 @@ import PaymentManager from "../payments/payment-manager";
 import FeatureGate from "../subscription/feature-gate";
 import ImageUpload from "../ui/image-upload";
 import { apiClient } from "@/lib/api-client";
+import { Search, Sparkles, Globe, Clock, CheckCircle2, ExternalLink } from "lucide-react";
 
 const USERNAME_FORMAT_REGEX = /^[a-zA-Z0-9_-]+$/;
 
@@ -52,6 +53,16 @@ const cardFormSchema = z.object({
     .or(z.literal("")),
   template: z.string().default("template1"),
   isPublic: z.boolean().default(true),
+  seoTitle: z
+    .string()
+    .max(100, "SEO title must be less than 100 characters")
+    .optional()
+    .or(z.literal("")),
+  seoDescription: z
+    .string()
+    .max(300, "SEO description must be less than 300 characters")
+    .optional()
+    .or(z.literal("")),
 });
 
 type CardFormData = z.infer<typeof cardFormSchema>;
@@ -110,6 +121,21 @@ export default function CardForm({
     }
   };
 
+  const autoFillSeo = () => {
+    const title = watchedValues.title?.trim() || "";
+    const subtitle = watchedValues.subtitle?.trim() || "";
+    const bio = watchedValues.bio?.trim() || "";
+
+    if (title) {
+      setValue("seoTitle", subtitle ? `${title} - ${subtitle} | eProfile` : `${title} - Digital Business Card | eProfile`);
+    }
+    if (bio) {
+      setValue("seoDescription", bio.length > 160 ? `${bio.slice(0, 157)}...` : bio);
+    } else if (title) {
+      setValue("seoDescription", `View ${title}'s professional digital business card${subtitle ? ` (${subtitle})` : ""} on eProfile. Connect, view portfolio, and network.`);
+    }
+  };
+
   const {
     register,
     handleSubmit,
@@ -127,6 +153,8 @@ export default function CardForm({
       phone: "",
       email: "",
       address: "",
+      seoTitle: "",
+      seoDescription: "",
       ...initialData,
     },
   });
@@ -492,6 +520,117 @@ export default function CardForm({
                 </FeatureGate>
               )}
 
+              {/* Google SEO & Search Engine Ranking Settings */}
+              <div className="mobile-card bg-white rounded-2xl border border-indigo-100 shadow-sm overflow-hidden">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600">
+                      <Search className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h3 className="responsive-text-lg font-bold text-gray-900 leading-none">
+                        Google SEO & Search Ranking
+                      </h3>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        Optimize how your card appears on Google Search
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={autoFillSeo}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-700 bg-indigo-50 hover:bg-indigo-100/70 border border-indigo-200/80 px-2.5 py-1.5 rounded-lg transition-colors"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
+                    Auto-fill SEO
+                  </button>
+                </div>
+
+                {/* 10-20 Day Google Ranking Notice */}
+                <div className="bg-gradient-to-r from-indigo-50/90 via-violet-50/70 to-sky-50/90 border border-indigo-100/90 rounded-xl p-3.5 mb-5 flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-indigo-600 flex items-center justify-center text-white text-[11px] font-bold shrink-0 mt-0.5">
+                    ⚡
+                  </div>
+                  <div className="text-xs text-indigo-950 leading-relaxed">
+                    <p className="font-bold text-indigo-900">Rank on Google in 10–20 Days</p>
+                    <p className="text-indigo-800/80 mt-0.5">
+                      Your card is automatically formatted with Schema.org JSON-LD and submitted to search engine sitemaps. Profiles typically rank at the top of Google search results within 10–20 days depending on Google crawler cycles.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Live Google Search Snippet Preview */}
+                <div className="bg-slate-900 rounded-xl p-4 mb-5 text-white border border-slate-800 shadow-inner">
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                    <span className="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
+                      <Globe className="w-3.5 h-3.5 text-indigo-400" />
+                      Google Search Result Snippet Preview
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                      #1 Top Result
+                    </span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <p className="text-[11px] text-slate-400 font-mono truncate">
+                      https://www.eprofile.cv › {watchedValues.username || "yourname"}
+                    </p>
+                    <h4 className="text-sm font-bold text-sky-400 hover:underline cursor-pointer truncate">
+                      {watchedValues.seoTitle?.trim() || (watchedValues.title ? `${watchedValues.title} - Digital Business Card | eProfile` : "Your Name - Digital Business Card | eProfile")}
+                    </h4>
+                    <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                      {watchedValues.seoDescription?.trim() || watchedValues.bio || `View ${watchedValues.title || "this professional"}'s digital business card on eProfile. Connect, view services, and get in touch.`}
+                    </p>
+                  </div>
+                </div>
+
+                {/* SEO Input Fields */}
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label htmlFor="seoTitle" className="mobile-form-label mb-0">
+                        Custom Google Title (Optional)
+                      </label>
+                      <span className="text-[11px] text-slate-400 font-mono">
+                        {(watchedValues.seoTitle || "").length}/100
+                      </span>
+                    </div>
+                    <input
+                      {...register("seoTitle")}
+                      type="text"
+                      maxLength={100}
+                      className="mobile-form-input text-sm"
+                      placeholder={watchedValues.title ? `${watchedValues.title} - Digital Business Card | eProfile` : "e.g. John Doe - Senior Architect & Consultant | eProfile"}
+                    />
+                    <p className="mt-1 text-[11px] text-slate-400">
+                      Leave empty to automatically use your card name and profession.
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label htmlFor="seoDescription" className="mobile-form-label mb-0">
+                        Google Search Meta Description (Optional)
+                      </label>
+                      <span className="text-[11px] text-slate-400 font-mono">
+                        {(watchedValues.seoDescription || "").length}/300
+                      </span>
+                    </div>
+                    <textarea
+                      {...register("seoDescription")}
+                      rows={2}
+                      maxLength={300}
+                      className="mobile-form-input text-sm resize-none"
+                      placeholder="e.g. Experienced Architect in Mumbai specializing in luxury residential and commercial projects. View portfolio and contact directly."
+                    />
+                    <p className="mt-1 text-[11px] text-slate-400">
+                      Short summary displayed on Google search results (recommended 120–160 characters).
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Settings */}
               <div className="mobile-card bg-white rounded-2xl border border-slate-100 shadow-sm">
                 <h3 className="responsive-text-lg font-semibold text-gray-900 mb-4">
@@ -507,7 +646,7 @@ export default function CardForm({
                     htmlFor="isPublic"
                     className="ml-3 block responsive-text-sm text-gray-700 leading-relaxed"
                   >
-                    Make this card public (visible to anyone with the link)
+                    Make this card public (visible on Google Search & directory)
                   </label>
                 </div>
               </div>

@@ -57,9 +57,10 @@ export default function PricingPage() {
       description: "Perfect for getting started with eProfiles",
       features: [
         "1 eProfile",
+        "Google SEO Indexing (10–20 Days)",
+        "Schema.org JSON-LD Structured Data",
         "Basic Templates",
-        "Contact Buttons",
-        "QR Code Generation",
+        "Contact Buttons & QR Code",
         "Basic Analytics",
         "Lead Generation Form",
         "Social Media Links",
@@ -83,6 +84,8 @@ export default function PricingPage() {
       description: "Great for professionals who need more features",
       features: [
         "3 eProfiles",
+        "Google SEO Indexing (10–20 Days)",
+        "Schema.org Structured Data",
         "All Premium Templates",
         "Services Showcase (3 services)",
         "Portfolio Gallery (5 items)",
@@ -112,6 +115,8 @@ export default function PricingPage() {
       description: "Everything you need for professional networking",
       features: [
         "Unlimited eProfiles",
+        "Google SEO Top Ranking Optimization",
+        "Schema.org Rich Snippet Meta",
         "All Premium Templates",
         "Advanced Customization",
         "Services Showcase (Unlimited)",
@@ -327,6 +332,18 @@ export default function PricingPage() {
                     pro: "Unlimited",
                   },
                   {
+                    feature: "Google SEO Indexing (10-20 Days)",
+                    free: "✅",
+                    standard: "✅",
+                    pro: "✅ (Top Rank Optimization)",
+                  },
+                  {
+                    feature: "Schema.org Rich Snippets",
+                    free: "Basic",
+                    standard: "Full",
+                    pro: "Full + Knowledge Graph",
+                  },
+                  {
                     feature: "Templates",
                     free: "Basic",
                     standard: "All Premium",
@@ -421,6 +438,25 @@ export default function PricingPage() {
         </div>
       </div>
 
+      {/* FAQ Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: f.answer,
+              },
+            })),
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
+
       {/* CTA Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 via-violet-600 to-blue-600 text-white py-16 px-8 sm:px-12 text-center shadow-xl shadow-indigo-500/10">
@@ -433,7 +469,7 @@ export default function PricingPage() {
             </h2>
             <p className="text-lg text-indigo-100 mb-8 max-w-lg mx-auto">
               Join thousands of professionals who trust eProfile for their digital
-              networking needs.
+              networking and top Google search rankings.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button

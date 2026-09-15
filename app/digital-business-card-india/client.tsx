@@ -16,9 +16,16 @@ import {
   ArrowRight,
   HelpCircle,
   X,
+  Search,
 } from "lucide-react";
 
 const features = [
+  {
+    icon: Search,
+    title: "Google SEO & Top Search Ranking",
+    description:
+      "Every card comes with Schema.org JSON-LD structured data and live XML sitemaps, helping your business and profile rank at the top of Google search results in India within 10–20 days.",
+  },
   {
     icon: QrCode,
     title: "QR Code + Shareable Link",
@@ -70,6 +77,11 @@ const features = [
 ];
 
 const faqs = [
+  {
+    question: "Will my digital business card show up on Google Search?",
+    answer:
+      "Yes! eProfile is engineered with Server-Side Rendering (SSR), Schema.org Person & Service schema, and automatic XML sitemaps. Newly created public cards typically rank on Google's first page within 10–20 days depending on Google crawler cycles.",
+  },
   {
     question: "What is a digital business card?",
     answer:
@@ -335,6 +347,25 @@ export default function DigitalBusinessCardIndiaClient() {
           ))}
         </div>
       </div>
+
+      {/* FAQ Schema for Google SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: f.answer,
+              },
+            })),
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
 
       {/* CTA */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

@@ -27,6 +27,8 @@ export async function GET() {
                 profileImage: true,
                 template: true,
                 isPublic: true,
+                seoTitle: true,
+                seoDescription: true,
                 createdAt: true,
                 updatedAt: true,
             },
