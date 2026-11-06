@@ -1,6 +1,6 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const EMAIL_FROM = process.env.EMAIL_FROM || "eProfile <onboarding@resend.dev>";
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app";
 
 interface MailOptions {
   to: string | string[];

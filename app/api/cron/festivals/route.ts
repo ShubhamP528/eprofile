@@ -143,7 +143,7 @@ export async function GET(req: NextRequest) {
     console.log(`🎉 Match found: ${festival.name}! Dispatching greetings...`);
 
     let sentCount = 0;
-    const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
+    const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app";
 
     // 3. Handle specific test email request
     if (testEmailAddress) {

@@ -68,7 +68,7 @@ export default function DigitalVsPaperClient() {
     {
       category: "Sharing at a distance",
       paper: "Requires physically handing the card to someone standing next to you — impossible on a call or in a chat.",
-      digital: "Share your eprofile.cv link over WhatsApp, email, or social media from anywhere, or let people scan your QR code or tap your NFC tag in person.",
+      digital: "Share your eProfile link over WhatsApp, email, or social media from anywhere, or let people scan your QR code or tap your NFC tag in person.",
       digitalWins: true,
     },
   ];

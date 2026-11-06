@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "eProfile Pricing - Affordable Digital Visiting Cards & SEO Profiles",
         description: "Choose your plan to create stunning digital cards that rank on Page 1 of Google in 10-20 days. Free and Pro options available.",
-        url: "https://www.eprofile.cv/pricing",
+        url: "https://eprofile-cv.vercel.app/pricing",
         type: "website",
     },
 };

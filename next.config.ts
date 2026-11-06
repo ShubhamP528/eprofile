@@ -46,7 +46,7 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         has: [{ type: "host", value: "eprofile.cv" }],
-        destination: "https://www.eprofile.cv/:path*",
+        destination: "https://eprofile-cv.vercel.app/:path*",
         permanent: true,
       },
     ];

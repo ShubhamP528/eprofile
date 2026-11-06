@@ -16,7 +16,7 @@ const getAuthCheck = (req: NextRequest): boolean => {
 const REQUIRED_GAPS = [0, 2, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2];
 
 // Email subjects & content mapping
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app";
 const PROMO_CODE = "EPROFILE20";
 
 const getSegmentATemplate = (name: string, step: number) => {
@@ -35,7 +35,7 @@ const getSegmentATemplate = (name: string, step: number) => {
       break;
     case 3:
       subject = "SEO tip: Add eProfile to your email signature 📧";
-      body = `Hi ${name || "there"},\n\nOne of the easiest ways to share your digital profile is by adding it to your email signature.\n\nYou can simply write: "Connect with me: eprofile.cv/username" or add a link to the bottom of your daily emails. It's a great passive way to grow your network and collect leads.\n\n👉 Log in to set up your profile: ${dashboardUrl}\n\nBest regards,\nThe eProfile Team`;
+      body = `Hi ${name || "there"},\n\nOne of the easiest ways to share your digital profile is by adding it to your email signature.\n\nYou can simply write: "Connect with me: eprofile-cv.vercel.app/username" or add a link to the bottom of your daily emails. It's a great passive way to grow your network and collect leads.\n\n👉 Log in to set up your profile: ${dashboardUrl}\n\nBest regards,\nThe eProfile Team`;
       break;
     case 4:
       subject = "How to use your eProfile as a 'Link in Bio' 🔗";
@@ -95,7 +95,7 @@ const getSegmentBTemplate = (name: string, step: number, username: string) => {
       break;
     case 3:
       subject = "Quick tip: Add your eProfile to your email signature 📧";
-      body = `Hi ${name || "there"},\n\nMake the most of your digital card by adding it to your email signature. You can write: "Connect with me: eprofile.cv/username" or add a hyperlink at the bottom of your daily emails. It's a great passive way to collect inquiries and leads.\n\n👉 View your profile link: ${dashboardUrl}\n\nBest regards,\nThe eProfile Team`;
+      body = `Hi ${name || "there"},\n\nMake the most of your digital card by adding it to your email signature. You can write: "Connect with me: eprofile-cv.vercel.app/username" or add a hyperlink at the bottom of your daily emails. It's a great passive way to collect inquiries and leads.\n\n👉 View your profile link: ${dashboardUrl}\n\nBest regards,\nThe eProfile Team`;
       break;
     case 4:
       subject = "Maximize conversions: Link-in-Bio setup 🔗";

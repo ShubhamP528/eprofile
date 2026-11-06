@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "eProfile - Smart Digital Business Cards | Rank on Google Page 1 in 10-20 Days",
     description: "Create stunning digital visiting cards that rank on Page 1 of Google in 10-20 days. Share contact details, showcase your portfolio, and collect leads seamlessly.",
-    url: "https://www.eprofile.cv",
+    url: "https://eprofile-cv.vercel.app",
     type: "website",
     images: ["/og-image.png"],
   },

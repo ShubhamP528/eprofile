@@ -6,7 +6,7 @@ import {
     handleApiError
 } from '@/lib/api-utils'
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv"
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app"
 
 // GET /api/referrals/me - This user's referral link + stats on people they've referred
 export async function GET() {

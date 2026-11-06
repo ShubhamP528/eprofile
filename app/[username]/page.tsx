@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const keywords = extractKeywords(card.title, card.subtitle, card.bio, card.services, card.seoDescription || "");
 
   // Use absolute URL for meta images to ensure crawlers can reach them
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app";
   const absoluteImageUrl = image.startsWith('http') ? image : `${baseUrl}${image}`;
   const canonicalUrl = getCardUrl(card.username);
 
@@ -156,7 +156,7 @@ export default async function PublicCardPage({ params }: Props) {
 
   // Use environment variable for baseUrl or fallback to a default
   // This avoids calling headers() which forces dynamic rendering
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app";
 
   if (!card) {
     notFound();

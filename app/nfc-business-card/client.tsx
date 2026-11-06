@@ -35,7 +35,7 @@ export default function NfcBusinessCardClient() {
       icon: Smartphone,
       title: "Create your eProfile",
       description:
-        "Sign up free and build your digital business card with your contact details, services, and links. You get a unique shareable link like eprofile.cv/yourname.",
+        "Sign up free and build your digital business card with your contact details, services, and links. You get a unique shareable link like eprofile-cv.vercel.app/yourname.",
     },
     {
       icon: QrCode,
@@ -68,7 +68,7 @@ export default function NfcBusinessCardClient() {
       icon: RefreshCw,
       title: "Update anytime, tag stays the same",
       description:
-        "The NFC tag only stores your eprofile.cv link — never your actual details. Change your title, phone number, or services in your dashboard and every tap reflects it instantly. No reprogramming needed.",
+        "The NFC tag only stores your eProfile link — never your actual details. Change your title, phone number, or services in your dashboard and every tap reflects it instantly. No reprogramming needed.",
     },
     {
       icon: CreditCard,
@@ -115,7 +115,7 @@ export default function NfcBusinessCardClient() {
     {
       question: "Can I change my details after writing the NFC tag?",
       answer:
-        "Yes. The tag stores only your eprofile.cv link, not your actual information. Edit your job title, phone number, services, or pricing anytime in your eProfile dashboard, and everyone who taps your card sees the update immediately — the physical tag never needs to be rewritten.",
+        "Yes. The tag stores only your eProfile link, not your actual information. Edit your job title, phone number, services, or pricing anytime in your eProfile dashboard, and everyone who taps your card sees the update immediately — the physical tag never needs to be rewritten.",
     },
     {
       question: "How much does an NFC business card cost overall?",
@@ -125,7 +125,7 @@ export default function NfcBusinessCardClient() {
     {
       question: "Do I need a special app to write the NFC tag?",
       answer:
-        "No special eProfile app is needed. Any free NFC-writer app from the Play Store or App Store (search \"NFC Tools\" or similar) can write a URL to a blank NFC tag in a few taps — just paste in your eprofile.cv link and write it to the tag.",
+        "No special eProfile app is needed. Any free NFC-writer app from the Play Store or App Store (search \"NFC Tools\" or similar) can write a URL to a blank NFC tag in a few taps — just paste in your eProfile link and write it to the tag.",
     },
   ];
 

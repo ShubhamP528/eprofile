@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app"),
   title: {
     default: "eProfile - Professional Digital Visiting Cards & SEO-Ranked Profiles",
     template: "%s | eProfile",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "eProfile",
     "digital business card india"
   ],
-  authors: [{ name: "eProfile Team", url: "https://www.eprofile.cv" }],
+  authors: [{ name: "eProfile Team", url: "https://eprofile-cv.vercel.app" }],
   creator: "eProfile",
   publisher: "eProfile",
   robots: {
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.eprofile.cv",
+    url: "https://eprofile-cv.vercel.app",
     title: "eProfile - Professional Digital Visiting Cards & SEO-Ranked Profiles",
     description: "Create stunning digital visiting cards that rank on Page 1 of Google in 10-20 days. Share your portfolio, accept payments, and network smartly.",
     siteName: "eProfile",
@@ -103,7 +103,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app";
   
   const globalSchema = {
     "@context": "https://schema.org",

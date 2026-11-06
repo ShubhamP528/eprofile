@@ -114,7 +114,7 @@ export default function GoogleSeoHighlight() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs text-slate-300 font-medium">eProfile.cv</span>
-                  <span className="text-[11px] text-slate-400 font-mono truncate">https://www.eprofile.cv › {activeQuery.split(" ")[0].toLowerCase()}</span>
+                  <span className="text-[11px] text-slate-400 font-mono truncate">https://eprofile-cv.vercel.app › {activeQuery.split(" ")[0].toLowerCase()}</span>
                 </div>
               </div>
 

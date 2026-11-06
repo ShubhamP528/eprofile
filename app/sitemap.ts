@@ -4,7 +4,7 @@ import { unstable_cache } from 'next/cache'
 import { getCardUrl } from '@/lib/utils/card-url'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.eprofile.cv'
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://eprofile-cv.vercel.app'
     const currentDate = new Date()
 
     let publicProfiles: MetadataRoute.Sitemap = []

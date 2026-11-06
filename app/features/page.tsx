@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "eProfile Features - Google SEO Ranked Digital Visiting Cards",
     description: "Built-in Google SEO indexing (ranks in 10-20 days), Schema.org rich snippets, interactive contact buttons, and lead generation.",
-    url: "https://www.eprofile.cv/features",
+    url: "https://eprofile-cv.vercel.app/features",
     type: "website",
   },
 };

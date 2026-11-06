@@ -21,7 +21,7 @@ export default auth((request) => {
   const url = request.nextUrl
 
   // Get root domain from environment or default
-  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'eprofile.cv'
+  const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'eprofile-cv.vercel.app'
   const enableSubdomains = process.env.NEXT_PUBLIC_ENABLE_SUBDOMAINS === 'true'
 
   // Skip if subdomains are not enabled
@@ -37,7 +37,7 @@ export default auth((request) => {
   // Check if this is a subdomain
   const hostParts = hostname.split('.')
 
-  // If hostname matches pattern: subdomain.eprofile.cv
+  // If hostname matches pattern: subdomain.<rootDomain>
   if (hostname.endsWith(`.${rootDomain}`) && hostParts.length >= 3) {
     const subdomain = hostParts[0]
 
@@ -48,7 +48,7 @@ export default auth((request) => {
     }
 
     // Rewrite subdomain to username route
-    // Example: john.eprofile.cv → eprofile.cv/john
+    // Example: john.<rootDomain> → <rootDomain>/john
     const rewriteUrl = url.clone()
 
     // If accessing root of subdomain, rewrite to /[username]

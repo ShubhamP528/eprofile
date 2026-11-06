@@ -10,13 +10,13 @@
  */
 export function getCardUrl(username: string): string {
     const enableSubdomains = process.env.NEXT_PUBLIC_ENABLE_SUBDOMAINS === 'true'
-    const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'eprofile.cv'
+    const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'eprofile-cv.vercel.app'
 
     if (enableSubdomains) {
         return `https://${username}.${rootDomain}`
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || `https://www.${rootDomain}`
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || `https://${rootDomain}`
     return `${baseUrl}/${username}`
 }
 
@@ -27,7 +27,7 @@ export function getCardUrl(username: string): string {
  */
 export function getCardDisplayUrl(username: string): string {
     const enableSubdomains = process.env.NEXT_PUBLIC_ENABLE_SUBDOMAINS === 'true'
-    const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'eprofile.cv'
+    const rootDomain = process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'eprofile-cv.vercel.app'
 
     if (enableSubdomains) {
         return `${username}.${rootDomain}`

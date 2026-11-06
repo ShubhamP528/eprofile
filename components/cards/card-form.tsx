@@ -289,7 +289,7 @@ export default function CardForm({
                     </label>
                     <div className="flex rounded-lg shadow-sm border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
                       <span className="inline-flex items-center px-3 border-r border-gray-300 bg-gray-50 text-gray-500 text-sm select-none">
-                        eprofile.cv/
+                        eprofile-cv.vercel.app/
                       </span>
                       <input
                         {...register("username")}
@@ -313,7 +313,7 @@ export default function CardForm({
                         )}
                         {usernameStatus === "available" && (
                           <p className="mt-1 responsive-text-xs text-green-600">
-                            ✓ eprofile.cv/{watchedValues.username} is available
+                            ✓ eprofile-cv.vercel.app/{watchedValues.username} is available
                           </p>
                         )}
                         {usernameStatus === "taken" && (
@@ -574,7 +574,7 @@ export default function CardForm({
 
                   <div className="space-y-1">
                     <p className="text-[11px] text-slate-400 font-mono truncate">
-                      https://www.eprofile.cv › {watchedValues.username || "yourname"}
+                      https://eprofile-cv.vercel.app › {watchedValues.username || "yourname"}
                     </p>
                     <h4 className="text-sm font-bold text-sky-400 hover:underline cursor-pointer truncate">
                       {watchedValues.seoTitle?.trim() || (watchedValues.title ? `${watchedValues.title} - Digital Business Card | eProfile` : "Your Name - Digital Business Card | eProfile")}

@@ -24,7 +24,7 @@ require("dotenv").config();
 // Configuration
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const EMAIL_FROM = process.env.EMAIL_FROM || "eProfile <onboarding@resend.dev>";
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://www.eprofile.cv";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eprofile-cv.vercel.app";
 
 // Promo code details to display in the Segment B email
 const PROMO_CODE = "EPROFILE20";
@@ -41,7 +41,7 @@ const getUseCasesHtml = () => `
           <div style="background-color: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; padding: 16px; min-height: 120px;">
             <div style="font-size: 20px; margin-bottom: 8px;">📧</div>
             <strong style="color: #0f172a; font-size: 14px; display: block; margin-bottom: 4px;">Email Signature</strong>
-            <span style="font-size: 13px; color: #475569; line-height: 1.4;">Add your profile link at the bottom of your emails (e.g. <i>"Connect with me: eprofile.cv/username"</i>).</span>
+            <span style="font-size: 13px; color: #475569; line-height: 1.4;">Add your profile link at the bottom of your emails (e.g. <i>"Connect with me: eprofile-cv.vercel.app/username"</i>).</span>
           </div>
         </td>
         <td width="50%" valign="top" style="padding-left: 10px; padding-bottom: 20px;">
